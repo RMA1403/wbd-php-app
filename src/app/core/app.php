@@ -7,8 +7,8 @@ class App
     $url = $this->parseURL();
     $router = new Router();
 
-    $router->get("public/dashboard", new GetDashboard());
-    
+    $router->get("public/dashboard", new GetDashboardController());
+
     $router->directRequest($url);
   }
 
@@ -16,9 +16,7 @@ class App
   {
     $url = trim($_SERVER["REQUEST_URI"], "/");
     $url = filter_var($url, FILTER_SANITIZE_URL);
-
     $url = parse_url($url);
-    // $url["path"] = explode("/", $url["path"]);
 
     return $url["path"];
   }

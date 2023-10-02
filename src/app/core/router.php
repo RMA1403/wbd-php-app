@@ -2,11 +2,6 @@
 
 define("HTTP_METHODS", ["GET", "POST", "PUT", "DELETE"]);
 
-function notFoundController()
-{
-  echo "<h1>Not Found WKWKWKWK</h1>" . "<br/>";
-}
-
 class Router
 {
   private $routes = [];

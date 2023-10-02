@@ -1,0 +1,141 @@
+:root {
+  --WHITE: #ffffff;
+  --GRAY-200: #f9f9f9;
+  --GRAY-300: #bfbfbf;
+  --GRAY-400: #9b9b9b;
+  --GRAY-500: #777676;
+  --GRAY-600: #2f2e2e;
+  --BLACK: #0b0a0a;
+
+  --NAVY-1: #1d0263;
+  --NAVY-2: #2b0792;
+  --NAVY-3: #3608c0;
+  --NAVY-4: #3f2ceb;
+  --NAVY-5: #4a58f6;
+
+  --PINK-1: #ce04a1;
+  --PINK-2: #e935b8;
+  --PINK-3: #f74dc1;
+  --PINK-4: #ff67c3;
+  --PINK-5: #ff93d1;
+
+  --PURPLE-1: #340c8f;
+  --PURPLE-2: #4909b3;
+  --PURPLE-3: #651cce;
+  --PURPLE-4: #7b34e1;
+  --PURPLE-5: #8d47e5;
+
+  --ORANGE: #e8553e;
+}
+
+body {
+  background-color: var(--BLACK);
+  color: white;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  font-family: "DM Sans", sans-serif;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block: 0;
+}
+
+/* Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 120%;
+  text-transform: uppercase;
+  word-wrap: break-word;
+}
+h1 {
+  font-size: 64px;
+}
+h2 {
+  font-size: 48px;
+}
+h3 {
+  font-size: 32px;
+}
+h4 {
+  font-size: 24px;
+}
+h5 {
+  font-size: 20px;
+}
+h6 {
+  font-size: 16px;
+}
+
+/* Sub-Headers */
+.sh1,
+.sh2,
+.sh3,
+.sh4,
+.sh5 {
+  font-weight: 700;
+  word-wrap: break-word;
+  line-height: 120%;
+}
+.sh1 {
+  font-size: 36px;
+}
+.sh1 {
+  font-size: 32px;
+}
+.sh1 {
+  font-size: 24px;
+}
+.sh1 {
+  font-size: 20px;
+}
+.sh1 {
+  font-size: 16px;
+}
+
+/* Body */
+.b1,
+.b2,
+.b3,
+.b4,
+.b5 {
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.b1 {
+  font-size: 24px;
+  line-height: 36px;
+}
+.b2 {
+  font-size: 20px;
+  line-height: 30px;
+}
+.b3 {
+  font-size: 16px;
+  line-height: 24px;
+}
+.b4 {
+  font-size: 14px;
+  line-height: 21px;
+}
+.b5 {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.navbar {
+  width: 256px;
+  height: 100vh;
+  background-color: var(--GRAY-600);
+}

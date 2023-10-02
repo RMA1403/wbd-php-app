@@ -44,7 +44,6 @@ class Router
 
     $method = $_SERVER["REQUEST_METHOD"];
     if (array_key_exists($url, $this->routes[$method])) {
-      echo "LHO KOK MASUK";
       $controller = $this->routes[$method][$url];
     }
 

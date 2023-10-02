@@ -1,3 +1,4 @@
+
 <?php
 
 // Constants
@@ -33,3 +34,4 @@ try {
     $pdo = null;
   }
 }
+

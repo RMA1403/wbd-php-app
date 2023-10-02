@@ -22,7 +22,7 @@ try {
     echo "Connected to database successfully" . "<br/>";
 
     $stmt = $pdo->query("SELECT * FROM test_table");
-    while($row = $stmt->fetch()) {
+    while ($row = $stmt->fetch()) {
       echo "<h1> Nama: " . $row["nama"] . " | Umur: " . $row["umur"] . "</h1><br/>";
     }
   }

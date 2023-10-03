@@ -30,7 +30,7 @@
                 <input type="password" placeholder="Password" id="password" autocomplete="off" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
-            
+
             <button type="submit" class="btn">LOGIN</button>
 
             <div class="register-link">

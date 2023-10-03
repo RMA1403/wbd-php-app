@@ -13,7 +13,7 @@
 <body>
     
     <div class="wrapper">
-        <form action="">
+        <form action="" method="post">
             <div class="container">
                 <i class='bx bxl-spotify'></i>
                 <h1>Podcast</h1>
@@ -35,6 +35,14 @@
                 <label for="confirm">Confirm Password</label>
                 <input type="password" placeholder="Enter again your password" id="confirm" autocomplete="off" required>
                 <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="container-radio">
+                <p>Register As</p>
+                <input type="radio" id="user" name="role" value="User">
+                <label for="user">User</label>
+                <input type="radio" id="admin" name="role" value="Admin">
+                <label for="admin">Creator</label>
             </div>
 
             <button type="submit" class="btn">SIGNUP</button>

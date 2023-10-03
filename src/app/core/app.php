@@ -9,6 +9,7 @@ class App
 
     $router->get("public/dashboard", new GetDashboardController());
     $router->get("public/login", new GetLoginController());
+    $router->get("public/signup", new GetSignupController());
 
     $router->directRequest($url);
   }

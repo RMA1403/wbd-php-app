@@ -34,7 +34,7 @@
             <button type="submit" class="btn">LOGIN</button>
 
             <div class="register-link">
-                <p>Don't have an account? <a href="signup.html">Register</a></p>
+                <p>Don't have an account? <a href="http://localhost:8080/public/signup">Register</a></p>
             </div>
             
         </form>

@@ -7,3 +7,4 @@ require_once __DIR__ . "/database/database.php";
 require_once __DIR__ . "/controllers/not_found.php";
 require_once __DIR__ . "/controllers/dashboard/get_dashboard.php";
 require_once __DIR__ . "/controllers/login/get_login.php";
+require_once __DIR__ . "/controllers/signup/get_signup.php";

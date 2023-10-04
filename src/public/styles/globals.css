@@ -165,13 +165,13 @@ h6 {
   padding-top: 32px;
   left: 0;
   background-color: var(--GRAY-600);
+  position: fixed;
 }
 
 .sidebar-container {
   display: flex;
   flex-direction: column;
   max-width: 194px;
-  position: fixed;
   gap: 16px;
 }
 

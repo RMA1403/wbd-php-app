@@ -13,12 +13,12 @@
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/dashboard_main.css">
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/button.css">
 
-  <script type="text/javascript" src="<?= BASE_URL ?>/javascript/dashboard.js" defer></script>
+  <script type="text/javascript" src="<?= BASE_URL ?>/javascript/dashboard/script.js" defer></script>
   <title>Main Dashboard</title>
 </head>
 
 <body>
-  <nav class="navbar"></nav>
+  <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
 
   <main>
     <div class="dashboard-content">

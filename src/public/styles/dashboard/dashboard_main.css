@@ -44,6 +44,7 @@
 .card-header-container {
   display: flex;
   gap: 32px;
+  align-items: flex-start;
 }
 
 .podcast-thumbnail-img {
@@ -157,4 +158,78 @@
 .dashboard-nav .nav-active {
   color: var(--PINK-1);
   border-bottom: 5px var(--PINK-1) solid;
+}
+
+/* Dashboard episode */
+.episode-list {
+  padding: 32px 48px 174px;
+  width: 100%;
+}
+.episode-list > div {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+.episode-list ul {
+  margin-top: 32px;
+  display: block;
+}
+.episode-list ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  border-bottom: 1px var(--GRAY-500) solid;
+}
+.episode-list ul li:first-child {
+  border-top: 1px var(--GRAY-500) solid;
+}
+.episode-list ul li > div:first-child {
+  display: flex;
+  align-items: center;
+}
+.episode-list ul li > div:first-child .episode-number {
+  font-size: 24px;
+  font-weight: 700;
+  width: 25px;
+}
+.episode-list ul li > div:first-child > img {
+  width: 75px;
+  height: auto;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  margin-left: 32px;
+  margin-right: 24px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.episode-list ul li > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.episode-list ul li > div:last-child div {
+  display: flex;
+  align-items: center;
+  gap: 16px
+}
+.episode-list ul li > div:last-child > div:first-child img {
+  width: 16px;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+.episode-list ul li > div:last-child > div:first-child > p {
+  font-size: 16px;
+  font-weight: 700;
+}
+.episode-list ul li > div:last-child > div:last-child img {
+  width: 16px;
+  height: auto;
+  aspect-ratio: 16/18;
+}
+.episode-list ul li > div:last-child > div:last-child > p {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ORANGE)
 }

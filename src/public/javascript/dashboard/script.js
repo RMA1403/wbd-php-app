@@ -10,8 +10,12 @@ const urls = window.location.href.split("?")[0].split("/");
 let lastURL = urls[urls.length - 1];
 
 if (lastURL === "dashboard") {
-  history.pushState({}, "", "http://localhost:8080/public/dashboard/internal/main?user_id=1");
-  lastURL = "main"
+  history.pushState(
+    {},
+    "",
+    "http://localhost:8080/public/dashboard/main?user_id=1"
+  );
+  lastURL = "main";
 }
 
 if (lastURL === "main") {
@@ -20,7 +24,12 @@ if (lastURL === "main") {
   episodeLink.classList.add("nav-active");
 }
 const xhr = new XMLHttpRequest();
-xhr.open("GET", `/public/dashboard/internal/${lastURL}?user_id=1`);
+xhr.open(
+  "GET",
+  `/public/dashboard/internal/${lastURL}?${
+    lastURL === "main" ? "user_id" : "podcast_id"
+  }=1`
+);
 xhr.send(null);
 
 xhr.onreadystatechange = function () {
@@ -30,13 +39,17 @@ xhr.onreadystatechange = function () {
 };
 
 episodeLink.addEventListener("click", () => {
-  history.pushState({}, "", "http://localhost:8080/public/dashboard/episode?user_id=1");
+  history.pushState(
+    {},
+    "",
+    "http://localhost:8080/public/dashboard/episode?podcast_id=1"
+  );
 
   dashboardLink.classList.toggle("nav-active");
   episodeLink.classList.toggle("nav-active");
 
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "/public/dashboard/internal/episode");
+  xhr.open("GET", "/public/dashboard/internal/episode?podcast_id=1");
   xhr.send(null);
 
   xhr.onreadystatechange = function () {

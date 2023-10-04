@@ -11,6 +11,9 @@
 </head>
 <body>
     <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
+    <div class="profile">
+
+    </div>
     <main>
         <div class="main-content">
             <h1>Welcome to Spotify!</h1>

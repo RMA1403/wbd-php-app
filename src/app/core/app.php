@@ -8,7 +8,8 @@ class App
     $router = new Router();
 
     $router->get("public/dashboard", new GetDashboardController());
-    $router->get("public/home", new GetHomeController());
+    $router->get("public/login", new GetLoginController());
+    $router->get("public/signup", new GetSignupController());
 
     $router->directRequest($url);
   }

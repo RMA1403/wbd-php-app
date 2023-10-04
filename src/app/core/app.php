@@ -1,47 +1,24 @@
 <?php
 
-class App {
+class App
+{
+  public function handleRequest()
+  {
+    $url = $this->parseURL();
+    $router = new Router();
 
-    protected $controller;
-    protected $method = "index.php";
-    protected $params;
+    $router->get("public/dashboard", new GetDashboardController());
+    $router->get("public/home", new GetHomeController());
 
-    public function __construct()
-    {
-        $url = $this->parseURL();
+    $router->directRequest($url);
+  }
 
-        // Dtermine Controllers
-        require_once __DIR__.'/../controllers/NotFound.php';
-        $this->controller=new NotFound();
-        var_dump($url);
-        if (file_exists('../app/controllers/' . $url[0] . '.php')) {
-            $this->controller = $url[0];
-            unset($url[0]);
-        }
+  private function parseURL()
+  {
+    $url = trim($_SERVER["REQUEST_URI"], "/");
+    $url = filter_var($url, FILTER_SANITIZE_URL);
+    $url = parse_url($url);
 
-        // Determine method
-        if (isset($url[1])) {
-            if (method_exists($this->controller, $url[1]));
-        }
-        
-        if(!empty($url)) {
-            $this-->
-        }
-
-        require_once '../app/controllers' . $this->controller . '.php';
-        $this->controller = new $this->controller;
-
-
-        call_user_func_array([$this->controller, $this->method], $this->params);
-    }
-
-    public function parseURL()
-    {
-        if ( isset($_GET['url'])){
-            $url = rtrim($_GET['url'], '/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('/', $url);
-            return $url;
-        }
-    }
+    return $url["path"];
+  }
 }

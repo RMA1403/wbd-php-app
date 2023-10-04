@@ -11,7 +11,7 @@ class PodcastModel
 
   public function getAllPodcast()
   {
-    $query = "SELECT * FROM podcast";
+    $query = "SELECT title, category, url_thumbnail, description, name FROM podcast NATURAL JOIN user";
 
     $this->db->query($query);
     $podcasts = $this->db->fetchAll();

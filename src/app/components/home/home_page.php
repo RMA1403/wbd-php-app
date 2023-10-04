@@ -3,30 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Global CSS -->
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="http://localhost:8080/public/styles/home/home.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/home_style.css">
     <title>Homepage</title>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Spotify</h2>
-        <ul>
-            <li>Home</li>
-            <li>Browse</li>
-            <li>Search</li>
-            <li>Your Library</li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <h1>Welcome to Spotify!</h1>
-        <!-- Main content of the homepage goes here -->
-        <div class="audio-player">
-            <h2>Now Playing</h2>
-            <audio controls>
-                <source src="song.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+    <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
+    <main>
+        <div class="main-content">
+            <h1>Welcome to Spotify!</h1>
+            <!-- Main content of the homepage goes here -->
+            <div class="audio-player">
+                <h2>Now Playing</h2>
+            </div>
         </div>
-    </div>
+    </main>
+    <?php include(dirname(__DIR__) . "/common/player.php")?>
+    
 </body>
 </html>

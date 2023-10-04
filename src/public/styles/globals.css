@@ -4,7 +4,7 @@
   --GRAY-300: #bfbfbf;
   --GRAY-400: #9b9b9b;
   --GRAY-500: #777676;
-  --GRAY-600: #2f2e2e;
+  --GRAY-600: #1a1a1a;
   --BLACK: #0b0a0a;
 
   --NAVY-1: #1d0263;
@@ -91,16 +91,16 @@ h6 {
 .sh1 {
   font-size: 36px;
 }
-.sh1 {
+.sh2 {
   font-size: 32px;
 }
-.sh1 {
+.sh3 {
   font-size: 24px;
 }
-.sh1 {
+.sh4 {
   font-size: 20px;
 }
-.sh1 {
+.sh5 {
   font-size: 16px;
 }
 
@@ -134,8 +134,141 @@ h6 {
   line-height: 18px;
 }
 
+/* Navigation Bar */
 .navbar {
-  width: 256px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 256px;
+  max-width: 256px;
   height: 100vh;
+  padding-top: 32px;
+  left: 0;
   background-color: var(--GRAY-600);
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 194px;
+  position: fixed;
+  gap: 16px;
+}
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 14px;
+  padding-right: 91px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 20px;
+}
+
+/* Bottom Bar and Audio Player */
+.player {
+  display: flex;
+  width: 100vw;
+  height: 110px;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--GRAY-600);
+}
+
+.podcast-details {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+
+.podcast-info {
+  display: flex;
+  gap: 1px;
+  flex-direction: column;
+  color: var(--WHITE);
+  max-width: 204px;
+  overflow: hidden;
+}
+
+.podcast-info .sh4 {
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: clipped; 
+}
+
+.podcast-info .sh5 {
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: clipped; 
+  opacity: 30%; 
+}
+
+.player {
+  display: flex;
+}
+
+.player .audio-player {
+  display: flex;
+  margin-left: 92px;
+  align-items: center;
+  gap: 50px;
+  margin-top: 0px;
+  padding: 0px;
+}
+
+.audio-controller {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Master Player */
+.hide-player {
+  display: none;
+}
+
+.button-player {
+  display: flex;
+  justify-content: center;
+}
+
+.play-button, .pause-button {
+  cursor: pointer;
+}
+
+.pause-button {
+  display: none;
+}
+
+.play-button:hover, .pause-button:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.audio-player{
+  display: none;
+}
+
+/* Progress Control */
+.progress-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.progress-bar {
+  width: 30vw;
+  background-color:var(--GRAY-500);
+  height: 5px;
+  border-radius: 10px;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  cursor: pointer;
+  border-radius: 99px;
+  background-color: var(--PINK-1); /* Blue color with 100% opacity */
+  height: 14px; 
+  width: 14px; 
 }

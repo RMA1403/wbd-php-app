@@ -43,6 +43,7 @@ body {
 main {
   min-width: 0;
   overflow: scroll;
+  flex: auto;
 }
 button {
   all: unset;

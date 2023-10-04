@@ -7,10 +7,12 @@ class App
     $url = $this->parseURL();
     $router = new Router();
 
+    // Dashboard page routes
     $router->get("public/dashboard", new GetDashboardLayoutController());
     $router->get("public/dashboard/main", new GetDashboardLayoutController());
     $router->get("public/dashboard/episode", new GetDashboardLayoutController());
 
+    // Dashboard data-fetching routes
     $router->get("public/dashboard/internal/main", new GetDashboardMainController());
     $router->get("public/dashboard/internal/episode", new GetDashboardEpisodeController());
 

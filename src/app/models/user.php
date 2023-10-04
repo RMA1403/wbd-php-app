@@ -9,7 +9,7 @@ class UserModel
     $this->db = new Database();
   }
 
-  public function getUserPodcasts($userId)
+  public function getUserInfo($userId)
   {
     $query = "
       SELECT * FROM user
@@ -18,8 +18,8 @@ class UserModel
 
     $this->db->query($query);
     $this->db->bind("user_id", $userId);
-    $podcasts = $this->db->fetchAll();
+    $user = $this->db->fetch();
 
-    return $podcasts;
+    return $user;
   }
 }

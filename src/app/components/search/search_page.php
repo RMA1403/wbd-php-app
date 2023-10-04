@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Global CSS -->
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
-    <!-- Page-specific CSS -->
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/home_style.css">
-    <title>Homepage</title>
+    <title>Search Page</title>
 </head>
 <body>
     <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
-    <?php if (!isset($this->data["username"])) : ?>
+    <?php if (!isset($this->data["id_user"])) : ?>
         <div class="profile-section login-button">
             <h5>LOGIN</h5>
         </div>
@@ -22,12 +18,8 @@
         </div>
     <?php endif;?>
     <main>
-        <div class="main-content">
-            <h1>Welcome to Spotify!</h1>
-            <!-- Main content of the homepage goes here -->
-            <div class="audio-player">
-                <h2>Now Playing</h2>
-            </div>
+        <div>
+            
         </div>
     </main>
     <?php include(dirname(__DIR__) . "/common/player.php")?>

@@ -294,8 +294,14 @@ h6 {
 }
 
 
-/* Profile */
-.profile {
+
+/* Profile section*/
+
+.login-button {
+  background-color: var(--PINK-1);
+}
+
+.profile-section {
   display: flex;
   gap: 8px;
   flex-direction: row;
@@ -303,22 +309,33 @@ h6 {
   margin-top: 30px;
   margin-right: 60px;
   align-items: center;
-  padding-left: 25px;
-  padding-right: 33px;
   padding-top: 14px;
   padding-bottom: 14px;
-  background-color: var(--GRAY-600);
   border-radius: 80px;
   position: fixed;
   z-index: 99;
+}
+
+.profile {
+  background-color: var(--GRAY-600);
+  padding-left: 25px;
+  padding-right: 33px;
+}
+
+.login-button {
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .profpic {
   height: 54px;
   width: 54px;
   border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .profile sh3 {
   text-overflow:clip;
 }
+

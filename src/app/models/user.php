@@ -1,6 +1,6 @@
 <?php
 
-class PodcastModel
+class UserModel
 {
   private $db;
 
@@ -9,15 +9,15 @@ class PodcastModel
     $this->db = new Database();
   }
 
-  public function getAllPodcast()
+  public function getUserPodcasts($userId)
   {
-    $query = "SELECT title, category, url_thumbnail, description, name 
-    FROM 
-    podcast 
-    NATURAL JOIN 
-    user";
+    $query = "
+      SELECT * FROM user
+      WHERE id_user = :user_id
+    ";
 
     $this->db->query($query);
+    $this->db->bind("user_id", $userId);
     $podcasts = $this->db->fetchAll();
 
     return $podcasts;

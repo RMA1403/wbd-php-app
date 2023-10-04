@@ -28,6 +28,9 @@
   --ORANGE: #e8553e;
 }
 
+* {
+  box-sizing: border-box;
+}
 body {
   display: flex;
   background-color: var(--BLACK);
@@ -36,6 +39,23 @@ body {
   margin: 0;
   display: flex;
   font-family: "DM Sans", sans-serif;
+}
+button {
+  all: unset;
+}
+a {
+  all: unset;
+}
+a {
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+}
+ul {
+  all: unset;
+}
+li {
+  all: unset;
 }
 
 p,

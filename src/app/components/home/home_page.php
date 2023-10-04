@@ -12,7 +12,8 @@
 <body>
     <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
     <div class="profile">
-
+        <img class="profpic" src="<?= STORAGE_URL . "/images/default-profpic.jpeg" ?>" alt="image" width="110" height="110">    
+        <div class="sh3"><?= $this->data["podcaster"]?></div>
     </div>
     <main>
         <div class="main-content">

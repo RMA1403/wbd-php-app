@@ -29,6 +29,7 @@
 }
 
 body {
+  display: flex;
   background-color: var(--BLACK);
   color: white;
   padding: 0;
@@ -151,7 +152,6 @@ h6 {
   display: flex;
   flex-direction: column;
   max-width: 194px;
-  position: fixed;
   gap: 16px;
 }
 
@@ -271,4 +271,20 @@ h6 {
   background-color: var(--PINK-1); /* Blue color with 100% opacity */
   height: 14px; 
   width: 14px; 
+}
+
+
+/* Profile */
+.profile {
+  display: flex;
+}
+
+.profpic {
+  height: 54px;
+  width: 54px;
+  border-radius: 50%;
+}
+
+.profile sh3 {
+  text-overflow:clip;
 }

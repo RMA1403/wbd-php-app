@@ -9,7 +9,7 @@
 <body>
 <div class="player">
         <div class="podcast-details">
-            <img class="podcast-thumbnail-img" src="<?= STORAGE_URL . $this->data["url_thumbnail"] ?>" alt="image" width="110" height="110">
+            <img src="<?= STORAGE_URL . $this->data["url_thumbnail"] ?>" alt="image" width="110" height="110">
             <div class="podcast-info">
                 <div class="sh4"><?= $this->data["title"] ?></div>
                 <div class="sh5"><?= $this->data["podcaster"] ?></div>

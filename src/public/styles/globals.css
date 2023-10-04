@@ -40,6 +40,10 @@ body {
   display: flex;
   font-family: "DM Sans", sans-serif;
 }
+main {
+  min-width: 0;
+  overflow: scroll;
+}
 button {
   all: unset;
 }

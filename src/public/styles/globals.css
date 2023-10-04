@@ -28,6 +28,9 @@
   --ORANGE: #e8553e;
 }
 
+* {
+  box-sizing: border-box;
+}
 body {
   background-color: var(--BLACK);
   color: white;
@@ -35,6 +38,23 @@ body {
   margin: 0;
   display: flex;
   font-family: "DM Sans", sans-serif;
+}
+button {
+  all: unset;
+}
+a {
+  all: unset;
+}
+a {
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+}
+ul {
+  all: unset;
+}
+li {
+  all: unset;
 }
 
 p,
@@ -91,16 +111,16 @@ h6 {
 .sh1 {
   font-size: 36px;
 }
-.sh1 {
+.sh2 {
   font-size: 32px;
 }
-.sh1 {
+.sh3 {
   font-size: 24px;
 }
-.sh1 {
+.sh4 {
   font-size: 20px;
 }
-.sh1 {
+.sh5 {
   font-size: 16px;
 }
 

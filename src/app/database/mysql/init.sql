@@ -53,3 +53,39 @@ VALUES (
     "Kategori Podcast",
     1
   );
+INSERT INTO episode (
+    title,
+    url_thumbnail,
+    description,
+    id_podcast
+  )
+VALUES (
+    "Nama Episode 1",
+    "/images/sample-podcast.jpeg",
+    "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+    1
+  );
+INSERT INTO episode (
+    title,
+    url_thumbnail,
+    description,
+    id_podcast
+  )
+VALUES (
+    "Nama Episode 2",
+    "/images/sample-podcast.jpeg",
+    "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+    1
+  );
+INSERT INTO episode (
+    title,
+    url_thumbnail,
+    description,
+    id_podcast
+  )
+VALUES (
+    "Nama Episode 3",
+    "/images/sample-podcast.jpeg",
+    "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+    1
+  );

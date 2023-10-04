@@ -5,19 +5,32 @@ class GetDashboardController
   public function call()
   {
     require_once __DIR__ . "/../../views/dashboard/dashboard.php";
-    require_once __DIR__ . "/../../models/podcast.php";
 
-    $model = new PodcastModel();
-    $podcasts = $model->getAllPodcast();
+    $userModel = new UserModel();
+    $podcastModel = new PodcastModel();
+    $episodeModel = new EpisodeModel();
 
-    $podcast = $podcasts[0];
-    $data = [
-      "title" => $podcast->title,
-      "category" => $podcast->category,
-      "url_thumbnail" => $podcast->url_thumbnail,
-      "description" => $podcast->description
-    ];
+    $userId = "";
+    if (!isset($_GET["user_id"])) {
+      (new NotFoundController())->call();
+      return;
+    } else {
+      $userId = $_GET["user_id"];
+    }
+
+    $podcasts = $userModel->getUserPodcasts($userId) ?? [];    
+    $podcast = count($podcasts) > 0 ? $podcasts[0] : null;
+
+    $episodes = [];
+    if ($podcast) {
+      $episodes = $episodeModel->getTopThreeEpisodes($podcast->id_podcast);
+    }
     
+    $data = [
+      "podcast" => $podcast,
+      "episodes" => $episodes
+    ];
+
     $view = new DashboardView($data);
     $view->render();
   }

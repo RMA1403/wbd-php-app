@@ -11,6 +11,6 @@ class DashboardView
 
   public function render()
   {
-    require_once __DIR__ . "/../../components/dashboard/dashboard_page.php";
+    require_once __DIR__ . "/../../components/dashboard/page.php";
   }
 }

@@ -7,7 +7,7 @@
     <?php foreach ($this->data["episodes"] as $idx => $episode) : ?>
       <li>
         <div>
-          <p class="episode-number"><?= $idx+1 ?></p>
+          <p class="episode-number"><?= $idx + 1 ?></p>
           <img src="<?= STORAGE_URL . $episode->url_thumbnail ?>" alt="">
           <p class="b2"><?= $episode->title ?></p>
         </div>
@@ -21,11 +21,11 @@
           </a>
 
           <a href="">
-          <div>
-            <img src="<?= BASE_URL ?>/images/dashboard/trash_icon.svg" alt="">
-            <p>Delete</p>
-          </div>
-          <a href=""></a>
+            <div>
+              <img src="<?= BASE_URL ?>/images/dashboard/trash_icon.svg" alt="">
+              <p>Delete</p>
+            </div>
+          </a>
         </div>
       </li>
     <?php endforeach; ?>

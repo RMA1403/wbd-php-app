@@ -23,12 +23,21 @@ class GetSearchController
     }
 
     // List of all podcasts
-    $searchValue = "";
+    // search bar
+    $keyword = "";
     if (isset($_GET["keyword"])) {
-      $searchValue = $_GET["keyword"];
+      $keyword = $_GET["keyword"];
     }
-    $podcasts = $podcastModel->getAllPodcast($searchValue);
+
+    // genre
+    $genre = "";
+    if (isset($_GET["genre"])) {
+      $genre = $_GET["genre"];
+    }
+
+    $podcasts = $podcastModel->getAllPodcast($keyword, $genre);
     // print_r($podcasts);
+
     if ($podcasts){
       $data["podcasts"] = $podcasts;
     }

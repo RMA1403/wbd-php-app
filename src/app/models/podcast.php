@@ -9,18 +9,32 @@ class PodcastModel
     $this->db = new Database();
   }
 
-  public function getAllPodcast($searchValue)
+  public function getAllPodcast($keyword, $genre)
   {
     $query = 
     "SELECT title, category, url_thumbnail, description, name 
     FROM podcast 
     NATURAL JOIN user
-    WHERE title LIKE :search_value
-    OR name LIKE :search_value
+    WHERE (title LIKE :search_value
+    OR name LIKE :search_value)
     ";
-  
-    $this->db->query($query);
-    $this->db->bind("search_value", '%' . $searchValue . '%');
+
+    $queryByGenre = 
+    "SELECT title, category, url_thumbnail, description, name 
+    FROM podcast 
+    NATURAL JOIN user
+    WHERE (title LIKE :search_value
+    OR name LIKE :search_value)
+    AND category = :genre
+    ";
+
+    if ($genre == "") {
+      $this->db->query($query);
+    } else {
+      $this->db->query($queryByGenre);
+    }
+    $this->db->bind("search_value", '%' . $keyword . '%');
+    $this->db->bind("genre", $genre);
     $podcasts = $this->db->fetchAll();
     
     return $podcasts;

@@ -16,30 +16,37 @@
     <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
     <?php include(dirname(__DIR__) . "/common/profile.php")?>
     <navbar>
+        <!-- SEARCH BAR -->
         <div class="search-bar">
             <img src="<?= BASE_URL ?>/images/assets/search_icon.svg" alt="home" width="24px" height="24px">
             <input id="search-input" type="text">
         </div>
-        <div class="dropdown">
+
+        <!-- GENRE FILTER -->
+        <div class="dropdown genre">
             <button class="dropbtn">
-                Genre
+                <div class="genre-display">
+                    Genre
+                </div>
                 <img src="<?= BASE_URL ?>/images/assets/arrow_down.svg" alt="home" width="12px" height="12px">
             </button>
             <div class="dropdown-content">
-                <div class="item">Comedy</div>
-                <div class="item">Sports</div>
-                <div class="item">Technology</div>
+                <div class="item genre-option" data-value="comedy">comedy</div>
+                <div class="item genre-option" data-value="sports">sports</div>
+                <div class="item genre-option" data-value="technology">technology</div>
             </div>
         </div>
+
+        <!-- RELEASE YEAR FILTER -->
         <div class="dropdown">
             <button class="dropbtn">
                 Release Year
                 <img src="<?= BASE_URL ?>/images/assets/arrow_down.svg" alt="home" width="12px" height="12px">
             </button>
             <div class="dropdown-content">
-                <div class="item">Comedy</div>
-                <div class="item">Sports</div>
-                <div class="item">Technology</div>
+                <div class="item">2023</div>
+                <div class="item">2022</div>
+                <div class="item">2021</div>
             </div>
         </div>
     </navbar>

@@ -40,6 +40,22 @@ class PodcastModel
     return $podcasts;
   }
 
+  public function getPodcastByGenre($genre)
+  {
+    $queryByGenre = 
+    "SELECT title, category, url_thumbnail, description, name 
+    FROM podcast 
+    NATURAL JOIN user
+    WHERE category = :genre
+    LIMIT 7
+    ";
+
+    $this->db->bind("genre", $genre);
+    $podcasts = $this->db->fetchAll();
+
+    return $podcasts;
+  }
+
   public function getPodcastInfo($epsId)
   {
     $query = 

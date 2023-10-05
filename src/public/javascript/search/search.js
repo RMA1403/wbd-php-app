@@ -4,6 +4,8 @@ const resultContainer = document.querySelector('.result-container');
 const genreDropdown = document.querySelector('.genre');
 const genreDisplay = document.querySelector('.genre-display');
 const genreOptions = document.querySelectorAll('.genre-option');
+const genreButton = document.querySelector('.genre-button');
+const genreContent = document.querySelector('.genre-content');
 
 console.log(genreOptions);
 
@@ -53,5 +55,11 @@ genreOptions.forEach(option => {
         ajax.open('GET', 
         `/public/search?keyword=${keyword}&genre=${genre}`, true);
         ajax.send();
+
+        genreContent.style.display = "none";
     });
 });
+
+genreButton.addEventListener('click', function() {
+    genreContent.style.display = "block";
+})

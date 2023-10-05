@@ -24,13 +24,13 @@
 
         <!-- GENRE FILTER -->
         <div class="dropdown genre">
-            <button class="dropbtn">
+            <button class="dropbtn genre-button">
                 <div class="genre-display">
                     Genre
                 </div>
                 <img src="<?= BASE_URL ?>/images/assets/arrow_down.svg" alt="home" width="12px" height="12px">
             </button>
-            <div class="dropdown-content">
+            <div class="dropdown-content genre-content">
                 <div class="item genre-option" data-value="comedy">comedy</div>
                 <div class="item genre-option" data-value="sports">sports</div>
                 <div class="item genre-option" data-value="technology">technology</div>

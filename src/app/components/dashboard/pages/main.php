@@ -16,7 +16,7 @@
       </div>
 
       <div class="button-container">
-        <?php include(dirname(__DIR__) . "/../tambah_episode_button.php") ?>
+        <?php include(dirname(__DIR__) . "/components/tambah_episode_button.php") ?>
 
         <a href="/public/dashboard/edit-podcast">
           <button class="edit-button">

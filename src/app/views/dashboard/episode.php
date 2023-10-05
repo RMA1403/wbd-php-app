@@ -11,6 +11,6 @@ class DashboardEpisodeView
 
   public function render()
   {
-    require_once __DIR__ . "/../../components/dashboard/components/dashboard_episode.php";
+    require_once __DIR__ . "/../../components/dashboard/pages/episode.php";
   }
 }

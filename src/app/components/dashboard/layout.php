@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/dashboard_main.css">
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/button.css">
 
-  <script type="text/javascript" src="<?= BASE_URL ?>/javascript/dashboard/script.js" defer></script>
+  <script type="text/javascript" src="<?= BASE_URL ?>/javascript/dashboard/layout.js" defer></script>
   <title>Main Dashboard</title>
 </head>
 

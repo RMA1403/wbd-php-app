@@ -4,7 +4,7 @@ class GetDashboardEpisodeController
 {
   public function call()
   {
-    require_once __DIR__ . "/../../views/dashboard/dashboard_episode.php";
+    require_once __DIR__ . "/../../views/dashboard/episode.php";
 
     $podcastModel = new PodcastModel();
     $episodeModel = new EpisodeModel();

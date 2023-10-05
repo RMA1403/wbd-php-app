@@ -4,7 +4,7 @@ class GetDashboardLayoutController
 {
   public function call()
   {
-    require_once __DIR__ . "/../../views/dashboard/dashboard_layout.php";
+    require_once __DIR__ . "/../../views/dashboard/layout.php";
 
     $data = [
       // "url_thumbnail" => $episodes[0]->url_thumbnail ?? ""

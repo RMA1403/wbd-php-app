@@ -1,6 +1,6 @@
 <section class="episode-list">
   <div>
-    <?php include(dirname(__DIR__) . "/../tambah_episode_button.php") ?>
+    <?php include(dirname(__DIR__) . "/components/tambah_episode_button.php") ?>
   </div>
 
   <ul>

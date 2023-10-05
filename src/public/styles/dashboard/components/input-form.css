@@ -1,0 +1,91 @@
+input,
+textarea {
+  color: var(--WHITE);
+  font-family: inherit;
+  font-style: inherit;
+  border: none;
+  outline: none;
+}
+input:focus,
+textarea:focus {
+  outline-style: solid;
+  outline-color: var(--PINK-1);
+}
+::placeholder {
+  color: var(--GRAY-300);
+}
+
+#input-form {
+  width: 60vw;
+  background-color: var(--GRAY-600);
+  border-radius: 20px;
+  border: 1px var(--PINK-1) solid;
+}
+#input-form > div:first-child {
+  padding: 64px 64px 32px;
+}
+#input-form #file-input-btn {
+  border-radius: 12px;
+  border: 1px var(--PINK-1) solid;
+  color: var(--PINK-1);
+  width: 100%;
+  text-align: center;
+  padding: 17px 0 16px;
+  cursor: pointer;
+  margin-top: 32px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.file-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+.file-name-container > div {
+  padding: 17px 24px 16px;
+  border-radius: 12px;
+  background-color: var(--GRAY-500);
+}
+
+#cancel-file-btn {
+  width: 57px;
+  height: 57px;
+  background-color: var(--ORANGE);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#cancel-file-btn > img {
+  width: 25px;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+#judul-input,
+#description-input {
+  background-color: var(--GRAY-500);
+  width: 100%;
+  padding: 17px 24px 16px;
+  border-radius: 12px;
+  margin-top: 32px;
+}
+#judul-input:focus,
+#description-input:focus {
+  outline-color: var(--PINK-1);
+}
+#judul-input + p,
+#description-input + p {
+  margin-left: 24px;
+  margin-top: 8px;
+  font-size: 10px;
+  color: var(--PINK-1);
+}
+
+#description-input {
+  height: 171px;
+}

@@ -111,6 +111,7 @@ body{
     color: var(--WHITE);
     font-weight: 600;
     margin-top: 15px;
+    text-align : center;
 }
 
 .wrapper .login-link{
@@ -123,4 +124,6 @@ body{
 .login-link p a{
     color: var(--WHITE);
     font-weight: 600;
+    display: inline;
+    text-decoration: underline;
 }

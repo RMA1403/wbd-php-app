@@ -12,6 +12,7 @@ require_once __DIR__ . "/controllers/dashboard/get_dashboard_episode.php";
 require_once __DIR__ . "/controllers/home/get_home.php";
 require_once __DIR__ . "/controllers/login/get_login.php";
 require_once __DIR__ . "/controllers/signup/get_signup.php";
+require_once __DIR__ . "/controllers/signup/post_signup.php";
 
 require_once __DIR__ . "/models/podcast.php";
 require_once __DIR__ . "/models/episode.php";

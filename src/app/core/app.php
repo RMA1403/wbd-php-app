@@ -11,6 +11,7 @@ class App
     $router->get("public/dashboard", new GetDashboardLayoutController());
     $router->get("public/dashboard/main", new GetDashboardLayoutController());
     $router->get("public/dashboard/episode", new GetDashboardLayoutController());
+    $router->get("public/dashboard/add-episode", new GetAddEpisodeController());
 
     // Dashboard data-fetching routes
     $router->get("public/dashboard/internal/main", new GetDashboardMainController());

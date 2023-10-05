@@ -4,10 +4,11 @@ class GetDashboardMainController
 {
   public function call()
   {
-    require_once __DIR__ . "/../../views/dashboard/dashboard_main.php";
+    require_once __DIR__ . "/../../views/dashboard/main.php";
 
     $podcastModel = new PodcastModel();
     $episodeModel = new EpisodeModel();
+    
     $userId = "";
     if (!isset($_GET["user_id"])) {
       (new NotFoundController())->call();

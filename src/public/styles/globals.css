@@ -52,7 +52,6 @@ a {
   all: unset;
 }
 a {
-  cursor: pointer;
   display: block;
   width: fit-content;
 }
@@ -61,6 +60,10 @@ ul {
 }
 li {
   all: unset;
+}
+button,
+a {
+  cursor: pointer;
 }
 
 p,
@@ -207,7 +210,6 @@ h6 {
   align-items: center;
 }
 
-
 .podcast-info {
   display: flex;
   gap: 1px;
@@ -219,15 +221,15 @@ h6 {
 
 .podcast-info .sh4 {
   white-space: nowrap;
-  overflow: hidden; 
-  text-overflow: clipped; 
+  overflow: hidden;
+  text-overflow: clipped;
 }
 
 .podcast-info .sh5 {
   white-space: nowrap;
-  overflow: hidden; 
-  text-overflow: clipped; 
-  opacity: 30%; 
+  overflow: hidden;
+  text-overflow: clipped;
+  opacity: 30%;
 }
 
 .player {
@@ -259,7 +261,8 @@ h6 {
   justify-content: center;
 }
 
-.play-button, .pause-button {
+.play-button,
+.pause-button {
   cursor: pointer;
 }
 
@@ -267,12 +270,13 @@ h6 {
   display: none;
 }
 
-.play-button:hover, .pause-button:hover {
+.play-button:hover,
+.pause-button:hover {
   transform: scale(1.05);
   opacity: 0.8;
 }
 
-.audio-player{
+.audio-player {
   display: none;
 }
 
@@ -285,7 +289,7 @@ h6 {
 }
 .progress-bar {
   width: 30vw;
-  background-color:var(--GRAY-500);
+  background-color: var(--GRAY-500);
   height: 5px;
   border-radius: 10px;
 }
@@ -294,6 +298,6 @@ h6 {
   cursor: pointer;
   border-radius: 99px;
   background-color: var(--PINK-1); /* Blue color with 100% opacity */
-  height: 14px; 
-  width: 14px; 
+  height: 14px;
+  width: 14px;
 }

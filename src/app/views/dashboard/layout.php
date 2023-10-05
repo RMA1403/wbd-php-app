@@ -11,6 +11,6 @@ class DashboardLayoutView
 
   public function render()
   {
-    require_once __DIR__ . "/../../components/dashboard/layout.php";
+        require_once __DIR__ . "/../../components/dashboard/layout.php";
   }
 }

@@ -2,47 +2,51 @@
 
 // Constants
 const JUDUL_MAX_COUNT = 100;
+const DESCRIPTION_MAX_COUNT = 200;
 
 // Get DOM elements
-const fileInputButtonEl = document.getElementById("file-input-btn");
+const audioInputButtonEl = document.getElementById("audio-input-btn");
 const cancelFileButtonEl = document.getElementById("cancel-file-btn");
+const changeCoverButtonEl = document.getElementById("change-cover-btn");
+const saveButtonEl = document.getElementById("save-btn");
 
-const fileInputEl = document.getElementById("file-input");
+const audioInputEl = document.getElementById("audio-input");
 const judulInputEl = document.getElementById("judul-input");
+const descriptionInputEl = document.getElementById("description-input");
+const imageInputEl = document.getElementById("image-input");
 
 const fileNameEl = document.getElementById("file-name");
 const fileNameContainerEl = document.querySelector(".file-name-container");
 const judulCountEl = document.getElementById("judul-count");
+const descriptionCountEl = document.getElementById("description-count");
+const coverImageEl = document.getElementById("cover-image");
 
-let file = null;
 // Handle user file input
-fileInputEl.addEventListener("change", (e) => {
+audioInputEl.addEventListener("change", (e) => {
   e.preventDefault();
 
-  file = fileInputEl.files[0];
-  fileNameEl.innerHTML = file.name;
+  fileNameEl.innerHTML = audioInputEl.files[0].name;
 
   fileNameContainerEl.classList.toggle("hidden");
-  fileInputButtonEl.classList.add("hidden");
+  audioInputButtonEl.classList.add("hidden");
 });
 
 // Handle open file input window
-fileInputButtonEl.addEventListener("click", (e) => {
+audioInputButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
 
-  fileInputEl.click();
+  audioInputEl.click();
 });
 
 // Handle cancel file selection
 cancelFileButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
 
-  file = null;
   fileNameEl.innerHTML = null;
-  fileInputEl.value = null;
+  audioInputEl.value = null;
 
   fileNameContainerEl.classList.toggle("hidden");
-  fileInputButtonEl.classList.remove("hidden");
+  audioInputButtonEl.classList.remove("hidden");
 });
 
 // Handle 'judul' input
@@ -56,5 +60,64 @@ judulInputEl.addEventListener("input", (e) => {
   } else {
     judulCountEl.innerHTML = judulInputEl.value.length;
     prevJudulVal = judulInputEl.value;
+  }
+});
+
+// Handle 'description' input
+descriptionCountEl.innerHTML = descriptionInputEl.value.length;
+let prevDescriptionVal = "";
+descriptionInputEl.addEventListener("input", (e) => {
+  e.preventDefault();
+
+  if (descriptionInputEl.value.length > DESCRIPTION_MAX_COUNT) {
+    descriptionInputEl.value = prevDescriptionVal;
+  } else {
+    descriptionCountEl.innerHTML = descriptionInputEl.value.length;
+    prevDescriptionVal = descriptionInputEl.value;
+  }
+});
+
+// Handle click change cover image
+changeCoverButtonEl.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  imageInputEl.click();
+});
+
+// Handle cover image change
+imageInputEl.addEventListener("change", (e) => {
+  e.preventDefault();
+
+  if (imageInputEl.files[0]) {
+    coverImageEl.src = URL.createObjectURL(imageInputEl.files[0]);
+  }
+});
+
+// Handle save episode
+saveButtonEl.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const audioFile = audioInputEl.files[0];
+  const imageFile = imageInputEl.files[0];
+  const title = judulInputEl.value;
+  const description = descriptionInputEl.value;
+
+  if (title) {
+    const formData = new FormData();
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "/public/dashboard/add-episode");
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4 && xhr.status === 201) {
+        console.log(xhr.responseText);
+      }
+    };
+
+    formData.append("audioFile", audioFile);
+    formData.append("imageFile", imageFile);
+    formData.append("title", title);
+    formData.append("description", description);
+
+    xhr.send(formData);
   }
 });

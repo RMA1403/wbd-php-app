@@ -7,8 +7,10 @@ class GetAddEpisodeController
     require_once __DIR__ . "/../../views/dashboard/add_episode.php";
 
     $data = [
-      // "episodes" => $episodes,
-      // "url_thumbnail" => $episodes[0]->url_thumbnail ?? ""
+      "FE_FORM_TITLE" => "Create New Episode",
+      "FE_SHOW_AUDIO_INPUT" => true,
+      "FE_FORM_COVER_TEXT" => "Episode Cover",
+      "FE_FORM_SUBMIT_TEXT" => "Save Episode"
     ];
 
     $view = new DashboardAddEpisodeView($data);

@@ -7,7 +7,13 @@ class App
     $url = $this->parseURL();
     $router = new Router();
 
-    $router->get("public/dashboard", new GetDashboardController());
+    $router->get("public/dashboard", new GetDashboardLayoutController());
+    $router->get("public/dashboard/main", new GetDashboardLayoutController());
+    $router->get("public/dashboard/episode", new GetDashboardLayoutController());
+
+    $router->get("public/dashboard/internal/main", new GetDashboardMainController());
+    $router->get("public/dashboard/internal/episode", new GetDashboardEpisodeController());
+
     $router->get("public/home", new GetHomeController());
     $router->get("public/search", new GetSearchController());
     $router->get("public/login", new GetLoginController());

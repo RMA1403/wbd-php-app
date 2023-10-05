@@ -1,12 +1,11 @@
 <?php
 
-class GetDashboardController
+class GetDashboardLayoutController
 {
   public function call()
   {
-    require_once __DIR__ . "/../../views/dashboard/dashboard.php";
+    require_once __DIR__ . "/../../views/dashboard/dashboard_layout.php";
 
-    $userModel = new UserModel();
     $podcastModel = new PodcastModel();
     $episodeModel = new EpisodeModel();
 
@@ -18,20 +17,19 @@ class GetDashboardController
       $userId = $_GET["user_id"];
     }
 
-    $podcasts = $userModel->getUserPodcasts($userId) ?? [];    
+    $podcasts = $podcastModel->getUserPodcasts($userId) ?? [];
     $podcast = count($podcasts) > 0 ? $podcasts[0] : null;
 
     $episodes = [];
     if ($podcast) {
       $episodes = $episodeModel->getTopThreeEpisodes($podcast->id_podcast);
     }
-    
+
     $data = [
-      "podcast" => $podcast,
-      "episodes" => $episodes
+      "url_thumbnail" => $episodes[0]->url_thumbnail ?? ""
     ];
 
-    $view = new DashboardView($data);
+    $view = new DashboardLayoutView($data);
     $view->render();
   }
 }

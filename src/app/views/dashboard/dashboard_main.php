@@ -1,6 +1,6 @@
 <?php
 
-class DashboardView
+class DashboardMainView
 {
   public $data;
 
@@ -11,6 +11,6 @@ class DashboardView
 
   public function render()
   {
-    require_once __DIR__ . "/../../components/dashboard/dashboard_layout.php";
+    require_once __DIR__ . "/../../components/dashboard/components/dashboard_main.php";
   }
 }

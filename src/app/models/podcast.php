@@ -9,16 +9,20 @@ class PodcastModel
     $this->db = new Database();
   }
 
-  public function getAllPodcast()
+  public function getAllPodcast($searchValue)
   {
     $query = 
     "SELECT title, category, url_thumbnail, description, name 
     FROM podcast 
     NATURAL JOIN user
+    WHERE title LIKE :search_value
+    OR name LIKE :search_value
     ";
   
     $this->db->query($query);
+    $this->db->bind("search_value", '%' . $searchValue . '%');
     $podcasts = $this->db->fetchAll();
+    
     return $podcasts;
   }
 
@@ -38,16 +42,4 @@ class PodcastModel
     return $podcastInfo;
   }
 
-  public function getCategories()
-  {
-    $query = 
-    "SELECT DISTINCT category 
-    FROM podcast
-    ";
-
-    $this->db->query($query);
-    $categories = $this->db->fetch();
-
-    return $categories;
-  }
 }

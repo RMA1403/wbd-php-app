@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/player.js" defer></script>
-    <title>Document</title>
+    <title>Audio Player</title>
 </head>
 <body>
     <div class="player">
         <?php if (isset($this->data["title"])) :?>
             <div class="podcast-details">
-                <img class="podcast-thumbnail-img" src="<?= STORAGE_URL . $this->data["url_thumbnail"] ?>" alt="image" width="110" height="110">
+                <img class="thumbnail" src="<?= STORAGE_URL . $this->data["url_thumbnail"] ?>" alt="image" width="110" height="110">
                 <div class="podcast-info">
-                    <div class="sh4"><?= $this->data["title"] ?></div>
-                    <div class="sh5"><?= $this->data["podcast"] ?></div>
+                    <div class="b3"><?= $this->data["title"] ?></div>
+                    <div class="b4"><?= $this->data["podcast"] ?></div>
                 </div>
             </div>
             <div class="audio-player">
@@ -46,6 +46,24 @@
                 <audio controls class="audio-player">
                     <source src="<?= STORAGE_URL . $this->data["url_audio"] ?>" type="audio/mpeg">
                 </audio>
+            </div>
+        <? else : ?>
+            <div class="sh3 caption">
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
+                bang login bang login bang login
             </div>
         <? endif;?>
     </div>

@@ -200,7 +200,7 @@ VALUES (
     id_user
   )
 VALUES (
-    "Nama Podcast",
+    "Halo Halo Bandung",
     "/images/sample-podcast.jpeg",
     "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
     "technology",
@@ -214,7 +214,7 @@ INSERT INTO podcast (
     id_user
   )
 VALUES (
-    "Nama Podcast",
+    "How to conquer wbd",
     "/images/sample-podcast.jpeg",
     "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
     "self improvement",
@@ -227,7 +227,7 @@ VALUES (
     id_user
   )
 VALUES (
-    "Nama Podcast",
+    "serba serbi Informatika",
     "/images/sample-podcast.jpeg",
     "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
     "self improvement",

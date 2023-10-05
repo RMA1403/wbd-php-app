@@ -21,6 +21,12 @@
             </div>
 
             <div class="input-box">
+                <label for="fullname">Fullname</label>
+                <input type="text" placeholder="Enter your fullname" id="fullname" autocomplete="off" name="fullname" required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
                 <label for="username">Username</label>
                 <input type="text" placeholder="Set username" id="username" autocomplete="off" name="username" required>
                 <i class='bx bxs-user'></i>
@@ -40,9 +46,9 @@
 
             <div class="container-radio">
                 <p>Register As</p>
-                <input type="radio" id="user" name="role" value="User">
+                <input type="radio" id="user-radio" name="role" value="User">
                 <label for="user">User</label>
-                <input type="radio" id="admin" name="role" value="Admin">
+                <input type="radio" id="admin-radio" name="role" value="Admin">
                 <label for="admin">Creator</label>
             </div>
 

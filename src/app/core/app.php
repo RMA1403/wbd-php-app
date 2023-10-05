@@ -15,6 +15,7 @@ class App
     $router->get("public/dashboard/internal/episode", new GetDashboardEpisodeController());
 
     $router->get("public/home", new GetHomeController());
+    $router->get("public/search", new GetSearchController());
     $router->get("public/login", new GetLoginController());
     $router->get("public/signup", new GetSignupController());
 

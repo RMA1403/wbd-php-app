@@ -12,3 +12,20 @@ window.addEventListener('click', function(e){
         profileMenu.style.display = 'none'; 
     } 
 });
+
+
+const editProfile = document.querySelector('.edit-profile-back');
+const menuProfile = document.getElementById('menu-profile');
+const editSection = document.querySelector('.edit-profile-container');
+
+menuProfile &&
+    menuProfile.addEventListener('click', (e) => {
+        console.log("keklik cok");
+        editProfile.style.display = 'flex';
+});
+
+window.addEventListener('click', function(e){   
+    if (!editSection.contains(e.target) && !menuProfile.contains(e.target)){
+        editProfile.style.display = 'none'; 
+    } 
+});

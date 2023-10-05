@@ -23,12 +23,18 @@
         </div>
         <div class="edit-profile-back">
             <div class="edit-profile-container">
-                <img class="profpic-edit" src="<?= STORAGE_URL . $this->data["url_profpic"] ?>" alt="image">        
-                <div class="edit-info">
-                    <input type="text">
-                    <input type="text">
-                    <input type="text">
+                <div class="profile-detail">
+                    <img class="profpic-edit" src="<?= STORAGE_URL . $this->data["url_profpic"] ?>" alt="image">        
+                    <div class="edit-info">
+                        <div class="sh5">Nama</div>
+                        <input type="text">
+                        <div class="sh5">Username</div>
+                        <input type="text">
+                        <div class="sh5">Password</div>
+                        <input type="text">
+                    </div>
                 </div>
+                <button class="sh4">Submit</button>
             </div>
         </div>
     <?php endif;?>

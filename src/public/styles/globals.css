@@ -385,7 +385,7 @@ h6 {
 }
 
 .edit-profile-back {
-  display: flex;
+  display: none;
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.8);
@@ -396,13 +396,22 @@ h6 {
   position: fixed;
 }
 
-.edit-profile-container {
+.profile-detail {
   display: flex;
   flex-direction: row;
-  height: 30vh;
-  width: 35vw;
   padding: 50px 50px;
   align-items: center;
+  gap: 40px;
+}
+
+.edit-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  padding: 50px 20px;
+  padding-top: 20px;
   opacity: 1;
   border-radius: 10px;
   background-color: var(--GRAY-600);
@@ -430,4 +439,11 @@ h6 {
   height: 3vh;
   width: 15vw;
   border-radius: 5px;
+}
+
+.edit-profile-container button {
+  background-color: var(--GRAY-300);
+  color: var(--BLACK);
+  padding: 10px 30px;
+  border-radius: 70px;
 }

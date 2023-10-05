@@ -40,6 +40,12 @@ body {
   display: flex;
   font-family: "DM Sans", sans-serif;
 }
+main {
+  overflow-y:scroll;
+  width: 100%;
+  background-color: var(--BLACK);
+  padding: 0 auto;
+}
 button {
   all: unset;
 }
@@ -157,6 +163,7 @@ h6 {
 
 /* Navigation Bar */
 .sidebar {
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -196,10 +203,20 @@ h6 {
   background-color: var(--GRAY-600);
 }
 
+.player .caption {
+  margin: 10px;
+  text-align: center;
+}
+
 .podcast-details {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+.podcast-details .thumbnail {
+  object-fit: cover;
+  object-position: center;
 }
 
 
@@ -212,16 +229,17 @@ h6 {
   overflow: hidden;
 }
 
-.podcast-info .sh4 {
+.podcast-info .b3 {
   white-space: nowrap;
   overflow: hidden; 
   text-overflow: clipped; 
 }
 
-.podcast-info .sh5 {
+.podcast-info .b4 {
   white-space: nowrap;
   overflow: hidden; 
   text-overflow: clipped; 
+  font-weight: lighter;
   opacity: 30%; 
 }
 
@@ -306,11 +324,11 @@ h6 {
   gap: 8px;
   flex-direction: row;
   right: 0;
-  margin-top: 30px;
+  margin-top: 16px;
   margin-right: 60px;
   align-items: center;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   border-radius: 80px;
   position: fixed;
   z-index: 99;
@@ -318,8 +336,8 @@ h6 {
 
 .profile {
   background-color: var(--GRAY-600);
-  padding-left: 25px;
-  padding-right: 33px;
+  padding-left: 8px;
+  padding-right: 16px;
 }
 
 .login-button {
@@ -328,11 +346,12 @@ h6 {
 }
 
 .profpic {
-  height: 54px;
-  width: 54px;
+  height: 36px;
+  width: 36px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
+  outline: solid 1px var(--PINK-1);
 }
 
 .profile sh3 {

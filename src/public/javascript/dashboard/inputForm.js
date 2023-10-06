@@ -1,53 +1,61 @@
 "use strict";
 
 // Constants
-const JUDUL_MAX_COUNT = 100;
-const DESCRIPTION_MAX_COUNT = 200;
+const JUDUL_MAX_COUNT = 50;
+const DESCRIPTION_MAX_COUNT = 1000;
 
 // Get DOM elements
+const formEl = document.getElementById("input-form");
+
 const audioInputButtonEl = document.getElementById("audio-input-btn");
 const cancelFileButtonEl = document.getElementById("cancel-file-btn");
 const changeCoverButtonEl = document.getElementById("change-cover-btn");
 const saveButtonEl = document.getElementById("save-btn");
+const categoryButtonEl = document.getElementById("category-input-btn");
 
 const audioInputEl = document.getElementById("audio-input");
 const judulInputEl = document.getElementById("judul-input");
 const descriptionInputEl = document.getElementById("description-input");
 const imageInputEl = document.getElementById("image-input");
+const categoryInputEl = document.getElementById("category-input");
 
 const fileNameEl = document.getElementById("file-name");
 const fileNameContainerEl = document.querySelector(".file-name-container");
 const judulCountEl = document.getElementById("judul-count");
 const descriptionCountEl = document.getElementById("description-count");
 const coverImageEl = document.getElementById("cover-image");
+const categoryChoicesEl = document.getElementById("category-choices");
 
 // Handle user file input
-audioInputEl.addEventListener("change", (e) => {
-  e.preventDefault();
+audioInputEl &&
+  audioInputEl.addEventListener("change", (e) => {
+    e.preventDefault();
 
-  fileNameEl.innerHTML = audioInputEl.files[0].name;
+    fileNameEl.innerHTML = audioInputEl.files[0].name;
 
-  fileNameContainerEl.classList.toggle("hidden");
-  audioInputButtonEl.classList.add("hidden");
-});
+    fileNameContainerEl.classList.toggle("hidden");
+    audioInputButtonEl.classList.add("hidden");
+  });
 
 // Handle open file input window
-audioInputButtonEl.addEventListener("click", (e) => {
-  e.preventDefault();
+audioInputButtonEl &&
+  audioInputButtonEl.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  audioInputEl.click();
-});
+    audioInputEl.click();
+  });
 
 // Handle cancel file selection
-cancelFileButtonEl.addEventListener("click", (e) => {
-  e.preventDefault();
+cancelFileButtonEl &&
+  cancelFileButtonEl.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  fileNameEl.innerHTML = null;
-  audioInputEl.value = null;
+    fileNameEl.innerHTML = null;
+    audioInputEl.value = null;
 
-  fileNameContainerEl.classList.toggle("hidden");
-  audioInputButtonEl.classList.remove("hidden");
-});
+    fileNameContainerEl.classList.toggle("hidden");
+    audioInputButtonEl.classList.remove("hidden");
+  });
 
 // Handle 'judul' input
 judulCountEl.innerHTML = judulInputEl.value.length;
@@ -77,6 +85,28 @@ descriptionInputEl.addEventListener("input", (e) => {
   }
 });
 
+// Handle open 'category' input
+categoryButtonEl.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  categoryButtonEl.classList.toggle("focus");
+  categoryChoicesEl.classList.toggle("hidden");
+});
+
+// Handle select 'category'
+Array.from(categoryChoicesEl.children).forEach((el) => {
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const category = el.children[0].innerHTML
+    categoryButtonEl.children[0].innerHTML = category
+    categoryInputEl.value = category
+
+    categoryButtonEl.classList.toggle("focus");
+    categoryChoicesEl.classList.toggle("hidden");
+  });
+});
+
 // Handle click change cover image
 changeCoverButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
@@ -97,27 +127,37 @@ imageInputEl.addEventListener("change", (e) => {
 saveButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const audioFile = audioInputEl.files[0];
-  const imageFile = imageInputEl.files[0];
+  const audioFile = audioInputEl?.files[0];
+  const imageFile = imageInputEl?.files[0];
   const title = judulInputEl.value;
   const description = descriptionInputEl.value;
+  const category = categoryInputEl.value
 
-  if (title) {
-    const formData = new FormData();
-    const xhr = new XMLHttpRequest();
+  const formData = new FormData();
+  const xhr = new XMLHttpRequest();
+  console.log(categoryInputEl.value)
+  switch (formEl.dataset.formType) {
+    case "episode":
+      xhr.open("POST", "/public/dashboard/add-episode");
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 201) {
+          console.log(xhr.responseText);
+        }
+      };
 
-    xhr.open("POST", "/public/dashboard/add-episode");
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === 4 && xhr.status === 201) {
-        console.log(xhr.responseText);
-      }
-    };
+      formData.append("audioFile", audioFile);
+      formData.append("imageFile", imageFile);
+      formData.append("title", title);
+      formData.append("description", description);
 
-    formData.append("audioFile", audioFile);
-    formData.append("imageFile", imageFile);
-    formData.append("title", title);
-    formData.append("description", description);
+      xhr.send(formData);
+      break;
 
-    xhr.send(formData);
+    case "podcast":
+      break;
+
+    default:
+      console.log("TEST");
+      break;
   }
 });

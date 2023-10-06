@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
-  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/dashboard_main.css">
-  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/button.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/layout.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/pages/main.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/pages/episode.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/components/button.css">
 
   <script type="text/javascript" src="<?= BASE_URL ?>/javascript/dashboard/layout.js" defer></script>
   <title>Main Dashboard</title>

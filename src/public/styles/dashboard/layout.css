@@ -1,0 +1,24 @@
+.dashboard-nav {
+  padding: 0 48px;
+  margin-top: 60px;
+}
+.dashboard-nav > div {
+  display: flex;
+  gap: 64px;
+}
+.dashboard-nav > div .sh4 {
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.dashboard-nav-line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--GRAY-400);
+  transform: translateY(-2.5px);
+}
+
+.dashboard-nav .nav-active {
+  color: var(--PINK-1);
+  border-bottom: 5px var(--PINK-1) solid;
+}

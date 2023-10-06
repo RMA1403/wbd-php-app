@@ -49,9 +49,9 @@
             <div class="container-radio">
                 <p>Register As</p>
                 <input type="radio" id="user-radio" name="role" value="User">
-                <label for="user">User</label>
+                <label for="user-radio">User</label>
                 <input type="radio" id="admin-radio" name="role" value="Admin">
-                <label for="admin">Creator</label>
+                <label for="admin-radio">Creator</label>
             </div>
 
             <button type="submit" class="btn">SIGNUP</button>

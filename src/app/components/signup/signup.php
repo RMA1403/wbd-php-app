@@ -24,6 +24,7 @@
                 <label for="fullname">Fullname</label>
                 <input type="text" placeholder="Enter your fullname" id="fullname" autocomplete="off" name="fullname" required>
                 <i class='bx bxs-user'></i>
+                <p id="fullname-alert" class="alert-hide"></p>
             </div>
 
             <div class="input-box">

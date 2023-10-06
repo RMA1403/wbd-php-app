@@ -23,6 +23,20 @@ class UserModel
     return $user;
   }
 
+  public function getUser($username)
+  {
+    $query = "
+      SELECT * FROM user
+      WHERE username = :username
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("username", $username);
+    $user = $this->db->fetch();
+
+    return $user;
+  }
+
   public function getAllUsers()
   {
     $query = "SELECT * from user";

@@ -10,11 +10,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/login/login.css">
+    <script type="text/javascript" src="<?= BASE_URL ?>/javascript/login/login.js" defer></script>
 
 </head>
 <body>
     <div class="wrapper">
-        <form action=""> 
+        <form id="login-form"> 
             <div class="container">
                 <i class='bx bxl-spotify'></i>
                 <h1>Podcast</h1>
@@ -31,6 +32,7 @@
                 <i class='bx bxs-lock-alt'></i>
             </div>
 
+            <p id="login-alert" class="alert-hide"></p>
             <button type="submit" class="btn">LOGIN</button>
 
             <div class="register-link">

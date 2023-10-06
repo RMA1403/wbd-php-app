@@ -14,12 +14,6 @@ class PostSignupController
         $fullname = $_POST['fullname'];
         $isAdmin = $_POST['isAdmin'];
 
-        $admin = 0;
-
-        if($isAdmin === "true"){
-            $admin = 1;
-        }
-
 
         $model = new UserModel();
         // $users = $model->getAllUsers();

@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
             const xhr = new XMLHttpRequest();
 
-            xhr.open("POST", "http://localhost:8080/public/signup", true);
+            xhr.open("POST", "/public/signup", true);
 
             xhr.onload = function () {
                 if (xhr.readyState === XMLHttpRequest.DONE) {

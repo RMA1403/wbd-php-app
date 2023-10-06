@@ -1,10 +1,10 @@
 <?php
 
-class GetHomeController
+class GetSearchController
 {
   public function call()
   {
-    require_once __DIR__ . "/../../views/home/home_view.php";
+    require_once __DIR__ . "/../../views/search/search_view.php";
     $data = [];
 
     // podcast Info
@@ -20,6 +20,26 @@ class GetHomeController
       $data["url_thumbnail"] = $podcastInfo->url_thumbnail;
       $data["podcast"] = $podcastInfo->name;
       $data["url_audio"] = $podcastInfo->url_audio;
+    }
+
+    // List of all podcasts
+    // search bar
+    $keyword = "";
+    if (isset($_GET["keyword"])) {
+      $keyword = $_GET["keyword"];
+    }
+
+    // genre
+    $genre = "";
+    if (isset($_GET["genre"])) {
+      $genre = $_GET["genre"];
+    }
+
+    $podcasts = $podcastModel->getAllPodcast($keyword, $genre);
+    // print_r($podcasts);
+
+    if ($podcasts){
+      $data["podcasts"] = $podcasts;
     }
     
     // user info
@@ -37,7 +57,11 @@ class GetHomeController
       $data["is_admin"] = $userInfo->is_admin;
     }
     
-    $view = new HomeView($data);
-    $view->render();
+    $view = new SearchView($data);
+    if (isset($_GET["keyword"]) && $_GET["keyword"]="1"){
+      $view->render_match();
+    } else {
+      $view->render();
+    }
   }
 }

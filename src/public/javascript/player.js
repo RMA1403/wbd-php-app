@@ -18,13 +18,7 @@ if (audioPlayer) {
     playButton.addEventListener("click", () => {
         playButton.style.display = "none";
         pauseButton.style.display = "block";
-        audioPlayer.play()
-        .then(() => {
-            console.log("Audio is playing.");
-        })
-        .catch(error => {
-            console.error("Error playing audio:", error);
-        });
+        audioPlayer.play();
     });
 
     // Pause button
@@ -33,7 +27,7 @@ if (audioPlayer) {
         playButton.style.display = "block";
         audioPlayer.pause();
     });
-
+    
     document.addEventListener("DOMContentLoaded", () => {
         duration.textContent = formatTime(audioPlayer.duration);
     });

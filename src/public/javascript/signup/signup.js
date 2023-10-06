@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
         
         let isAdmin; 
         
-
         // validasi konfirmasi password
         if(password === passwordConfirmed){
             const username = usernameInput.value;
@@ -44,15 +43,23 @@ document.addEventListener("DOMContentLoaded", (e) => {
                     if (xhr.status === 201) {
                         const data = JSON.parse(xhr.responseText);
                         location.replace(data.redirect_url);
-                    }else{
+                    }else{ //status code 200
                         usernameAlert.innerText = "Username tersebut telah terpakai!";
                         usernameAlert.className = "alert-show";
+                        if(confirmPasswordAlert.innerText !== ""){
+                            confirmPasswordAlert.innerText = "";
+                            confirmPasswordAlert.className = "alert-hide";
+                        }
                     }
                 }
             }
             xhr.send(formData);
 
         }else{
+            if(usernameAlert.innertText !== ""){
+                usernameAlert.innerText = "";
+                usernameAlert.className = "alert-hide";
+            }
             confirmPasswordAlert.innerText = "Password dan konfirmasi password tidak sesuai!";
             confirmPasswordAlert.className = "alert-show";
         }

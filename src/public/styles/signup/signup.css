@@ -72,13 +72,12 @@ body{
 .input-box i{
     position: absolute;
     right: 20px;
-    top: 45px;
+    top: 42px;
     font-size: 20px;
 }
 
 .container-radio{
     margin-left: 20px;
-    margin-top: -5px;
 }
 
 .container-radio p{
@@ -86,16 +85,15 @@ body{
     font-size: 17px;
 }
 
-#admin{
-    margin-left: 20px;
+#admin-radio{
     margin-top: 10px;
+    margin-left: 20px;
     accent-color: rgba(206, 4, 161, 0.79);
 }
 
-#user{
+#user-radio{
     margin-top: 10px;
     accent-color: rgba(206, 4, 161, 0.79);
-    margin-bottom: 10px;
 }
 
 .wrapper .btn{
@@ -131,6 +129,10 @@ body{
 .alert-show {
     display: block;
     color: red;
+    font-style: italic;
+    margin-top : 5px;
+    margin-bottom : 5px;
+    margin-left: 20px;
 }
 
 .alert-hide {

@@ -127,3 +127,12 @@ body{
     display: inline;
     text-decoration: underline;
 }
+
+.alert-show {
+    display: block;
+    color: red;
+}
+
+.alert-hide {
+    display: none;
+}

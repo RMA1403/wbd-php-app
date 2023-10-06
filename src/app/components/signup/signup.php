@@ -30,6 +30,7 @@
                 <label for="username">Username</label>
                 <input type="text" placeholder="Set username" id="username" autocomplete="off" name="username" required>
                 <i class='bx bxs-user'></i>
+                <p id="username-alert" class="alert-hide"></p>
             </div>
 
             <div class="input-box">
@@ -42,6 +43,7 @@
                 <label for="confirm-password">Confirm Password</label>
                 <input type="password" placeholder="Enter again your password" id="confirm-password" autocomplete="off" name="confirm-password" required>
                 <i class='bx bxs-lock-alt'></i>
+                <p id="confirm-password-alert" class="alert-hide"></p>
             </div>
 
             <div class="container-radio">

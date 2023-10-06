@@ -32,16 +32,18 @@ class PostSignupController
             $rowAffected = $model->insertUser($fullname, $username, $password, $admin);
 
             if($rowAffected > 0){
-                // echo("user berhasil ditambahkan");
                 http_response_code(201);
                 header('Content-type: application/json');
                 echo json_encode(["redirect_url" => BASE_URL . "/login"]);
                 exit;
+            }else{
+                http_response_code(200);
+                exit;
             }
-        }catch(PDOException $e){
-            echo var_dump($e->getCode());
-            echo var_dump($e->getMessage());
 
+        }catch(PDOException $e){
+            http_response_code(200);
+            exit;
         };
         
     }

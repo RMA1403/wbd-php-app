@@ -8,47 +8,56 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,700;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/signup/signup.css">
+    <script type="text/javascript" src="<?= BASE_URL ?>/javascript/signup/signup.js" defer></script>
     
 </head>
 <body>
     
     <div class="wrapper">
-        <form action="" method="post">
+        <form id="form-registration">
             <div class="container">
                 <i class='bx bxl-spotify'></i>
                 <h1>Podcast</h1>
             </div>
 
             <div class="input-box">
-                <label for="username">Username</label>
-                <input type="text" placeholder="Set username" id="username" autocomplete="off" required>
+                <label for="fullname">Fullname</label>
+                <input type="text" placeholder="Enter your fullname" id="fullname" autocomplete="off" name="fullname" required>
                 <i class='bx bxs-user'></i>
             </div>
 
             <div class="input-box">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Set username" id="username" autocomplete="off" name="username" required>
+                <i class='bx bxs-user'></i>
+                <p id="username-alert" class="alert-hide"></p>
+            </div>
+
+            <div class="input-box">
                 <label for="password" class="help">Password</label>
-                <input type="password" placeholder="Set password" id="password" autocomplete="off" required>
+                <input type="password" placeholder="Set password" id="password" autocomplete="off" name="password" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
 
             <div class="input-box">
-                <label for="confirm">Confirm Password</label>
-                <input type="password" placeholder="Enter again your password" id="confirm" autocomplete="off" required>
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" placeholder="Enter again your password" id="confirm-password" autocomplete="off" name="confirm-password" required>
                 <i class='bx bxs-lock-alt'></i>
+                <p id="confirm-password-alert" class="alert-hide"></p>
             </div>
 
             <div class="container-radio">
                 <p>Register As</p>
-                <input type="radio" id="user" name="role" value="User">
-                <label for="user">User</label>
-                <input type="radio" id="admin" name="role" value="Admin">
-                <label for="admin">Creator</label>
+                <input type="radio" id="user-radio" name="role" value="User">
+                <label for="user-radio">User</label>
+                <input type="radio" id="admin-radio" name="role" value="Admin">
+                <label for="admin-radio">Creator</label>
             </div>
 
             <button type="submit" class="btn">SIGNUP</button>
 
             <div class="login-link">
-                <p>Have an account? <a href="http://localhost:8080/public/login">Login</a></p>
+                <p>Have an account? <a href="<?= BASE_URL?>/login">Login</a></p>
             </div>
         </form>
 

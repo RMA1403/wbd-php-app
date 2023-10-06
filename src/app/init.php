@@ -19,4 +19,4 @@ require_once __DIR__ . "/models/podcast.php";
 require_once __DIR__ . "/models/episode.php";
 require_once __DIR__ . "/models/user.php";
 
-require_once __DIR__ . "/../public/fonts/fonts.php";
+// require_once __DIR__ . "/../public/fonts/fonts.php";

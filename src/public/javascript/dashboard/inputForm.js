@@ -1,11 +1,14 @@
 "use strict";
 
+import { showErrorToast, showInformationToast, showSuccessToast } from "../toast.mjs";
+
 // Constants
 const JUDUL_MAX_COUNT = 50;
 const DESCRIPTION_MAX_COUNT = 1000;
 
 // Get DOM elements
 const formEl = document.getElementById("input-form");
+const overlayEl = document.getElementById("overlay")
 
 const audioInputButtonEl = document.getElementById("audio-input-btn");
 const cancelFileButtonEl = document.getElementById("cancel-file-btn");
@@ -126,6 +129,8 @@ imageInputEl.addEventListener("change", (e) => {
 // Handle save episode
 saveButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
+
+  showSuccessToast("Episode berhasil ditambahkan")
 
   const audioFile = audioInputEl?.files[0];
   const imageFile = imageInputEl?.files[0];

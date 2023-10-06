@@ -1,3 +1,4 @@
+
 <form data-form-type="<?= $this->data["INPUT_FORM_TYPE"] ?? "" ?>" id="input-form" action="">
   <div>
     <h3><?= $this->data["INPUT_FORM_TITLE"] ?? "" ?></h3>
@@ -52,7 +53,7 @@
       <input name="image-input" type="file" id="image-input" accept="image/*" class="hidden">
     </div>
   </div>
-
+  
   <div class="line"></div>
 
   <div>

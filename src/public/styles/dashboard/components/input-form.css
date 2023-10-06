@@ -103,15 +103,15 @@ option {
 
 .category-container {
   position: relative;
-  width: calc(13.88vw);
   text-transform: capitalize;
+  width: fit-content;
 }
 
 #category-choices {
   position: absolute;
   right: 0;
   top: 0;
-  transform: translateX(100%);
+  transform: translateX(calc(100% + 24px));
   background-color: var(--BLACK);
   border: 1px var(--PINK-1) solid;
   padding: 4px 0;

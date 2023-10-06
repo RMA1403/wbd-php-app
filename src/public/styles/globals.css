@@ -301,3 +301,36 @@ h6 {
   height: 14px;
   width: 14px;
 }
+
+/* Toast */
+#toast {
+  position: fixed;
+  left: 50%;
+  top: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  transform: translateX(-50%);
+  z-index: 110;
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
+
+.toast-green {
+  background-color: #398044;
+}
+.toast-blue {
+  background-color: #3663FD;
+}
+.toast-red {
+  background-color: #ED5C5C;
+}

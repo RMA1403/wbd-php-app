@@ -69,6 +69,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
                 isAdmin = false;
             }
 
+            const fullname = fullnameInput.value;
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
             const formData = new FormData();
             formData.append("fullname", fullname);
             formData.append("username", username);

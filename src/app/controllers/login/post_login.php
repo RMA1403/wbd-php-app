@@ -12,6 +12,7 @@ class PostLoginController
         $username = $_POST['username'];
         $password = $_POST['password'];
         
+    
         //TODO : hash password
         
         $model = new UserModel();
@@ -23,7 +24,7 @@ class PostLoginController
                 http_response_code(404);
                 exit;
             }else{
-                if($user['password'] === $_POST['password']){
+                if(password_verify($password, $user['password'])){
                     http_response_code(201);
                     header('Content-type: application/json');
                     echo json_encode(["redirect_url" => BASE_URL . "/signup"]);

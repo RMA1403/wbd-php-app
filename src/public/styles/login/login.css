@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family: "Poppins", sans-serif; */
 }
 
 body{
@@ -107,4 +106,17 @@ body{
     font-weight: 600;
     display: inline;
     text-decoration: underline;
+}
+
+.alert-hide{
+    display: none;
+}
+
+.alert-show {
+    display: block;
+    color: red;
+    font-style: italic;
+    margin-top : 5px;
+    margin-bottom : 10px;
+    text-align: center;
 }

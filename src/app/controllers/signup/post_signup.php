@@ -10,12 +10,11 @@ class PostSignupController
     if(isset($_POST['username']) && isset($_POST['password'])){
 
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $fullname = $_POST['fullname'];
         $isAdmin = $_POST['isAdmin'];
 
         $admin = 0;
-
         if($isAdmin === "true"){
             $admin = 1;
         }
@@ -37,6 +36,7 @@ class PostSignupController
                 echo json_encode(["redirect_url" => BASE_URL . "/login"]);
                 exit;
             }else{
+                echo "HALO";
                 http_response_code(200);
                 exit;
             }

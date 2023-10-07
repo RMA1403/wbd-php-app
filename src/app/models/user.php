@@ -23,6 +23,20 @@ class UserModel
     return $user;
   }
 
+  public function getUser($username)
+  {
+    $query = "
+      SELECT * FROM user
+      WHERE username = :username
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("username", $username);
+    $user = $this->db->fetch();
+
+    return $user;
+  }
+
   public function getAllUsers()
   {
     $query = "SELECT * from user";
@@ -35,7 +49,7 @@ class UserModel
 
   public function insertUser($fullname, $username, $password, $isAdmin)
   { 
-    $url_profpic = NULL;
+    $url_profpic = "/images/default-profpic.jpeg";
     $query = "INSERT INTO user( name, username, password, url_profpic, is_admin)
               VALUES
               (:fullname, :username, :password, :url_profpic, :isAdmin)";

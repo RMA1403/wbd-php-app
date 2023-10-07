@@ -2,7 +2,7 @@ CREATE TABLE user (
   id_user INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(50),
   username VARCHAR(50) UNIQUE NOT NULL,
-  password VARCHAR(50) NOT NULL,
+  password VARCHAR(255) NOT NULL,
   url_profpic VARCHAR(100),
   is_admin BOOLEAN DEFAULT false
 );

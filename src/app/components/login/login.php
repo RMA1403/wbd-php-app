@@ -25,6 +25,7 @@
             <div class="input-box">
                 <input type="text" placeholder="Username" id="username" autocomplete="off" required>
                 <label for="username"><i class='bx bxs-user'></i></label>
+                <p id="username-alert" class="alert-hide"></p>
             </div>
 
             <div class="input-box">

@@ -132,7 +132,7 @@ body{
     font-style: italic;
     margin-top : 5px;
     margin-bottom : 5px;
-    margin-left: 20px;
+    text-align: center;
 }
 
 .alert-hide{

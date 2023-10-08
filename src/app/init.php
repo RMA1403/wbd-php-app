@@ -14,6 +14,7 @@ require_once __DIR__ . "/controllers/home/get_home.php";
 require_once __DIR__ . "/controllers/login/get_login.php";
 require_once __DIR__ . "/controllers/login/post_login.php";
 
+require_once __DIR__ . "/controllers/library/get_library.php";
 require_once __DIR__ . "/controllers/signup/get_signup.php";
 require_once __DIR__ . "/controllers/signup/post_signup.php";
 require_once __DIR__ . "/controllers/search/get_search.php";

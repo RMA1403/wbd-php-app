@@ -8,15 +8,31 @@ class GetDashboardEpisodeController
 
     $podcastModel = new PodcastModel();
     $episodeModel = new EpisodeModel();
-    $podcastId = "";
-    if (!isset($_GET["podcast_id"])) {
+
+    $userId = "";
+    if (!isset($_GET["id_user"])) {
       (new NotFoundController())->call();
       return;
     } else {
-      $podcastId = $_GET["podcast_id"];
+      $userId = $_GET["id_user"];
     }
 
-    $episodes = $episodeModel->getPodcastEpisodes($podcastId);
+    $idPodcast = "";
+    if (!isset($_GET["id_podcast"])) {
+      (new NotFoundController())->call();
+      return;
+    } else {
+      $idPodcast = $_GET["id_podcast"];
+
+      $podcast = $podcastModel->getById($idPodcast);
+
+      if (!$podcast || $podcast->id_user != $userId) {
+        (new NotFoundController())->call();
+        return;
+      }
+    }
+
+    $episodes = $episodeModel->getPodcastEpisodes($idPodcast);
 
     $data = [
       "episodes" => $episodes,

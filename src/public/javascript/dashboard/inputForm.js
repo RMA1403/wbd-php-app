@@ -1,6 +1,6 @@
 "use strict";
 
-import { showErrorToast, showInformationToast, showSuccessToast } from "../toast.mjs";
+import { showErrorToast } from "../toast.mjs";
 
 // Constants
 const JUDUL_MAX_COUNT = 50;
@@ -8,7 +8,7 @@ const DESCRIPTION_MAX_COUNT = 1000;
 
 // Get DOM elements
 const formEl = document.getElementById("input-form");
-const overlayEl = document.getElementById("overlay")
+const overlayEl = document.getElementById("overlay");
 
 const audioInputButtonEl = document.getElementById("audio-input-btn");
 const cancelFileButtonEl = document.getElementById("cancel-file-btn");
@@ -89,25 +89,38 @@ descriptionInputEl.addEventListener("input", (e) => {
 });
 
 // Handle open 'category' input
-categoryButtonEl.addEventListener("click", (e) => {
+categoryButtonEl &&
+  categoryButtonEl.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    categoryButtonEl.classList.toggle("focus");
+    categoryChoicesEl.classList.toggle("hidden");
+    overlayEl.classList.toggle("hidden");
+  });
+
+// Handle select 'category'
+categoryButtonEl &&
+  Array.from(categoryChoicesEl.children).forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const category = el.children[0].innerHTML;
+      categoryButtonEl.children[0].innerHTML = category;
+      categoryInputEl.value = category;
+
+      categoryButtonEl.classList.toggle("focus");
+      categoryChoicesEl.classList.toggle("hidden");
+      overlayEl.classList.toggle("hidden");
+    });
+  });
+
+// Handle click outside 'category'
+overlayEl.addEventListener("click", (e) => {
   e.preventDefault();
 
   categoryButtonEl.classList.toggle("focus");
   categoryChoicesEl.classList.toggle("hidden");
-});
-
-// Handle select 'category'
-Array.from(categoryChoicesEl.children).forEach((el) => {
-  el.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const category = el.children[0].innerHTML
-    categoryButtonEl.children[0].innerHTML = category
-    categoryInputEl.value = category
-
-    categoryButtonEl.classList.toggle("focus");
-    categoryChoicesEl.classList.toggle("hidden");
-  });
+  overlayEl.classList.toggle("hidden");
 });
 
 // Handle click change cover image
@@ -126,27 +139,67 @@ imageInputEl.addEventListener("change", (e) => {
   }
 });
 
-// Handle save episode
+// Handle submit form
 saveButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
 
-  showSuccessToast("Episode berhasil ditambahkan")
+  console.log();
 
   const audioFile = audioInputEl?.files[0];
   const imageFile = imageInputEl?.files[0];
   const title = judulInputEl.value;
   const description = descriptionInputEl.value;
-  const category = categoryInputEl.value
+  const category = categoryInputEl?.value;
 
   const formData = new FormData();
   const xhr = new XMLHttpRequest();
-  console.log(categoryInputEl.value)
+
+  if (!title) {
+    showErrorToast("Title must be provided");
+    return;
+  }
+
   switch (formEl.dataset.formType) {
-    case "episode":
-      xhr.open("POST", "/public/dashboard/add-episode");
+    // Handle add new episode
+    case "add-episode":
+      const idPodcast = new URLSearchParams(window.location.search).get(
+        "id_podcast"
+      );
+      if (!idPodcast) {
+        showErrorToast("Invalid URL");
+        return;
+      }
+
+      if (!audioFile) {
+        showErrorToast("Audio file must be provided");
+        return;
+      }
+
+      if (!imageFile) {
+        showErrorToast("Cover image must be provided");
+        return;
+      }
+
+      xhr.open("POST", "/public/dashboard/episode");
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 201) {
-          console.log(xhr.responseText);
+        }
+      };
+
+      formData.append("audioFile", audioFile);
+      formData.append("imageFile", imageFile);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("idPodcast", idPodcast);
+
+      xhr.send(formData);
+      break;
+
+    // Handle edit episode
+    case "edit-episode":
+      xhr.open("PUT", "/public/dashboard/episode");
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
         }
       };
 
@@ -158,11 +211,54 @@ saveButtonEl.addEventListener("click", (e) => {
       xhr.send(formData);
       break;
 
-    case "podcast":
+    // Handle add new podcast
+    case "add-podcast":
+      if (!category) {
+        showErrorToast("Category must be provided");
+        return;
+      }
+
+      if (!imageFile) {
+        showErrorToast("Cover image must be provided");
+        return;
+      }
+
+      xhr.open("POST", "/public/dashboard/podcast");
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 201) {
+        }
+      };
+
+      formData.append("audioFile", audioFile);
+      formData.append("imageFile", imageFile);
+      formData.append("title", title);
+      formData.append("description", description);
+
+      xhr.send(formData);
+      break;
+
+    // Handle edit podcast
+    case "edit-podcast":
+      if (!category) {
+        showErrorToast("Category must be provided");
+        return;
+      }
+
+      xhr.open("PUT", "/public/dashboard/podcast");
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+        }
+      };
+
+      formData.append("audioFile", audioFile);
+      formData.append("imageFile", imageFile);
+      formData.append("title", title);
+      formData.append("description", description);
+
+      xhr.send(formData);
       break;
 
     default:
-      console.log("TEST");
       break;
   }
 });

@@ -19,7 +19,8 @@ class PodcastModel
     return $podcasts;
   }
 
-  public function getUserPodcasts($id_user) {
+  public function getUserPodcasts($id_user)
+  {
     $query = "
       SELECT * FROM podcast
       WHERE id_user = :id_user
@@ -30,5 +31,19 @@ class PodcastModel
     $podcasts = $this->db->fetchAll();
 
     return $podcasts;
+  }
+
+  public function getById($idPodcast)
+  {
+    $query = "
+      SELECT * FROM podcast
+      WHERE id_podcast = :idPodcast
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("idPodcast",  $idPodcast);
+    $podcast = $this->db->fetch();
+
+    return $podcast;
   }
 }

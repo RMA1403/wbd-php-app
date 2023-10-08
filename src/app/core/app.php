@@ -16,7 +16,8 @@ class App
     // Dashboard data-fetching routes
     $router->get("public/dashboard/internal/main", new GetDashboardMainController());
     $router->get("public/dashboard/internal/episode", new GetDashboardEpisodeController());
-    $router->post("public/dashboard/add-episode", new PostAddEpisodeController());
+    $router->post("public/dashboard/episode", new PostAddEpisodeController());
+    $router->get("public/dashboard/user-podcast", new GetUserPodcastController());
 
     $router->get("public/home", new GetHomeController());
     $router->get("public/login", new GetLoginController());

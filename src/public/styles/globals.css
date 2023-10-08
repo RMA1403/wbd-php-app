@@ -309,11 +309,13 @@ h6 {
   top: 64px;
   border-radius: 12px;
   display: flex;
-  align-items: center;
   gap: 16px;
-  padding: 12px 24px;
+  padding: 10px 24px 12px;
   transform: translateX(-50%);
   z-index: 110;
+}
+#toast > button > img {
+  margin-top: 6px;
 }
 
 .overlay {

@@ -24,7 +24,7 @@
     </section>
   </main>
 
-  <!-- <?php include(dirname(__DIR__) . "/../common/player.php") ?> -->
+  <?php include(dirname(__DIR__) . "/../common/player.php") ?>
 </body>
 
 </html>

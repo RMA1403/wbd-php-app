@@ -5,9 +5,7 @@ const toastEl = document.getElementById("toast");
 const overlayEl = document.getElementById("overlay");
 const toastCloseButtonEl = document.getElementById("toast-close-btn");
 
-toastCloseButtonEl.addEventListener("click", (e) => {
-  e.preventDefault();
-
+export function forceHideToast() {
   toastEl.children[0].innerHTML = "";
   toastEl.classList.add("hidden");
   overlayEl.classList.add("hidden");
@@ -15,17 +13,7 @@ toastCloseButtonEl.addEventListener("click", (e) => {
   toastEl.classList.remove("toast-green");
   toastEl.classList.remove("toast-blue");
   toastEl.classList.remove("toast-red");
-});
-
-overlayEl.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  toastEl.children[0].innerHTML = "";
-  toastEl.classList.add("hidden");
-  overlayEl.classList.add("hidden");
-
-  toastEl.classList.remove("toast-green");
-});
+}
 
 export function showSuccessToast(msg) {
   toastEl.children[0].innerHTML = msg;
@@ -65,3 +53,15 @@ export function showInformationToast(msg) {
     toastEl.classList.remove("toast-blue");
   }, 5 * 1000);
 }
+
+toastCloseButtonEl.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  forceHideToast();
+});
+
+overlayEl.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  forceHideToast();
+});

@@ -4,9 +4,57 @@ class PostAddEpisodeController
 {
   public function call()
   {
-    $mimeType = mime_content_type($_FILES["audioFile"]["tmp_name"]);
-    $fileName = md5(uniqid(mt_rand(), true) . $mimeType);
-    move_uploaded_file($_FILES["audioFile"]["tmp_name"], __DIR__ . "/../../storage/episodes/" . $fileName . ".mp3");
-    echo "success";
+    // Check for podcast id
+    if (!isset($_POST["idPodcast"])) {
+      http_response_code(400);
+      header("Content-Type: application/json");
+      echo json_encode(["message" => "missing podcast id"]);
+
+      return;
+    }
+
+    // Check for episode title
+    if (!isset($_POST["title"])) {
+      http_response_code(400);
+      header("Content-Type: application/json");
+      echo json_encode(["message" => "missing episode title"]);
+
+      return;
+    }
+
+    // Check for audio file
+    if (!isset($_FILES["audioFile"])) {
+      http_response_code(400);
+      header("Content-Type: application/json");
+      echo json_encode(["message" => "missing audio file"]);
+
+      return;
+    }
+
+    // Check for image file
+    if (!isset($_FILES["imageFile"])) {
+      http_response_code(400);
+      header("Content-Type: application/json");
+      echo json_encode(["message" => "missing image file"]);
+
+      return;
+    }
+
+    // Store audio file in server storage
+    $audioMimeType = mime_content_type($_FILES["audioFile"]["tmp_name"]);
+    $audioFileName = "/episodes/" . md5(uniqid(mt_rand(), true)) . AUDIO_MAP[$audioMimeType];
+    move_uploaded_file($_FILES["audioFile"]["tmp_name"], __DIR__ . "/../../storage" . $audioFileName);
+
+    // Store image file in server storage
+    $imageMimeType = mime_content_type($_FILES["imageFile"]["tmp_name"]);
+    $imageFileName = "/images/" . md5(uniqid(mt_rand(), true)) . IMAGE_MAP[$imageMimeType];
+    move_uploaded_file($_FILES["imageFile"]["tmp_name"], __DIR__ . "/../../storage" . $imageFileName);
+
+    $episodeModle = new EpisodeModel();
+    $episodeModle->saveEpisode($_POST["idPodcast"], $_POST["title"], $_POST["description"], $imageFileName, $audioFileName);
+
+    http_response_code(201);
+    header("Content-Type: application/json");
+    echo json_encode(["message" => "success"]);
   }
 }

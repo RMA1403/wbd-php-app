@@ -13,7 +13,7 @@
         </div>
 
         <div>
-          <a href="<?= BASE_URL ?>/dashboard/edit-episode?id_user=<?= $this->data["id_user"] ?? "" ?>&id_podcast=<?= $this->data["id_podcast"] ?>&id_episode=<?= $episode->id_episode ?>">
+          <a href="<?= BASE_URL ?>/dashboard/edit-episode?id_podcast=<?= $this->data["id_podcast"] ?? "" ?>&id_episode=<?= $episode->id_episode ?>">
             <div>
               <img src="<?= BASE_URL ?>/images/dashboard/edit_icon.svg" alt="">
               <p>Edit</p>

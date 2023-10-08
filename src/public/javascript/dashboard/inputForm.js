@@ -144,7 +144,6 @@ saveButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
 
   let idPodcast;
-  let idUser;
   let idEpisode;
 
   const audioFile = audioInputEl?.files[0];
@@ -160,8 +159,7 @@ saveButtonEl.addEventListener("click", (e) => {
     // Handle add new episode
     case "add-episode":
       idPodcast = new URLSearchParams(window.location.search).get("id_podcast");
-      idUser = new URLSearchParams(window.location.search).get("id_user");
-      if (!idPodcast || !idUser) {
+      if (!idPodcast) {
         showErrorToast("Invalid URL");
         return;
       }
@@ -191,7 +189,7 @@ saveButtonEl.addEventListener("click", (e) => {
           showSuccessToast("Episode added successfully!");
           setTimeout(() => {
             window.location.replace(
-              `http://localhost:8080/public/dashboard/episode?id_user=${idUser}&id_podcast=${idPodcast}`
+              `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}`
             );
           }, 1000);
         }
@@ -209,10 +207,9 @@ saveButtonEl.addEventListener("click", (e) => {
     // Handle edit episode
     case "edit-episode":
       idEpisode = new URLSearchParams(window.location.search).get("id_episode");
-      idUser = new URLSearchParams(window.location.search).get("id_user");
       idPodcast = new URLSearchParams(window.location.search).get("id_podcast");
 
-      if (!idPodcast || !idUser || !idPodcast) {
+      if (!idPodcast || !idPodcast) {
         showErrorToast("Invalid URL");
         return;
       }
@@ -231,7 +228,7 @@ saveButtonEl.addEventListener("click", (e) => {
           showSuccessToast("Episode updated successfully!");
           setTimeout(() => {
             window.location.replace(
-              `http://localhost:8080/public/dashboard/episode?id_user=${idUser}&id_podcast=${idPodcast}`
+              `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}`
             );
           }, 1000);
         }
@@ -254,6 +251,11 @@ saveButtonEl.addEventListener("click", (e) => {
 
     // Handle add new podcast
     case "add-podcast":
+      if (!title) {
+        showErrorToast("Title must be provided");
+        return;
+      }
+
       if (!category) {
         showErrorToast("Category must be provided");
         return;
@@ -264,16 +266,24 @@ saveButtonEl.addEventListener("click", (e) => {
         return;
       }
 
-      xhr.open("POST", "/public/dashboard/podcast");
+      if (confirm("Save changes?") === false) {
+        return;
+      }
+
+      xhr.open("POST", "/public/dashboard/add-podcast");
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 201) {
+          showSuccessToast("Podcast added successfully!");
+          setTimeout(() => {
+            window.location.replace("http://localhost:8080/public/dashboard");
+          }, 1000);
         }
       };
 
-      formData.append("audioFile", audioFile);
       formData.append("imageFile", imageFile);
       formData.append("title", title);
       formData.append("description", description);
+      formData.append("category", category);
 
       xhr.send(formData);
       break;

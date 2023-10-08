@@ -14,8 +14,11 @@ class GetDashboardLayoutController
 
     require_once __DIR__ . "/../../views/dashboard/layout.php";
 
+    $podcastModel = new PodcastModel();
+    $podcasts = $podcastModel->getUserPodcasts($_SESSION["user_id"]) ?? [];
+
     $data = [
-      // "url_thumbnail" => $episodes[0]->url_thumbnail ?? ""
+      "podcasts" => $podcasts
     ];
 
     $view = new DashboardLayoutView($data);

@@ -12,7 +12,7 @@ class GetEditEpisodeController
       return;
     }
 
-    require_once __DIR__ . "/../../views/dashboard/episode_form.php";
+    require_once __DIR__ . "/../../views/dashboard/dash_form.php";
 
     $episodeModel = new EpisodeModel();
 
@@ -53,7 +53,7 @@ class GetEditEpisodeController
       "id_podcast" => $idPodcast,
     ];
 
-    $view = new DashboardEpisodeFormView($data);
+    $view = new DashboardFormView($data);
     $view->render();
   }
 }

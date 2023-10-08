@@ -7,112 +7,55 @@ const dashboardLink = document.getElementById("dashboard-link");
 const episodeLink = document.getElementById("episode-link");
 const dashboardSection = document.getElementById("dashboard-section");
 
+const overlayEl = document.getElementById("overlay-layout");
+const choosePodcastButtonEl = document.getElementById("choose-podcast-btn");
+const podcastChoicesEl = document.getElementById("podcast-choices");
+
 const urls = window.location.href.split("?")[0].split("/");
 let lastURL = urls[urls.length - 1];
 
 let idPodcast = new URLSearchParams(window.location.search).get("id_podcast");
+let podcasts = [];
 
-function redirectLayout() {
-  if (lastURL === "main" || lastURL === "dashboard") {
-    dashboardLink.classList.add("nav-active");
-  } else {
-    episodeLink.classList.add("nav-active");
-  }
+// Initial request to fetch user podcasts
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "/public/dashboard/user-podcast");
+xhr.send(null);
 
-  if (lastURL === "dashboard") {
-    lastURL = "main";
-  }
+xhr.onreadystatechange = () => {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    const resJson = JSON.parse(xhr.response);
 
-  if (!idPodcast) {
-    const xhr1 = new XMLHttpRequest();
-    xhr1.open("GET", "/public/dashboard/user-podcast");
-    xhr1.send(null);
+    podcasts = resJson?.podcasts;
+    // Redirect if the user doesnt have any podcast
+    if (podcasts.length === 0) {
+      window.location.replace("/public/dashboard/add-podcast");
+      return;
+    }
 
-    xhr1.onreadystatechange = function () {
-      if (this.readyState === XMLHttpRequest.DONE) {
-        const resJson = JSON.parse(this.response);
+    if (!idPodcast) {
+      idPodcast = podcasts[0].id_podcast;
+    }
 
-        idPodcast = resJson?.podcast?.id_podcast;
-        const xhr2 = new XMLHttpRequest();
+    if (lastURL === "dashboard") {
+      lastURL = "main";
+    }
 
-        xhr2.open(
-          "GET",
-          `/public/dashboard/internal/${lastURL}?id_podcast=${idPodcast}`
-        );
-        xhr2.send(null);
+    if (lastURL === "main") {
+      dashboardLink.classList.add("nav-active");
+    } else {
+      episodeLink.classList.add("nav-active");
+    }
 
-        xhr2.onreadystatechange = function () {
-          if (this.readyState === XMLHttpRequest.DONE) {
-            dashboardSection.innerHTML = this.response;
-
-            const deleteEpisodeButtonEl = document.querySelectorAll(
-              ".delete-episode-btn"
-            );
-            Array.from(deleteEpisodeButtonEl).forEach((el) => {
-              el.addEventListener("click", (e) => {
-                e.preventDefault();
-
-                handleDeleteEpisode(el.dataset.id);
-              });
-            });
-
-            const allEpisodeButtonEl =
-              document.getElementById("all-episode-btn");
-            allEpisodeButtonEl &&
-              allEpisodeButtonEl.addEventListener("click", () => {
-                history.pushState(
-                  {},
-                  "",
-                  `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}`
-                );
-
-                dashboardLink.classList.toggle("nav-active");
-                episodeLink.classList.toggle("nav-active");
-
-                const xhr3 = new XMLHttpRequest();
-                xhr3.open(
-                  "GET",
-                  `/public/dashboard/internal/episode?id_podcast=${idPodcast}`
-                );
-                xhr3.send(null);
-
-                xhr3.onreadystatechange = function () {
-                  if (this.readyState === XMLHttpRequest.DONE) {
-                    dashboardSection.innerHTML = this.response;
-
-                    const deleteEpisodeButtonEl = document.querySelectorAll(
-                      ".delete-episode-btn"
-                    );
-                    Array.from(deleteEpisodeButtonEl).forEach((el) => {
-                      el.addEventListener("click", (e) => {
-                        e.preventDefault();
-
-                        handleDeleteEpisode(el.dataset.id);
-                      });
-                    });
-                  }
-                };
-              });
-          }
-        };
-
-        history.pushState(
-          {},
-          "",
-          `/public/dashboard/${lastURL}?id_podcast=${idPodcast}`
-        );
-      }
-    };
-  } else {
-    const xhr = new XMLHttpRequest();
-
-    xhr.open(
+    // Get main content
+    const xhr2 = new XMLHttpRequest();
+    xhr2.open(
       "GET",
       `/public/dashboard/internal/${lastURL}?id_podcast=${idPodcast}`
     );
-    xhr.send(null);
+    xhr2.send(null);
 
-    xhr.onreadystatechange = function () {
+    xhr2.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {
         dashboardSection.innerHTML = this.response;
 
@@ -129,40 +72,7 @@ function redirectLayout() {
 
         const allEpisodeButtonEl = document.getElementById("all-episode-btn");
         allEpisodeButtonEl &&
-          allEpisodeButtonEl.addEventListener("click", () => {
-            history.pushState(
-              {},
-              "",
-              `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}`
-            );
-
-            dashboardLink.classList.toggle("nav-active");
-            episodeLink.classList.toggle("nav-active");
-
-            const xhr3 = new XMLHttpRequest();
-            xhr3.open(
-              "GET",
-              `/public/dashboard/internal/episodeid_podcast=${idPodcast}`
-            );
-            xhr3.send(null);
-
-            xhr3.onreadystatechange = function () {
-              if (this.readyState === XMLHttpRequest.DONE) {
-                dashboardSection.innerHTML = this.response;
-
-                const deleteEpisodeButtonEl = document.querySelectorAll(
-                  ".delete-episode-btn"
-                );
-                Array.from(deleteEpisodeButtonEl).forEach((el) => {
-                  el.addEventListener("click", (e) => {
-                    e.preventDefault();
-
-                    handleDeleteEpisode(el.dataset.id);
-                  });
-                });
-              }
-            };
-          });
+          allEpisodeButtonEl.addEventListener("click", changeToEpisode);
       }
     };
 
@@ -172,11 +82,27 @@ function redirectLayout() {
       `/public/dashboard/${lastURL}?id_podcast=${idPodcast}`
     );
   }
-}
+};
 
-redirectLayout();
+// Add event listeners to dashboard nav
+episodeLink.addEventListener("click", changeToEpisode);
+dashboardLink.addEventListener("click", changeToMain);
 
-episodeLink.addEventListener("click", () => {
+overlayEl.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  podcastChoicesEl.classList.toggle("hidden");
+  overlayEl.classList.toggle("hidden");
+});
+choosePodcastButtonEl.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  podcastChoicesEl.classList.toggle("hidden");
+  overlayEl.classList.toggle("hidden");
+});
+
+// Handles change to episode page
+function changeToEpisode() {
   history.pushState(
     {},
     "",
@@ -206,9 +132,10 @@ episodeLink.addEventListener("click", () => {
       });
     }
   };
-});
+}
 
-dashboardLink.addEventListener("click", () => {
+// Handles change to main page
+function changeToMain() {
   history.pushState(
     {},
     "",
@@ -228,43 +155,10 @@ dashboardLink.addEventListener("click", () => {
 
       const allEpisodeButtonEl = document.getElementById("all-episode-btn");
       allEpisodeButtonEl &&
-        allEpisodeButtonEl.addEventListener("click", () => {
-          history.pushState(
-            {},
-            "",
-            `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}`
-          );
-
-          dashboardLink.classList.toggle("nav-active");
-          episodeLink.classList.toggle("nav-active");
-
-          const xhr2 = new XMLHttpRequest();
-          xhr2.open(
-            "GET",
-            `/public/dashboard/internal/episode?id_podcast=${idPodcast}`
-          );
-          xhr2.send(null);
-
-          xhr2.onreadystatechange = function () {
-            if (this.readyState === XMLHttpRequest.DONE) {
-              dashboardSection.innerHTML = this.response;
-
-              const deleteEpisodeButtonEl = document.querySelectorAll(
-                ".delete-episode-btn"
-              );
-              Array.from(deleteEpisodeButtonEl).forEach((el) => {
-                el.addEventListener("click", (e) => {
-                  e.preventDefault();
-
-                  handleDeleteEpisode(el.dataset.id);
-                });
-              });
-            }
-          };
-        });
+        allEpisodeButtonEl.addEventListener("click", changeToEpisode);
     }
   };
-});
+}
 
 // Handle delete episode
 function handleDeleteEpisode(idEpisode) {

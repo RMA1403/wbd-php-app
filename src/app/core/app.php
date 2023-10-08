@@ -20,8 +20,11 @@ class App
     $router->get("public/dashboard/user-podcast", new GetUserPodcastController());
 
     $router->get("public/home", new GetHomeController());
+    $router->get("public/search", new GetSearchController());
     $router->get("public/login", new GetLoginController());
+    $router->post("public/login", new PostLoginController());
     $router->get("public/signup", new GetSignupController());
+    $router->post("public/signup", new PostSignupController());
 
     $router->directRequest($url);
   }

@@ -6,24 +6,17 @@
     <!-- Global CSS -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/home_style.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/home.css">
     <title>Homepage</title>
 </head>
 <body>
     <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
-    <div class="profile">
-
-    </div>
+    <?php include(dirname(__DIR__) . "/common/profile.php")?>
     <main>
         <div class="main-content">
-            <h1>Welcome to Spotify!</h1>
-            <!-- Main content of the homepage goes here -->
-            <div class="audio-player">
-                <h2>Now Playing</h2>
-            </div>
+            
         </div>
     </main>
     <?php include(dirname(__DIR__) . "/common/player.php")?>
-    
 </body>
 </html>

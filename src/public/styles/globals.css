@@ -42,8 +42,11 @@ body {
 }
 main {
   min-width: 0;
-  overflow: scroll;
   flex: auto;
+  overflow-y: scroll;
+  width: 100%;
+  background-color: var(--BLACK);
+  padding: 0 auto;
 }
 button {
   all: unset;
@@ -165,6 +168,7 @@ h6 {
 
 /* Navigation Bar */
 .sidebar {
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -204,10 +208,20 @@ h6 {
   background-color: var(--GRAY-600);
 }
 
+.player .caption {
+  margin: 10px;
+  text-align: center;
+}
+
 .podcast-details {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+.podcast-details .thumbnail {
+  object-fit: cover;
+  object-position: center;
 }
 
 .podcast-info {
@@ -219,16 +233,17 @@ h6 {
   overflow: hidden;
 }
 
-.podcast-info .sh4 {
+.podcast-info .b3 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clipped;
 }
 
-.podcast-info .sh5 {
+.podcast-info .b4 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clipped;
+  font-weight: lighter;
   opacity: 30%;
 }
 
@@ -331,8 +346,143 @@ h6 {
   background-color: #398044;
 }
 .toast-blue {
-  background-color: #3663FD;
+  background-color: #3663fd;
 }
 .toast-red {
-  background-color: #ED5C5C;
+  background-color: #ed5c5c;
+}
+
+/* Profile section*/
+
+.login-button {
+  background-color: var(--PINK-1);
+}
+
+.profile-section {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  right: 0;
+  margin-top: 16px;
+  margin-right: 60px;
+  align-items: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 80px;
+  position: fixed;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.profile-section:hover {
+  transform: scale(1.02);
+}
+
+.profile {
+  background-color: var(--GRAY-600);
+  padding-left: 8px;
+  padding-right: 16px;
+}
+
+.login-button {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.profpic {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  outline: solid 1px var(--PINK-1);
+}
+
+.profile sh3 {
+  text-overflow: clip;
+}
+
+.profile-menu {
+  display: none;
+  background-color: var(--GRAY-600);
+  gap: 8px;
+  flex-direction: column;
+  right: 0;
+  margin-top: 64px;
+  margin-right: 60px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  position: fixed;
+  align-items: start;
+  z-index: 99;
+  cursor: pointer;
+  width: 7vw;
+}
+
+#logout {
+  color: red;
+}
+
+.edit-profile-back {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+}
+
+.profile-detail {
+  display: flex;
+  flex-direction: row;
+  padding: 50px 50px;
+  align-items: center;
+  gap: 40px;
+}
+
+.edit-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  padding: 50px 20px;
+  padding-top: 20px;
+  opacity: 1;
+  border-radius: 10px;
+  background-color: var(--GRAY-600);
+  gap: 20px;
+}
+
+.profpic-edit {
+  height: 10vw;
+  width: 10vw;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  outline: solid 1px var(--PINK-1);
+}
+
+.edit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-info input {
+  background-color: var(--GRAY-500);
+  border: 0;
+  height: 3vh;
+  width: 15vw;
+  border-radius: 5px;
+}
+
+.edit-profile-container button {
+  background-color: var(--GRAY-300);
+  color: var(--BLACK);
+  padding: 10px 30px;
+  border-radius: 70px;
 }

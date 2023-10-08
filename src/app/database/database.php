@@ -54,7 +54,11 @@ class Database
     try {
       $this->statement->execute();
     } catch (PDOException $e) {
-      die($e->getMessage());
+      $sqlState = '23000';
+      $customMessage = 'Integrity constraint violation: 1062 Duplicate entry for key user.username';
+      if($e->getCode() == 23000){
+        throw new PDOException($customMessage, $sqlState);
+      }
     }
   }
 

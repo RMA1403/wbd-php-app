@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . "/core/app.php";
 require_once __DIR__ . "/core/router.php";
 require_once __DIR__ . "/database/database.php";
@@ -14,7 +15,11 @@ require_once __DIR__ . "/controllers/dashboard/get_user_podcast.php";
 
 require_once __DIR__ . "/controllers/home/get_home.php";
 require_once __DIR__ . "/controllers/login/get_login.php";
+require_once __DIR__ . "/controllers/login/post_login.php";
+
 require_once __DIR__ . "/controllers/signup/get_signup.php";
+require_once __DIR__ . "/controllers/signup/post_signup.php";
+require_once __DIR__ . "/controllers/search/get_search.php";
 
 require_once __DIR__ . "/models/podcast.php";
 require_once __DIR__ . "/models/episode.php";

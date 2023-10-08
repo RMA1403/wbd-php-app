@@ -18,7 +18,7 @@
       <div class="button-container">
         <?php include(dirname(__DIR__) . "/components/tambah_episode_button.php") ?>
 
-        <a href="/public/dashboard/edit-podcast">
+        <a href="/public/dashboard/edit-podcast?id_podcast=<?= $this->data["id_podcast"] ?? "" ?>">
           <button class="edit-button">
             <img src="<?= BASE_URL ?>/images/dashboard/edit_icon.svg" alt="" />
 

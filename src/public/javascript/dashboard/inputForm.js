@@ -15,6 +15,7 @@ const cancelFileButtonEl = document.getElementById("cancel-file-btn");
 const changeCoverButtonEl = document.getElementById("change-cover-btn");
 const saveButtonEl = document.getElementById("save-btn");
 const categoryButtonEl = document.getElementById("category-input-btn");
+const deleteButtonEl = document.getElementById("delete-btn");
 
 const audioInputEl = document.getElementById("audio-input");
 const judulInputEl = document.getElementById("judul-input");
@@ -139,6 +140,33 @@ imageInputEl.addEventListener("change", (e) => {
   }
 });
 
+// Handle delete
+deleteButtonEl &&
+  deleteButtonEl.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const idPodcast = new URLSearchParams(window.location.search).get(
+      "id_podcast"
+    );
+
+    if (confirm("Are you sure?") === false) {
+      return;
+    }
+
+    const xhr1 = new XMLHttpRequest();
+    xhr1.open("DELETE", `/public/dashboard/podcast?id_podcast=${idPodcast}`);
+    xhr1.send(null);
+
+    xhr1.onreadystatechange = function () {
+      if (xhr1.readyState === 4 && xhr1.status === 200) {
+        showSuccessToast("Podcast deleted successfully!");
+        setTimeout(() => {
+          window.location.replace(`http://localhost:8080/public/dashboard`);
+        }, 1000);
+      }
+    };
+  });
+
 // Handle submit form
 saveButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
@@ -209,11 +237,7 @@ saveButtonEl.addEventListener("click", (e) => {
       idEpisode = new URLSearchParams(window.location.search).get("id_episode");
       idPodcast = new URLSearchParams(window.location.search).get("id_podcast");
 
-      if (!idPodcast || !idPodcast) {
-        showErrorToast("Invalid URL");
-        return;
-      }
-      if (!idEpisode) {
+      if (!idPodcast || !idEpisode) {
         showErrorToast("Invalid URL");
         return;
       }
@@ -290,21 +314,40 @@ saveButtonEl.addEventListener("click", (e) => {
 
     // Handle edit podcast
     case "edit-podcast":
-      if (!category) {
-        showErrorToast("Category must be provided");
+      idPodcast = new URLSearchParams(window.location.search).get("id_podcast");
+
+      if (!idPodcast) {
+        showErrorToast("Invalid URL");
         return;
       }
 
-      xhr.open("PUT", "/public/dashboard/podcast");
+      if (confirm("Save changes?") === false) {
+        return;
+      }
+
+      xhr.open("POST", "/public/dashboard/edit-podcast");
       xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+        if (xhr.readyState === 4 && xhr.status === 201) {
+          showSuccessToast("Podcast updated successfully!");
+          setTimeout(() => {
+            window.location.replace(
+              `http://localhost:8080/public/dashboard/main?id_podcast=${idPodcast}`
+            );
+          }, 1000);
         }
       };
 
-      formData.append("audioFile", audioFile);
-      formData.append("imageFile", imageFile);
-      formData.append("title", title);
-      formData.append("description", description);
+      if (imageFile) {
+        formData.append("updateCover", true);
+        formData.append("imageFile", imageFile);
+      }
+
+      formData.append("idPodcast", idPodcast);
+      formData.append("title", title || judulInputEl.placeholder);
+      formData.append(
+        "description",
+        description || descriptionInputEl.placeholder
+      );
 
       xhr.send(formData);
       break;

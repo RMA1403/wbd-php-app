@@ -116,4 +116,34 @@ class PodcastModel
 
     $this->db->execute();
   }
+
+  public function updatePodcast($id_podcast, $title, $description, $image_url)
+  {
+    $query = "
+      UPDATE podcast
+      SET title=:title, description=:description, url_thumbnail=:url_thumbnail
+      WHERE id_podcast=:id_podcast
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("title", $title);
+    $this->db->bind("description", $description);
+    $this->db->bind("url_thumbnail", $image_url);
+    $this->db->bind("id_podcast", $id_podcast);
+
+    $this->db->execute();
+  }
+
+  public function deletePodcast($idPodcast)
+  {
+    $query = "
+      DELETE FROM podcast
+      WHERE id_podcast = :idPodcast
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("idPodcast", $idPodcast);
+
+    $this->db->execute();
+  }
 }

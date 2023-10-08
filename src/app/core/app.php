@@ -12,12 +12,15 @@ class App
     $router->get("public/dashboard/main", new GetDashboardLayoutController());
     $router->get("public/dashboard/episode", new GetDashboardLayoutController());
     $router->get("public/dashboard/add-episode", new GetAddEpisodeController());
+    $router->get("public/dashboard/edit-episode", new GetEditEpisodeController());
 
     // Dashboard data-fetching routes
     $router->get("public/dashboard/internal/main", new GetDashboardMainController());
     $router->get("public/dashboard/internal/episode", new GetDashboardEpisodeController());
-    $router->post("public/dashboard/episode", new PostAddEpisodeController());
+    $router->post("public/dashboard/add-episode", new PostAddEpisodeController());
+    $router->post("public/dashboard/edit-episode", new PostEditEpisodeController());
     $router->get("public/dashboard/user-podcast", new GetUserPodcastController());
+    $router->delete("public/dashboard/episode", new DeleteEpisodeController());
 
     $router->get("public/home", new GetHomeController());
     $router->get("public/search", new GetSearchController());

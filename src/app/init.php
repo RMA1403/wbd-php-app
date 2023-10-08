@@ -10,8 +10,11 @@ require_once __DIR__ . "/controllers/dashboard/get_layout.php";
 require_once __DIR__ . "/controllers/dashboard/get_main.php";
 require_once __DIR__ . "/controllers/dashboard/get_episode.php";
 require_once __DIR__ . "/controllers/dashboard/get_add_episode.php";
+require_once __DIR__ . "/controllers/dashboard/get_edit_episode.php";
 require_once __DIR__ . "/controllers/dashboard/post_add_episode.php";
+require_once __DIR__ . "/controllers/dashboard/post_edit_episode.php";
 require_once __DIR__ . "/controllers/dashboard/get_user_podcast.php";
+require_once __DIR__ . "/controllers/dashboard/delete_episode.php";
 
 require_once __DIR__ . "/controllers/home/get_home.php";
 require_once __DIR__ . "/controllers/login/get_login.php";

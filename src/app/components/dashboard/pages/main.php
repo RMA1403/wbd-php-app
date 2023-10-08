@@ -45,10 +45,10 @@
         <?php endforeach; ?>
       </ul>
 
-      <a href="/public/dashboard/episodes">
+      <button id="all-episode-btn">
         <p class="sh5">Lihat Semua Episode</p>
         <img src="<?= BASE_URL ?>/images/dashboard/right_arrow.svg" alt="">
-      </a>
+      </button>
     </div>
   </div>
 </section>

@@ -11,12 +11,14 @@
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/pages/episode.css">
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/components/button.css">
 
-  <script type="text/javascript" src="<?= BASE_URL ?>/javascript/dashboard/layout.js" defer></script>
+  <script type="module" src="<?= BASE_URL ?>/javascript/dashboard/layout.js" defer></script>
+  <script type="module" src="<?= BASE_URL ?>/javascript/toast.mjs" defer></script>
   <title>Main Dashboard</title>
 </head>
 
 <body>
   <?php include(dirname(__DIR__) . "/common/sidebar.php") ?>
+  <?php include(dirname(__DIR__) . "/common/toast.php") ?>
 
   <main>
     <div class="dashboard-nav">

@@ -119,13 +119,13 @@
   font-size: 10px;
   margin-top: 4px;
 }
-.episodes-container a {
+.episodes-container #all-episode-btn {
   display: flex;
   gap: 8px;
   align-items: center;
   margin-top: 64px;
 }
-.episodes-container a .sh5 {
+.episodes-container #all-episode-btn .sh5 {
   color: var(--PINK-1);
 }
 .episodes-container a img {

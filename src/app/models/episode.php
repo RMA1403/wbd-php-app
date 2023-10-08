@@ -38,7 +38,8 @@ class EpisodeModel
     return $episodes;
   }
 
-  public function saveEpisode($id_podcast, $title, $description, $image_url, $audio_url) {
+  public function saveEpisode($id_podcast, $title, $description, $image_url, $audio_url)
+  {
     $query = "
       INSERT INTO episode (title, description, url_thumbnail, url_audio, id_podcast)
       VALUES (:title, :description, :url_thumbnail, :url_audio, :id_podcast)
@@ -50,6 +51,50 @@ class EpisodeModel
     $this->db->bind("url_thumbnail", $image_url);
     $this->db->bind("url_audio", $audio_url);
     $this->db->bind("id_podcast", $id_podcast);
+
+    $this->db->execute();
+  }
+
+  public function getById($idEpisode)
+  {
+    $query = "
+      SELECT * FROM episode
+      WHERE id_episode = :id_episode
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("id_episode",  $idEpisode);
+    $episode = $this->db->fetch();
+
+    return $episode;
+  }
+
+  public function updateEpisode($id_episode, $title, $description, $image_url)
+  {
+    $query = "
+      UPDATE episode
+      SET title=:title, description=:description, url_thumbnail=:url_thumbnail
+      WHERE id_episode=:id_episode
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("title", $title);
+    $this->db->bind("description", $description);
+    $this->db->bind("url_thumbnail", $image_url);
+    $this->db->bind("id_episode", $id_episode);
+
+    $this->db->execute();
+  }
+
+  public function deleteEpisode($idEpisode)
+  {
+    $query = "
+      DELETE FROM episode
+      WHERE id_episode = :idEpisode
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("idEpisode", $idEpisode);
 
     $this->db->execute();
   }

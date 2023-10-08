@@ -1,6 +1,6 @@
 "use strict";
 
-import { showErrorToast } from "../toast.mjs";
+import { showErrorToast, showSuccessToast } from "../toast.mjs";
 
 // Constants
 const JUDUL_MAX_COUNT = 50;
@@ -8,7 +8,7 @@ const DESCRIPTION_MAX_COUNT = 1000;
 
 // Get DOM elements
 const formEl = document.getElementById("input-form");
-const overlayEl = document.getElementById("overlay");
+const overlayEl = document.getElementById("overlay-form");
 
 const audioInputButtonEl = document.getElementById("audio-input-btn");
 const cancelFileButtonEl = document.getElementById("cancel-file-btn");
@@ -143,7 +143,9 @@ imageInputEl.addEventListener("change", (e) => {
 saveButtonEl.addEventListener("click", (e) => {
   e.preventDefault();
 
-  console.log();
+  let idPodcast;
+  let idUser;
+  let idEpisode;
 
   const audioFile = audioInputEl?.files[0];
   const imageFile = imageInputEl?.files[0];
@@ -154,18 +156,12 @@ saveButtonEl.addEventListener("click", (e) => {
   const formData = new FormData();
   const xhr = new XMLHttpRequest();
 
-  if (!title) {
-    showErrorToast("Title must be provided");
-    return;
-  }
-
   switch (formEl.dataset.formType) {
     // Handle add new episode
     case "add-episode":
-      const idPodcast = new URLSearchParams(window.location.search).get(
-        "id_podcast"
-      );
-      if (!idPodcast) {
+      idPodcast = new URLSearchParams(window.location.search).get("id_podcast");
+      idUser = new URLSearchParams(window.location.search).get("id_user");
+      if (!idPodcast || !idUser) {
         showErrorToast("Invalid URL");
         return;
       }
@@ -175,14 +171,29 @@ saveButtonEl.addEventListener("click", (e) => {
         return;
       }
 
+      if (!title) {
+        showErrorToast("Title must be provided");
+        return;
+      }
+
       if (!imageFile) {
         showErrorToast("Cover image must be provided");
         return;
       }
 
-      xhr.open("POST", "/public/dashboard/episode");
+      if (confirm("Save changes?") === false) {
+        return;
+      }
+
+      xhr.open("POST", "/public/dashboard/add-episode");
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 201) {
+          showSuccessToast("Episode added successfully!");
+          setTimeout(() => {
+            window.location.replace(
+              `http://localhost:8080/public/dashboard/episode?id_user=${idUser}&id_podcast=${idPodcast}`
+            );
+          }, 1000);
         }
       };
 
@@ -197,16 +208,46 @@ saveButtonEl.addEventListener("click", (e) => {
 
     // Handle edit episode
     case "edit-episode":
-      xhr.open("PUT", "/public/dashboard/episode");
+      idEpisode = new URLSearchParams(window.location.search).get("id_episode");
+      idUser = new URLSearchParams(window.location.search).get("id_user");
+      idPodcast = new URLSearchParams(window.location.search).get("id_podcast");
+
+      if (!idPodcast || !idUser || !idPodcast) {
+        showErrorToast("Invalid URL");
+        return;
+      }
+      if (!idEpisode) {
+        showErrorToast("Invalid URL");
+        return;
+      }
+
+      if (confirm("Save changes?") === false) {
+        return;
+      }
+
+      xhr.open("POST", "/public/dashboard/edit-episode");
       xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+        if (xhr.readyState === 4 && xhr.status === 201) {
+          showSuccessToast("Episode updated successfully!");
+          setTimeout(() => {
+            window.location.replace(
+              `http://localhost:8080/public/dashboard/episode?id_user=${idUser}&id_podcast=${idPodcast}`
+            );
+          }, 1000);
         }
       };
 
-      formData.append("audioFile", audioFile);
-      formData.append("imageFile", imageFile);
-      formData.append("title", title);
-      formData.append("description", description);
+      if (imageFile) {
+        formData.append("updateCover", true);
+        formData.append("imageFile", imageFile);
+      }
+
+      formData.append("idEpisode", idEpisode);
+      formData.append("title", title || judulInputEl.placeholder);
+      formData.append(
+        "description",
+        description || descriptionInputEl.placeholder
+      );
 
       xhr.send(formData);
       break;

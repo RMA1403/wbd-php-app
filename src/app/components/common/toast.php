@@ -5,4 +5,4 @@
   </button>
 </aside>
 
-<div id="overlay" class="overlay hidden"></div>
+<div id="overlay-toast" class="overlay hidden"></div>

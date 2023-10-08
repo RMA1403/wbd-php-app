@@ -2,7 +2,7 @@
 
 // Get toast element
 const toastEl = document.getElementById("toast");
-const overlayEl = document.getElementById("overlay");
+const overlayEl = document.getElementById("overlay-toast");
 const toastCloseButtonEl = document.getElementById("toast-close-btn");
 
 export function forceHideToast() {

@@ -1,6 +1,6 @@
 <?php
 
-class GetUserPodcastController
+class DeleteEpisodeController
 {
   public function call()
   {
@@ -22,21 +22,23 @@ class GetUserPodcastController
       return;
     }
 
-    $podcastModel = new PodcastModel();
-    $podcasts = $podcastModel->getUserPodcasts($_GET["id_user"]) ?? [];
-    $podcast = count($podcasts) > 0 ? $podcasts[0] : null;
-
-    if (!$podcast) {
-      http_response_code(500);
+    // Check for episode id
+    if (!isset($_GET["id_episode"])) {
+      http_response_code(400);
       header("Content-Type: application/json");
-      echo json_encode(["message" => "user doesnt have any podcast"]);
+      echo json_encode(["message" => "missing episode id"]);
 
       return;
     }
 
+    $episodeModel = new EpisodeModel();
+    $oldEpisode = $episodeModel->getById($_GET["id_episode"]);
+    $episodeModel->deleteEpisode($_GET["id_episode"]);
+    unlink(__DIR__ . "/../../storage" . $oldEpisode->url_thumbnail);
+
     http_response_code(200);
     header("Content-Type: application/json");
-    echo json_encode(["podcast" => $podcast]);
+    echo json_encode(["message" => "success"]);
 
     return;
   }

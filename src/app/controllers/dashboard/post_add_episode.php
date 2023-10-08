@@ -4,6 +4,15 @@ class PostAddEpisodeController
 {
   public function call()
   {
+    session_start();
+    if (!isset($_SESSION["user_id"])) {
+      http_response_code(403);
+      header("Content-Type: application/json");
+      echo json_encode(["message" => "unauthorized"]);
+
+      return;
+    }
+
     // Check for podcast id
     if (!isset($_POST["idPodcast"])) {
       http_response_code(400);
@@ -50,8 +59,8 @@ class PostAddEpisodeController
     $imageFileName = "/images/" . md5(uniqid(mt_rand(), true)) . IMAGE_MAP[$imageMimeType];
     move_uploaded_file($_FILES["imageFile"]["tmp_name"], __DIR__ . "/../../storage" . $imageFileName);
 
-    $episodeModle = new EpisodeModel();
-    $episodeModle->saveEpisode($_POST["idPodcast"], $_POST["title"], $_POST["description"], $imageFileName, $audioFileName);
+    $episodeModel = new EpisodeModel();
+    $episodeModel->saveEpisode($_POST["idPodcast"], $_POST["title"], $_POST["description"], $imageFileName, $audioFileName);
 
     http_response_code(201);
     header("Content-Type: application/json");

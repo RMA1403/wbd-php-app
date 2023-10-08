@@ -1,6 +1,6 @@
 <?php
 
-class DashboardAddEpisodeView
+class DashboardEpisodeFormView
 {
   public $data;
 
@@ -11,6 +11,6 @@ class DashboardAddEpisodeView
 
   public function render()
   {
-    require_once __DIR__ . "/../../components/dashboard/pages/add_episode.php";
+    require_once __DIR__ . "/../../components/dashboard/pages/episode_form.php";
   }
 }

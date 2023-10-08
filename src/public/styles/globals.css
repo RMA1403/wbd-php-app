@@ -341,6 +341,9 @@ h6 {
   height: 100vh;
   z-index: 100;
 }
+.hidden {
+  display: none !important;
+}
 
 .toast-green {
   background-color: #398044;
@@ -350,12 +353,6 @@ h6 {
 }
 .toast-red {
   background-color: #ed5c5c;
-}
-
-/* Profile section*/
-
-.login-button {
-  background-color: var(--PINK-1);
 }
 
 .profile-section {

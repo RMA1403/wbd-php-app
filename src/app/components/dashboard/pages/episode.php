@@ -13,19 +13,19 @@
         </div>
 
         <div>
-          <a href="">
+          <a href="<?= BASE_URL ?>/dashboard/edit-episode?id_user=<?= $this->data["id_user"] ?? "" ?>&id_podcast=<?= $this->data["id_podcast"] ?>&id_episode=<?= $episode->id_episode ?>">
             <div>
               <img src="<?= BASE_URL ?>/images/dashboard/edit_icon.svg" alt="">
               <p>Edit</p>
             </div>
           </a>
 
-          <a href="">
+          <button data-id="<?= $episode->id_episode ?>" class="delete-episode-btn">
             <div>
               <img src="<?= BASE_URL ?>/images/dashboard/trash_icon.svg" alt="">
               <p>Delete</p>
             </div>
-          </a>
+          </button>
         </div>
       </li>
     <?php endforeach; ?>

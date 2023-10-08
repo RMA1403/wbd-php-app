@@ -48,7 +48,7 @@ class UserModel
   }
 
   public function insertUser($fullname, $username, $password, $isAdmin)
-  { 
+  {
     $url_profpic = "/images/default-profpic.jpeg";
     $query = "INSERT INTO user( name, username, password, url_profpic, is_admin)
               VALUES

@@ -483,3 +483,10 @@ h6 {
   padding: 10px 30px;
   border-radius: 70px;
 }
+
+@media (max-width: 768px) {
+  #toast {
+    width: 80vw;
+    justify-content: space-between;
+  }
+}

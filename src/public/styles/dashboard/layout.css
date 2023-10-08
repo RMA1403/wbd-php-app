@@ -22,3 +22,9 @@
   color: var(--PINK-1);
   border-bottom: 5px var(--PINK-1) solid;
 }
+
+@media (max-width: 768px) {
+  .dashboard-nav > div {
+    justify-content: center;
+  }
+}

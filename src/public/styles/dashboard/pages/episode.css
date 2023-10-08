@@ -51,12 +51,12 @@
   align-items: center;
   gap: 16px;
 }
-.episode-list ul li > div:last-child > div:first-child img {
+.episode-list ul li > div:last-child > a > div:first-child img {
   width: 16px;
   height: auto;
   aspect-ratio: 1/1;
 }
-.episode-list ul li > div:last-child > div:first-child > p {
+.episode-list ul li > div:last-child > a > div:first-child > p {
   font-size: 16px;
   font-weight: 700;
 }
@@ -70,4 +70,41 @@
   font-size: 16px;
   font-weight: 700;
   color: var(--ORANGE);
+}
+
+@media (max-width: 768px) {
+  .episode-list {
+    padding: 32px 0 174px;
+  }
+  .episode-list ul li {
+    padding: 16px 24px;
+  }
+  .episode-list > div {
+    justify-content: center;
+  }
+  .episode-list p {
+    font-size: 12px !important;
+  }
+  .episode-list ul li > div:first-child .episode-number {
+    font-size: 16px;
+    width: 18px;
+  }
+
+  .episode-list ul li > div:first-child > img {
+    width: 50px;
+    margin-left: 8px;
+    margin-right: 16px;
+  }
+
+  .episode-list ul li > div:last-child {
+    gap: 16px;
+  }
+  .episode-list ul li > div:last-child div {
+    gap: 8px;
+  }
+
+  .episode-list ul li > div:last-child > a > div:first-child img,
+  .delete-episode-btn img {
+    width: 12px;
+  }
 }

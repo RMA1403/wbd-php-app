@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <?php include(dirname(__DIR__) . "/common/sidebar.php") ?>
+  <!-- <?php include(dirname(__DIR__) . "/common/sidebar.php") ?> -->
   <?php include(dirname(__DIR__) . "/common/toast.php") ?>
 
   <main>

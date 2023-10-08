@@ -30,7 +30,7 @@
 
     <!-- Episodes list -->
     <div class="episodes-container">
-      <p class="sh4">Terakhir Diupload</p>
+      <p class="sh4">Your Episodes</p>
 
       <ul>
         <?php foreach ($this->data["episodes"] as $episode) : ?>

@@ -16,13 +16,7 @@ class GetEditEpisodeController
 
     $episodeModel = new EpisodeModel();
 
-    $userId = "";
-    if (!isset($_GET["id_user"])) {
-      (new NotFoundController())->call();
-      return;
-    } else {
-      $userId = $_GET["id_user"];
-    }
+    $userId = $_SESSION["user_id"];
 
     $idPodcast = "";
     if (!isset($_GET["id_podcast"])) {

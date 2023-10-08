@@ -13,15 +13,6 @@ class DeleteEpisodeController
       return;
     }
 
-    // Check for user id
-    if (!isset($_GET["id_user"])) {
-      http_response_code(400);
-      header("Content-Type: application/json");
-      echo json_encode(["message" => "missing user id"]);
-
-      return;
-    }
-
     // Check for episode id
     if (!isset($_GET["id_episode"])) {
       http_response_code(400);

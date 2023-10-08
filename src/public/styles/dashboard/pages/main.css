@@ -133,3 +133,23 @@
   height: auto;
   aspect-ratio: 10/14;
 }
+
+@media (max-width: 768px) {
+  .dashboard-content,
+  .card-header-container {
+    flex-direction: column;
+  }
+
+  .podcast-card {
+    width: 100%;
+  }
+  .podcast-card .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .episodes-container {
+    width: 100%
+  }
+}

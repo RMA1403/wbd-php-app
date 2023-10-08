@@ -98,4 +98,17 @@ class EpisodeModel
 
     $this->db->execute();
   }
+
+  public function getByPodcastId($idPodcast)
+  {
+    $query = "
+      SELECT * FROM episode
+      WHERE id_podcast = :idPodcast
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("idPodcast", $idPodcast);
+
+    return $this->db->fetchAll();
+  }
 }

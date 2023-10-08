@@ -174,10 +174,11 @@ h6 {
   align-items: center;
   min-width: 256px;
   max-width: 256px;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 32px;
   left: 0;
   background-color: var(--GRAY-600);
+  flex-grow: 1;
 }
 
 .sidebar-container {
@@ -488,5 +489,25 @@ h6 {
   #toast {
     width: 80vw;
     justify-content: space-between;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    min-width: 100vw;
+    min-height: fit-content;
+    bottom: 110px;
+    padding: 8px 0;
+    border-bottom: 1px var(--PINK-1) solid;
+  }
+  .sidebar .sidebar-container {
+    flex-direction: row;
+    max-width: none;
+  }
+  .sidebar .sidebar-container .sh5 {
+    display: none;
+  }
+  .sidebar .sidebar-container .sidebar-item {
+    padding-right: 14px;
   }
 }

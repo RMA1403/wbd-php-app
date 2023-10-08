@@ -21,6 +21,10 @@ require_once __DIR__ . "/controllers/dashboard/get_edit_podcast.php";
 require_once __DIR__ . "/controllers/dashboard/post_edit_podcast.php";
 require_once __DIR__ . "/controllers/dashboard/delete_podcast.php";
 
+require_once __DIR__ . "/controllers/podcast/get_page.php";
+
+require_once __DIR__ . "/controllers/logout/logout.php";
+
 require_once __DIR__ . "/controllers/home/get_home.php";
 require_once __DIR__ . "/controllers/login/get_login.php";
 require_once __DIR__ . "/controllers/login/post_login.php";

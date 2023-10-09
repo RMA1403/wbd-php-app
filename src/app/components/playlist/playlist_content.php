@@ -4,15 +4,17 @@
     <div class="user-playlist">
         <?php foreach ($this->data as $podcast): ?>
             <div class="playlist">
-                <img class="thumbnail" src="<?= STORAGE_URL . $podcast['url_thumbnail'] ?>" alt="image">
+                <a href="<?= BASE_URL . "/podcast?id_podcast=" . $podcast['id_podcast']?>">
+                    <img class="thumbnail" src="<?= STORAGE_URL . $podcast['url_thumbnail'] ?>" alt="image">
+                </a>
                 <div class="info">
-                    <div class="sh5"><?=$playlist['title']?> </div>
+                    <div class="sh5"><?=$podcast['title']?> </div>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 <?php else : ?>
     <h5>
-        no results found.
+        your playlist is empty.
     </h5>
 <?php endif;?>

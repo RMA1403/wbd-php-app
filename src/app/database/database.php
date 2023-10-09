@@ -45,6 +45,7 @@ class Database
       }
       $this->statement->bindValue($param, $value, $type);
     } catch (PDOException $e) {
+      
       die($e->getMessage());
     }
   }

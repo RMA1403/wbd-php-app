@@ -47,6 +47,12 @@ navbar .dropbtn {
     gap: 10px;
 }
 
+.filter {
+    display: none;
+    align-items: center;
+    gap: 24px;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -65,14 +71,14 @@ navbar .dropbtn {
     cursor: pointer;
 }
 
-.genre-option {
+.dropdown-content .item {
     color: var(--WHITE);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content .genre-option:hover {
+.dropdown-content .item:hover {
     background-color: var(--GRAY-500);
 }
 
@@ -145,14 +151,26 @@ navbar .dropbtn {
     }
 }
 
+#sort {
+    display: none;
+    align-items: center;
+}
+
 @media (min-width: 1024px) {
     .podcast-list {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
+    #sort {
+        display: flex;
+    }
+
 }
 @media (min-width: 1280px) {
     .podcast-list {
         grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .filter {
+        display: flex;
     }
 }
 @media (min-width: 1440px) {

@@ -81,5 +81,9 @@
 @media (max-width: 768px) {
   .dashboard-nav > div {
     justify-content: center;
+    gap: 16px !important;
+  }
+  .dashboard-nav p {
+    font-size: 12px !important;
   }
 }

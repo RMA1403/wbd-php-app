@@ -206,3 +206,25 @@ option {
 #delete-btn {
   background-color: var(--ORANGE);
 }
+
+@media (max-width: 768px) {
+  #input-form {
+    width: 100%;
+  }
+  #change-cover-btn {
+    font-size: 10px !important;
+    padding: 16px 24px !important;
+  }
+  #save-btn,
+  #delete-btn {
+    padding: 8px 12px !important;
+  }
+  #save-btn p,
+  #delete-btn p {
+    font-size: 10px !important;
+  }
+  #save-btn img,
+  #delete-btn img {
+    height: 16px !important;
+  }
+}

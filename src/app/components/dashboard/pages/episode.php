@@ -31,7 +31,7 @@
     <?php endforeach; ?>
   </ul>
 
-  <ul style="display: flex; gap: 8px">
+  <ul style="display: flex; gap: 8px; justify-content: center">
     <?php foreach ($this->data["page_count"] as $idx => $episode) : ?>
       <li style="padding: 0; border: none;"><a style="padding: 8px; background-color: red" href="<?= BASE_URL ?>/dashboard/episode?id_podcast=<?= $this->data["id_podcast"] ?? "" ?>&page=<?= $idx + 1 ?>"><?= $idx + 1 ?></a></li>
     <?php endforeach; ?>

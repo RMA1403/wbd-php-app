@@ -18,6 +18,7 @@
                 <div class="sh5">Library</div>
             </div>
         </a>
+        <?php if (isset($_SESSION["role_id"] )) :?>
         <?php if ($_SESSION["role_id"] == 1) :?>
         <a href="<?= BASE_URL ?>/dashboard">
             <div class="sidebar-item">
@@ -25,6 +26,7 @@
                 <div class="sh5">Dashboard</div>
             </div>
         </a>
+        <?php endif;?>
         <?php endif;?>
 
     </div>

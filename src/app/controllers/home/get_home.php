@@ -5,6 +5,7 @@ class GetHomeController
   public function call()
   {
     session_start();
+    
     require_once __DIR__ . "/../../views/home/home_view.php";
     $data = [];
 
@@ -44,6 +45,7 @@ class GetHomeController
       $data["is_admin"] = $userInfo->is_admin;
     }
     
+
     $view = new HomeView($data);
     $view->render();
   }

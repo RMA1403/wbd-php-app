@@ -139,3 +139,15 @@ sortOptions.forEach(option => {
 sortButton.addEventListener('click', function() {
     sortContent.style.display = "block";
 })
+
+window.addEventListener('click', function(e) { 
+    if (!genreButton.contains(e.target)){
+        genreContent.style.display = "none";
+    }
+    if (!epsButton.contains(e.target)){
+        epsContent.style.display = "none";
+    }
+    if (!sortButton.contains(e.target)){
+        sortContent.style.display = "none";
+    }
+});

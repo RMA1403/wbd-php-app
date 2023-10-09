@@ -44,8 +44,6 @@ class Database
         }
       }
       $this->statement->bindValue($param, $value, $type);
-      print_r($type);
-      // print_r($this->statement);
     } catch (PDOException $e) {
       
       die($e->getMessage());
@@ -79,8 +77,6 @@ class Database
   {
     try {
       $this->execute();
-      var_dump($this->statement);
-      var_dump($this->statement->fetchAll(PDO::FETCH_OBJ));
       return $this->statement->fetchAll(PDO::FETCH_OBJ);
     } catch (PDOException $e) {
       die($e->getMessage());

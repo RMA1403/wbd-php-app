@@ -11,8 +11,8 @@ class GetHomeController
     // podcast Info
     $podcastModel = new PodcastModel();
     $epsId = "";
-    if (isset($_GET["eps_id"])) {
-      $epsId = $_GET["eps_id"];
+    if (isset($_SESSION["eps_id"])) {
+      $epsId = $_SESSION["eps_id"];
     }
     $podcastInfo = $podcastModel->getPodcastInfo($epsId);
     
@@ -22,7 +22,13 @@ class GetHomeController
       $data["podcast"] = $podcastInfo->name;
       $data["url_audio"] = $podcastInfo->url_audio;
     }
-    
+
+    $podcastTech = $podcastModel->getPodcastByGenre("technology");
+    if ($podcastTech){
+      var_dump($podcastTech);
+      $data["tech_podcasts"] = $podcastTech;
+    }
+
     // user info
     $userModel = new UserModel();
     $userId = "";

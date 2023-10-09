@@ -19,7 +19,26 @@
     <?php include(dirname(__DIR__) . "/common/profile.php")?>
     <main>
         <div class="main-content">
-            
+            <h4>TECHONOLOGY</h4>
+            <div class="podcast-list">
+            <?php if (isset($this->data["tech_podcasts"])): ?>
+                <div class="podcast-list">
+                    <?php foreach ($this->data["tech_podcasts"] as $podcast): ?>
+                        <div class="podcast">
+                            <img class="thumbnail" src="<?= STORAGE_URL . $podcast->url_thumbnail ?>" alt="image">
+                            <div class="info">
+                                <div class="sh5"><?=$podcast->title?> </div>
+                                <div class="b5"><?=$podcast->name?></div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else : ?>
+                <div class="sh4">
+                    &nbsp; no results found.
+                </div>
+            <?php endif;?>
+            </div>
         </div>
     </main>
     <?php include(dirname(__DIR__) . "/common/player.php")?>

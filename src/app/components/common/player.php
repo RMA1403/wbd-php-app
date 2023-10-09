@@ -44,26 +44,12 @@
             </div>
             <div class="hide-player">
                 <audio controls class="audio-player">
-                    <source src="<?= STORAGE_URL . $this->data["url_audio"] ?>" type="audio/mpeg">
+                    <source src="<?= STORAGE_URL . $this->data["url_audio"]?>" type="audio/mpeg">
                 </audio>
             </div>
         <? else : ?>
             <div class="sh3 caption">
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
-                bang login bang login bang login
+                play your favorite podcast!
             </div>
         <? endif;?>
     </div>

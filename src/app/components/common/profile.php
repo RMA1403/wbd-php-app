@@ -19,7 +19,7 @@
         </div>
         <div class="profile-menu">
             <div class="item b3" id="menu-profile">Profile</div>
-            <div class="item b3" id="logout">Log out</div>
+            <button class="item b3" id="logout">Log out</button>
         </div>
         <div class="edit-profile-back">
             <div class="edit-profile-container">
@@ -37,6 +37,20 @@
                 <button class="sh4">Submit</button>
             </div>
         </div>
-    <?php endif;?>
+<?php endif;?>
 </body>
+        <script>
+            const logoutBtn = document.getElementById("logout");
+            logoutBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/public/logout");
+                xhr.send()
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        window.location.replace("/public/login")
+                    }
+                }
+            })
+            </script>
 </html>

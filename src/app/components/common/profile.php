@@ -10,7 +10,7 @@
 <body>
     <?php if (!isset($this->data["username"])) : ?>
         <div class="profile-section login-button">
-            <h5>LOGIN</h5>
+            <h5><a href="<?= BASE_URL ?>/login">LOGIN</a></h5>
         </div>
     <?php else:?>
         <div class="profile-section profile" >

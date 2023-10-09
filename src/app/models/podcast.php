@@ -9,23 +9,78 @@ class PodcastModel
     $this->db = new Database();
   }
 
-  public function getAllPodcast($keyword, $genre)
+  public function getAllPodcast($keyword, $genre, $eps, $sort, $isAsc)
   {
+    $eps_new = "";
+    switch ($eps) {
+      case "eps-cat-1":
+        $eps_new = "COUNT(e) < 20";
+        break;
+      case "eps-cat-2":
+        $eps_new = "COUNT(e) BETWEEN 20 AND 50";
+        break;
+      case "eps-cat-3":
+        $eps_new = "COUNT(e) BETWEEN 50 AND 100";
+        break;
+      case "eps-cat-4":
+        $eps_new = "COUNT(e) > 100";
+        break;
+      default:
+        $eps_new = "COUNT(e) > -1";
+        break;
+    };
+
+    $sort_new = "";
+    //sort
+    switch ($sort) {
+      case "alphabet":
+        $sort_new = "p.title";
+        break;
+      case "sort":
+        $sort_new = "p.id";
+        break;
+      default:
+        $sort_new = "p.description";
+        break;
+    };
+
+    $isAsc_new = "";
+    //isAsc
+    switch ($isAsc) {
+      case "true":
+        $isAsc_new = "ASC";
+        break;
+      case "false":
+        $isAsc_new = "DESC";
+        break;
+      default:
+        $isAsc_new = "ASC";
+        break;
+    };
+
     $query =
-      "SELECT title, category, url_thumbnail, description, name 
-    FROM podcast 
-    NATURAL JOIN user
-    WHERE (title LIKE :search_value
-    OR name LIKE :search_value)
+      "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
+    FROM podcast AS p
+    NATURAL JOIN user AS u
+    INNER JOIN episode AS e ON p.id_podcast = e.id_podcast
+    WHERE (p.title LIKE :search_value
+    OR u.name LIKE :search_value)
+    GROUP BY p.title
+    HAVING :epsCount
+    ORDER BY :sort
     ";
 
     $queryByGenre =
-      "SELECT title, category, url_thumbnail, description, name 
-    FROM podcast 
-    NATURAL JOIN user
-    WHERE (title LIKE :search_value
-    OR name LIKE :search_value)
-    AND category = :genre
+      "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
+    FROM podcast p
+    NATURAL JOIN user u
+    INNER JOIN episode e ON p.id_podcast = e.id_podcast
+    WHERE (p.title LIKE :search_value
+    OR u.name LIKE :search_value
+    AND p.category = :genre)
+    GROUP BY p.title
+    HAVING :epsCount
+    ORDER BY :sort
     ";
 
     if ($genre == "") {
@@ -34,9 +89,16 @@ class PodcastModel
       $this->db->query($queryByGenre);
     }
     $this->db->bind("search_value", '%' . $keyword . '%');
+    $this->db->bind("sort", $sort_new . $isAsc_new);
+    $this->db->bind("epsCount", $eps_new);
     $this->db->bind("genre", $genre);
     $podcasts = $this->db->fetchAll();
 
+    // var_dump($keyword);
+    // var_dump($genre);
+    // var_dump($eps);
+    // var_dump($sort);
+    // var_dump($isAsc);
     return $podcasts;
   }
 

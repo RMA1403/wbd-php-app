@@ -4,6 +4,7 @@ class GetHomeController
 {
   public function call()
   {
+    session_start();
     require_once __DIR__ . "/../../views/home/home_view.php";
     $data = [];
 
@@ -25,8 +26,8 @@ class GetHomeController
     // user info
     $userModel = new UserModel();
     $userId = "";
-    if (isset($_GET["user_id"])) {
-      $userId = $_GET["user_id"];
+    if (isset($_SESSION["user_id"])) {
+      $userId = $_SESSION["user_id"];
     }
     $userInfo = $userModel->getUserInfo($userId);
 

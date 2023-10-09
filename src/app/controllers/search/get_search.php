@@ -12,7 +12,7 @@ class GetSearchController
     $epsId = "";
     if (isset($_GET["eps_id"])) {
       $epsId = $_GET["eps_id"];
-    }
+  }
     $podcastInfo = $podcastModel->getPodcastInfo($epsId);
     
     if ($podcastInfo){
@@ -35,7 +35,25 @@ class GetSearchController
       $genre = $_GET["genre"];
     }
 
-    $podcasts = $podcastModel->getAllPodcast($keyword, $genre);
+    // eps
+    $eps = "";
+    if (isset($_GET["eps"])) {
+      $eps = $_GET["eps"];
+    }
+
+    // sort
+    $sort = "";
+    if (isset($_GET["sort"])) {
+      $sort = $_GET["sort"];
+    }
+
+    // isAsc
+    $isAsc = "";
+    if (isset($_GET["isAsc"])) {
+      $isAsc = $_GET["isAsc"];
+    }
+
+    $podcasts = $podcastModel->getAllPodcast($keyword, $genre, $eps, $sort, $isAsc);
     // print_r($podcasts);
 
     if ($podcasts){

@@ -36,7 +36,6 @@ class PostSignupController
                 echo json_encode(["redirect_url" => BASE_URL . "/login"]);
                 exit;
             }else{
-                echo "HALO";
                 http_response_code(200);
                 exit;
             }

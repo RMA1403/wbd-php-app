@@ -24,6 +24,7 @@ class PostLoginController
             }else{
                 if(password_verify($password, $user['password'])){
                     $_SESSION["user_id"] = $user['id_user'];
+                    $_SESSION["eps_id"] = "";
                     http_response_code(201);
                     header('Content-type: application/json');
                     echo json_encode(["redirect_url" => BASE_URL . "/home"]);

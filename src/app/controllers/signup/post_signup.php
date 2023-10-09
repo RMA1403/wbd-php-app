@@ -19,13 +19,7 @@ class PostSignupController
             $admin = 1;
         }
 
-
         $model = new UserModel();
-        // $users = $model->getAllUsers();
-    
-        // $arrayUsers = json_decode(json_encode($users), true);
-        // $query = 'INSERT INTO user (name, username, password, is_admin)
-        //                     VALUES ($fullname, $username, $password, $isAdmin);' ;
 
         try {
             $rowAffected = $model->insertUser($fullname, $username, $password, $admin);
@@ -46,16 +40,6 @@ class PostSignupController
         };
         
     }
-
-
-    
-    
-    // $users = $model->getAllUsers();
-
-    // echo $users[0]->username;
-    // var_dump($users[0]);
-    // $array = json_decode(json_encode($users), true);
-    // var_dump($array);
     
 
   }

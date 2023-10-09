@@ -3,7 +3,7 @@
     <!-- Podcast Cards -->
     <div class="podcast-card">
       <div class="card-header-container">
-        <img class="podcast-thumbnail-img" src="<?= STORAGE_URL . ($this->data["podcast"]->url_thumbnail ?? "") ?>" alt="">
+        <img width="200" height="200" class="podcast-thumbnail-img" src="<?= STORAGE_URL . ($this->data["podcast"]->url_thumbnail ?? "") ?>" alt="">
 
         <div class="podcast-description">
           <div class="podcast-category">
@@ -35,7 +35,7 @@
       <ul>
         <?php foreach ($this->data["episodes"] as $episode) : ?>
           <li>
-            <img src="<?= STORAGE_URL . $episode->url_thumbnail ?>" alt="" />
+            <img width="49" height="49" src="<?= STORAGE_URL . $episode->url_thumbnail ?>" alt="" />
 
             <div>
               <p class="sh5"><?= $episode->title ?></p>

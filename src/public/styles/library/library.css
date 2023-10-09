@@ -1,0 +1,97 @@
+navbar {
+    position: fixed;
+    display: flex;
+    gap: 24px;
+    margin-left: 256px;
+    background-color: var(--BLACK);
+    top: 0;
+    width: 100%; 
+    height: 78px;
+    align-items: center;
+}
+
+.playlist-container {
+    width: 100%;
+    display: flex;
+    margin-top: 150px;
+    justify-content: center;
+    justify-self: auto;
+}
+
+.user-playlist {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    gap: 20px;
+}
+
+.playlist {
+    display: flex;
+    width: 166px;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: var(--GRAY-600);
+    gap: 16px;
+}
+
+
+.playlist .thumbnail {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+}
+
+.playlist .info {
+    white-space: nowrap; 
+    padding: 0 5px;
+    margin-bottom: 10px;
+    width: 145px;
+}
+
+.playlist .info .sh5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+@media (min-width: 768px) {
+    .user-playlist {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .playlist .thumbnail {
+        object-fit: cover;
+        object-position: center;
+        border-radius: 10px;
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .user-playlist {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+@media (min-width: 1280px) {
+    .user-playlist {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+@media (min-width: 1440px) {
+    .user-playlist {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+@media (min-width: 1536px) {
+    .user-playlist {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+}
+
+

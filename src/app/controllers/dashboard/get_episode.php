@@ -35,13 +35,33 @@ class GetDashboardEpisodeController
       }
     }
 
-    $episodes = $episodeModel->getPodcastEpisodes($idPodcast);
+    $page = "";
+    if (!isset($_GET["page"])) {
+      (new NotFoundController())->call();
+      return;
+    } else {
+      $page = $_GET["page"];
+    }
+
+    $episodes = $episodeModel->getPodcastEpisodes($idPodcast, $page);
+    $allEpisodes = $episodeModel->getAllPodcastEpisodes($idPodcast);
+
+    $pageCount = [];
+    $count = 1;
+    foreach ($allEpisodes as $idx => $val) {
+      if ($idx % 4 == 0) {
+        $pageCount[] = null;
+        $count++;
+      }
+    }
 
     $data = [
       "episodes" => $episodes,
+      "page_count" => $pageCount,
       "url_thumbnail" => $episodes[0]->url_thumbnail ?? "",
       "id_user" => $userId,
       "id_podcast" => $idPodcast,
+      "page" => $page
     ];
 
     $view = new DashboardEpisodeView($data);

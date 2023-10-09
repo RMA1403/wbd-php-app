@@ -24,7 +24,25 @@ class EpisodeModel
     return $episodes;
   }
 
-  public function getPodcastEpisodes($podcast_id)
+  public function getPodcastEpisodes($podcast_id, $page)
+  {
+    $query = "
+      SELECT * FROM episode
+      WHERE id_podcast = :podcast_id
+      ORDER BY id_episode
+      LIMIT 4
+      OFFSET :offset
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("podcast_id", $podcast_id);
+    $this->db->bind("offset", ($page - 1) * 4);
+    $episodes = $this->db->fetchAll();
+
+    return $episodes;
+  }
+
+  public function getAllPodcastEpisodes($podcast_id)
   {
     $query = "
       SELECT * FROM episode

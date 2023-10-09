@@ -15,6 +15,7 @@ const urls = window.location.href.split("?")[0].split("/");
 let lastURL = urls[urls.length - 1];
 
 let idPodcast = new URLSearchParams(window.location.search).get("id_podcast");
+let page = new URLSearchParams(window.location.search).get("page");
 let podcasts = [];
 
 // Initial request to fetch user podcasts
@@ -51,7 +52,9 @@ xhr.onreadystatechange = () => {
     const xhr2 = new XMLHttpRequest();
     xhr2.open(
       "GET",
-      `/public/dashboard/internal/${lastURL}?id_podcast=${idPodcast}`
+      `/public/dashboard/internal/${lastURL}?id_podcast=${idPodcast}${
+        lastURL === "episode" ? `&page=${page || 1}` : ""
+      }`
     );
     xhr2.send(null);
 
@@ -79,7 +82,9 @@ xhr.onreadystatechange = () => {
     history.pushState(
       {},
       "",
-      `/public/dashboard/${lastURL}?id_podcast=${idPodcast}`
+      `/public/dashboard/${lastURL}?id_podcast=${idPodcast}${
+        lastURL === "episode" ? `&page=${page || 1}` : ""
+      }`
     );
   }
 };
@@ -106,14 +111,17 @@ function changeToEpisode() {
   history.pushState(
     {},
     "",
-    `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}`
+    `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}&page=1`
   );
 
   dashboardLink.classList.toggle("nav-active");
   episodeLink.classList.toggle("nav-active");
 
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", `/public/dashboard/internal/episode?id_podcast=${idPodcast}`);
+  xhr.open(
+    "GET",
+    `/public/dashboard/internal/episode?id_podcast=${idPodcast}&page=1`
+  );
   xhr.send(null);
 
   xhr.onreadystatechange = function () {
@@ -177,7 +185,7 @@ function handleDeleteEpisode(idEpisode) {
       const xhr2 = new XMLHttpRequest();
       xhr2.open(
         "GET",
-        `/public/dashboard/internal/episode?id_podcast=${idPodcast}`
+        `/public/dashboard/internal/episode?id_podcast=${idPodcast}&page=1`
       );
       xhr2.send(null);
 

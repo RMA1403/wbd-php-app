@@ -23,4 +23,18 @@ class PlaylistModel
     return $userPlaylist;
   }
 
+  public function getPlaylistPodcast($id_playlist)
+  {
+    $query = "
+    SELECT id_podcast FROM podcast_x_playlist
+    WHERE id_playlist = :id_playlist
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("id_playlist", $id_playlist);
+    $playlistPodcast = $this->db->fetchAll();
+
+    return $playlistPodcast;
+  }
+
 }

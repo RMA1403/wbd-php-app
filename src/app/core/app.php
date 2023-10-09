@@ -38,6 +38,7 @@ class App
     $router->get("public/signup", new GetSignupController());
     $router->post("public/signup", new PostSignupController());
     $router->get("public/library", new GetLibraryController());
+    $router->get("public/playlist", new GetPlaylistController());
 
     $router->directRequest($url);
   }

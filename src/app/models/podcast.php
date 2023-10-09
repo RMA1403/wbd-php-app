@@ -86,6 +86,19 @@ class PodcastModel
     return $podcasts;
   }
 
+  public function getPodcast($id_podcast) {
+    $query = "
+      SELECT * FROM podcast
+      WHERE id_podcast = :id_podcast
+    ";
+
+    $this->db->query($query);
+    $this->db->bind("id_podcast", $id_podcast);
+    $podcast = $this->db->fetchAll();
+
+    return $podcast;
+  }
+
   public function getById($idPodcast)
   {
     $query = "

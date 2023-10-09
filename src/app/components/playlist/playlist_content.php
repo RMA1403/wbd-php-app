@@ -2,11 +2,9 @@
 
 <?php if (!empty($this->data)): ?>
     <div class="user-playlist">
-        <?php foreach ($this->data as $playlist): ?>
+        <?php foreach ($this->data as $podcast): ?>
             <div class="playlist">
-                <a href="<?= BASE_URL . "/playlist?playlist_id=" . $playlist['id_playlist']?>">
-                    <img class="thumbnail" src="<?= STORAGE_URL . "/images/placeholder.jpeg" ?>" alt="image">
-                </a>
+                <img class="thumbnail" src="<?= STORAGE_URL . $podcast['url_thumbnail'] ?>" alt="image">
                 <div class="info">
                     <div class="sh5"><?=$playlist['title']?> </div>
                 </div>

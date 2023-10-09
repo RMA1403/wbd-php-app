@@ -34,6 +34,14 @@ Podcast Website (tanpa nama) ini adalah website yang dapat digunakan untuk mende
 3. Aplikasi web dapat dihentikan dengan menjalankan perintah `docker compose down` pada terminal directory aplikasi web.
 
 ## Screenshot Tampilan Aplikasi 
+![](./docs/login.png)
+![](./docs/profile.png)
+![](./docs/register.png)
+![](./docs/episodes.png)
+![](./docs/search_page.png)
+![](./docs/library.png)
+![](./docs/homepage.png)
+
 
 ## Pembagian Tugas (Server & Client Side)
 

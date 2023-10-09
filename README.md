@@ -1,12 +1,12 @@
 # Podcast Website
 
 ## Daftar Isi
-- Deskripsi Aplikasi *Web*
-- Daftar *Requirement* 
-- Cara Instalasi
-- Cara Menjalankan *Server*
-- Screenshot Tampilan Aplikasi
-- Pembagian Tugas 
+- [Deskripsi Aplikasi *Web*](#deskripsi-aplikasi-web)
+- [Daftar *Requirement*](#daftar-requirement) 
+- [Cara Instalasi](#cara-instalasi)
+- [Cara Menjalankan *Server*](#cara-menjalankan-server)
+- [Screenshot Tampilan Aplikasi](#screenshot-tampilan-aplikasi)
+- [Pembagian Tugas](#pembagian-tugas-server--client-side) 
 
 ## Deskripsi Aplikasi Web
 Podcast Website (tanpa nama) ini adalah website yang dapat digunakan untuk mendengarkan podcast. Website ini menerapkan konsep autentikasi pengguna, implementasi CRUD, searching, filter, pagination, dan responsivitas. 

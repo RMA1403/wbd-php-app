@@ -1,20 +1,51 @@
-## Panduan Pengerjaan
-Berikut adalah hal yang harus diperhatikan untuk pengumpulan tugas ini:
-1. Buatlah grup pada Gitlab dengan format "IF3110-2023-01-XX", dengan XX adalah nomor kelompok (untuk K1 dan K2) atau kode kelompok (untuk K3).
-2. Tambahkan anggota tim pada grup anda.
-3. **Fork** pada repository ini dengan organisasi yang telah dibuat.
-4. Ubah hak akses repository hasil Fork anda menjadi **private**.
-5. Hal-hal yang harus diperhatikan.
-    * Silakan commit pada repository anda (hasil fork)
-    * Lakukan beberapa commit dengan pesan yang bermakna, contoh: “add register form”, “fix logout bug”, jangan seperti “final”, “benerin dikit”, “fix bug”.
-    * Disarankan untuk tidak melakukan commit dengan perubahan yang besar karena akan mempengaruhi penilaian (contoh: hanya melakukan satu commit kemudian dikumpulkan).
-    * Commit dari setiap anggota tim akan mempengaruhi penilaian.
-    * Jadi, setiap anggota tim harus melakukan commit yang berpengaruh terhadap proses pembuatan aplikasi.
-    * Sebagai panduan bisa mengikuti [semantic commit](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716).
-6. Buatlah file README yang berisi:
-    * Deskripsi aplikasi web
-    * Daftar requirement
-    * Cara instalasi
-    * Cara menjalankan server
-    * Screenshot tampilan aplikasi (tidak perlu semua kasus, minimal 1 per halaman), dan 
-    * Penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian pembagian tugas).
+# Podcast Website
+
+## Daftar Isi
+- Deskripsi Aplikasi *Web*
+- Daftar *Requirement* 
+- Cara Instalasi
+- Cara Menjalankan *Server*
+- Screenshot Tampilan Aplikasi
+- Pembagian Tugas 
+
+## Deskripsi Aplikasi Web
+Podcast Website (tanpa nama) ini adalah website yang dapat digunakan untuk mendengarkan podcast. Website ini menerapkan konsep autentikasi pengguna, implementasi CRUD, searching, filter, pagination, dan responsivitas. 
+
+## Daftar *Requirement*
+1. Login
+2. Register
+3. Home
+4. Search, Sort, dan Filter
+5. Tambah Podcast
+6. Tambah Episode
+7. Edit Podcast
+8. Pemutar Podcast
+9. Library
+10. User Profile
+
+## Cara Instalasi
+1. Lakukan pengunduhan repository ini dengan menggunakan perintah `git clone https://gitlab.informatika.org/if3110-2023-01-19/tugas-besar-1.git` pada terminal komputer Anda.
+2. Pastikan komputer Anda telah menginstalasi dan menjalankan aplikasi Docker.
+3. Buatlah sebuah file `.env` yang bersesuaian dengan penggunaan 
+
+## Cara Menjalankan *Server*
+1. Anda dapat menjalankan program ini dengan menjalankan perintah `docker compose up` pada terminal directory aplikasi web.
+2. Aplikasi web dapat diakses dengan menggunakan browser pada URL `http://localhost:8080/public/home`. 
+3. Aplikasi web dapat dihentikan dengan menjalankan perintah `docker compose down` pada terminal directory aplikasi web.
+
+## Screenshot Tampilan Aplikasi 
+
+## Pembagian Tugas (Server & Client Side)
+
+| Fitur                     | NIM      | 
+| --------------------------| ---------|
+| Login                     | 13521079 |
+| Register                  | 13521079 |
+| Home                      | 13521149 |
+| Search, Sort, dan Filter  | 13521119 |
+| Tambah Podcast            | 13521149 |
+| Tambah Episode            | 13521149 |
+| Edit Podcast              | 13521149 |
+| Pemutar Podcast           | 13521119 |
+| Library                   | 13521079 |
+| User Profile              | 13521119 |

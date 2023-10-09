@@ -3,22 +3,16 @@
 class GetSignupController
 {
   public function call()
-  {
-    require_once __DIR__ . "/../../views/signup/signup.php";
-
-    // $model = new PodcastModel();
-    // $podcasts = $model->getAllPodcast();
-
-    // $podcast = $podcasts[0];
-    // $data = [
-    //   "title" => $podcast->title,
-    //   "category" => $podcast->category,
-    //   "url_thumbnail" => $podcast->url_thumbnail,
-    //   "description" => $podcast->description
-    // ];
+  { 
+    if(!isset($_SESSION['user_id'])){
+      require_once __DIR__ . "/../../views/signup/signup.php";
     
-    $data = [];
-    $view = new SignupView($data);
-    $view->render();
+      $data = [];
+      $view = new SignupView($data);
+      $view->render();
+    }else{
+      header("Location: " . BASE_URL . "/home");
+    }
+
   }
 }

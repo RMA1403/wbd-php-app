@@ -13,9 +13,4 @@ class PlaylistView
   {
     require_once __DIR__ . "/../../components/playlist/playlist.php";
   }
-
-  public function render_playlist()
-  {
-    require_once __DIR__ . "/../../components/playlist/playlist_content.php";
-  }
 }

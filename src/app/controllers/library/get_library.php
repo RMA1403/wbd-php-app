@@ -22,7 +22,7 @@ class GetLibraryController
         $view = new LibraryView($data);
         $view->render();
       }else{
-        header("Location: ");
+        header("Location:  ");
       }
     
   }

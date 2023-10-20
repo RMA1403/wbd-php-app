@@ -8,7 +8,7 @@ class PostSignupController
     require_once __DIR__ . "/../../models/user.php";
     session_start();
 
-    if(isset($_SESSION['user_id'])){
+    if(!isset($_SESSION['user_id'])){
 
         if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['fullname']) && isset($_POST['isAdmin'])){
     

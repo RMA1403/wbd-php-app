@@ -5,18 +5,28 @@ class GetEditPodcastController
   public function call()
   {
     session_start();
+
+    // Unauthenticated access protection
     if (!isset($_SESSION["user_id"])) {
-      http_response_code(403);
+      http_response_code(401);
       header("Location: " . BASE_URL . "/login");
+
+      return;
+    }
+
+    // Forbidden access protection
+    if (!isset($_SESSION["role_id"]) || !$_SESSION["role_id"]) {
+      http_response_code(403);
+      header("Location: " . BASE_URL . "/home");
 
       return;
     }
 
     require_once __DIR__ . "/../../views/dashboard/dash_form.php";
 
-    
+
     $userId = $_SESSION["user_id"];
-    
+
     $idPodcast = "";
     if (!isset($_GET["id_podcast"])) {
       (new NotFoundController())->call();
@@ -24,7 +34,7 @@ class GetEditPodcastController
     } else {
       $idPodcast = $_GET["id_podcast"];
     }
-    
+
     $podcastModel = new PodcastModel();
     $podcast = $podcastModel->getById($idPodcast);
     if (!$podcast || $podcast->id_podcast != $idPodcast) {

@@ -17,6 +17,8 @@
   <?php include(dirname(__DIR__) . "/common/toast.php") ?>
 
   <main>
+    <div id="overlay-library" class="overlay hidden"></div>
+
     <div class="podcast-card">
       <div class="card-header-container">
         <img class="podcast-thumbnail-img" src="<?= STORAGE_URL . ($this->data["podcast"]->url_thumbnail ?? "") ?>" alt="">
@@ -28,6 +30,23 @@
 
           <h3><?= $this->data["podcast"]->title ?? "" ?></h3>
           <p class="b5"><?= $this->data["podcast"]->description ?? "" ?></p>
+
+          <div class="library-container">
+            <button id="add-library-btn">
+              <img src="<?= BASE_URL ?>/images/dashboard/upload_icon.svg" alt="" />
+
+              <p>Add To Library</p>
+            </button>
+
+            <ul id="library-choices" class="hidden">
+              <?php foreach ($this->data["libraries"] as $library) : ?>
+                <!-- Ini sekarang pake li tapi ntar kalo mau diganti jadi button atau a bisa juga -->
+                <li>
+                  <p class="b3"><?= $library ?></p>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -45,19 +64,6 @@
             <button data-id="<?= $episode->id_episode ?>" class="play-button">
               <img src="<?= BASE_URL ?>/images/assets/play_icon.svg" alt="pause">
             </button>
-            <!-- <a href="<?= BASE_URL ?>/dashboard/edit-episode?id_podcast=<?= $this->data["id_podcast"] ?? "" ?>&id_episode=<?= $episode->id_episode ?>">
-              <div>
-                <img src="<?= BASE_URL ?>/images/dashboard/edit_icon.svg" alt="">
-                <p>Edit</p>
-              </div>
-            </a>
-
-            <button data-id="<?= $episode->id_episode ?>" class="delete-episode-btn">
-              <div>
-                <img src="<?= BASE_URL ?>/images/dashboard/trash_icon.svg" alt="">
-                <p>Delete</p>
-              </div>
-            </button> -->
           </div>
         </li>
       <?php endforeach; ?>

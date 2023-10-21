@@ -31,6 +31,55 @@
   font-weight: 700;
   text-transform: uppercase;
 }
+.podcast-card .library-container {
+  position: relative;
+  text-transform: capitalize;
+  width: fit-content;
+}
+.podcast-card #add-library-btn {
+  background-color: var(--PINK-1);
+  border-radius: 24px;
+  padding: 18px 24px 16px;
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+.podcast-card #add-library-btn p {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.podcast-card #add-library-btn img {
+  width: 16px;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+.podcast-card #library-choices {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(calc(100% + 8px));
+  background-color: var(--BLACK);
+  border: 1px var(--PINK-1) solid;
+  padding: 4px 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  z-index: 110;
+  box-shadow: 2px 2px 10px 0 var(--BLACK), -2px -2px 10px 0 var(--BLACK);
+  width: max-content;
+}
+.podcast-card #library-choices > li {
+  padding: 12px 24px;
+  border-bottom: 1px var(--PINK-1) solid;
+  cursor: pointer;
+}
+.podcast-card #library-choices > li > p {
+  width: auto;
+}
+.podcast-card #library-choices > li:last-child {
+  border-bottom: none;
+}
 
 .card-header-container {
   display: flex;

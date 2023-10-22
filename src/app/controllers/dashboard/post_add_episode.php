@@ -49,6 +49,15 @@ class PostAddEpisodeController
       return;
     }
 
+    // Check uploaded file size
+    if ($_FILES["audioFile"]["size"] > MAX_FILE_SIZE || $_FILES["imageFile"]["size"] > MAX_FILE_SIZE) {
+      http_response_code(400);
+      header("Content-Type: application/json");
+      echo json_encode(["message" => "file too large"]);
+
+      return;
+    }
+
     // Store audio file in server storage
     $audioMimeType = mime_content_type($_FILES["audioFile"]["tmp_name"]);
     $audioFileName = "/episodes/" . md5(uniqid(mt_rand(), true)) . AUDIO_MAP[$audioMimeType];

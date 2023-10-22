@@ -30,7 +30,8 @@ class GetPodcastPageController
 
     $data = [
       "podcast" => $podcast,
-      "episodes" => $episodes
+      "episodes" => $episodes,
+      "libraries" => ["Contoh Library 1", "Contoh Library 2", "Contoh Library 3"]
     ];
 
     $view = new PodcastPageView($data);

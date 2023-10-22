@@ -180,6 +180,16 @@ saveButtonEl.addEventListener("click", (e) => {
   const description = descriptionInputEl.value;
   const category = categoryInputEl?.value;
 
+  // Limit file size to only 10 MB
+  if (audioFile?.size > 10 * 1024 * 1024) {
+    showErrorToast("Audio file too large");
+    return;
+  }
+  if (imageFile?.size > 10 * 1024 * 1024) {
+    showErrorToast("Image file too large");
+    return;
+  }
+
   const formData = new FormData();
   const xhr = new XMLHttpRequest();
 

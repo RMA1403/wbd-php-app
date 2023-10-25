@@ -4,6 +4,7 @@ class GetPodcastPageController
 {
   public function call()
   {
+
     session_start();
     if (!isset($_SESSION["user_id"])) {
       http_response_code(403);
@@ -24,14 +25,17 @@ class GetPodcastPageController
 
     $podcastModel = new PodcastModel();
     $episodeModel = new EpisodeModel();
+    $playlistModel = new PlaylistModel();
 
     $podcast = $podcastModel->getById($idPodcast);
     $episodes = $episodeModel->getByPodcastId($idPodcast);
+    $playlists = $playlistModel->getUserPlaylist($_SESSION["user_id"]);
+
 
     $data = [
       "podcast" => $podcast,
       "episodes" => $episodes,
-      "libraries" => ["Contoh Library 1", "Contoh Library 2", "Contoh Library 3"]
+      "libraries" => $playlists, 
     ];
 
     $view = new PodcastPageView($data);

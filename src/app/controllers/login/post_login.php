@@ -4,8 +4,7 @@ class PostLoginController
 {
   public function call()
   {
-    require_once __DIR__ . "/../../views/login/login.php";
-    require_once __DIR__ . "/../../models/user.php";
+    // require_once __DIR__ . "/../../views/login/login.php";
     session_start();
 
     if(isset($_POST['username']) && isset($_POST['password'])){
@@ -15,7 +14,7 @@ class PostLoginController
                 
         $model = new UserModel();
         try{
-            $user = $model->getUser($_POST['username']);
+            $user = $model->getUser($username);
             $user = json_decode(json_encode($user), true);
 
             if(!$user){

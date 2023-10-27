@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
     <!-- Page-specific CSS -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/library/library.css">
+    <script type="module" src="<?= BASE_URL ?>/javascript/library/library.js" defer> </script>
+    
     <title>Playlist</title>
 </head>
 <body>
@@ -15,7 +17,7 @@
 
     
     <main>
-        <div class="playlist-container">
+        <div class="playlist-container" data-id="<?=$_GET["playlist_id"]?>">
             <?php include(dirname(__DIR__) . "/playlist/playlist_content.php")?>
         </div>
     </main>

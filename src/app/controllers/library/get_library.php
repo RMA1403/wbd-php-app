@@ -5,7 +5,6 @@ class GetLibraryController
   public function call()
   {
     require_once __DIR__ . "/../../views/library/library_view.php";
-    require_once __DIR__ . "/../../models/playlist.php";
 
     $data = [];
     session_start();
@@ -22,7 +21,7 @@ class GetLibraryController
         $view = new LibraryView($data);
         $view->render();
       }else{
-        header("Location:  ");
+        header("Location: " . BASE_URL . "/login");
       }
     
   }

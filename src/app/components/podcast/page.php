@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/podcast/style.css">
-  <script type="text/javascript" src="<?= BASE_URL ?>/javascript/podcast/script.js" defer>
+  <script type="module" src="<?= BASE_URL ?>/javascript/podcast/script.js" defer>
   </script>
   <title>Main Dashboard</title>
 </head>
@@ -38,11 +38,13 @@
               <p>Add To Library</p>
             </button>
 
-            <ul id="library-choices" class="hidden">
+            <ul id="library-choices" class="hidden" data-id-podcast="<?=$this->data["podcast"]->id_podcast ?>">
               <?php foreach ($this->data["libraries"] as $library) : ?>
                 <!-- Ini sekarang pake li tapi ntar kalo mau diganti jadi button atau a bisa juga -->
                 <li>
-                  <p class="b3"><?= $library ?></p>
+                  <p class="b3 playlist" 
+                  data-id="<?= $library->id_playlist?>">
+                  <?= $library->title ?></p>
                 </li>
               <?php endforeach; ?>
             </ul>

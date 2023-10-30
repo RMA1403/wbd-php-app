@@ -23,6 +23,8 @@ require_once __DIR__ . "/controllers/dashboard/delete_podcast.php";
 
 require_once __DIR__ . "/controllers/podcast/get_page.php";
 require_once __DIR__ . "/controllers/episode/post_play_episode.php";
+require_once __DIR__ . "/controllers/podcast/post_page.php";
+
 
 require_once __DIR__ . "/controllers/logout/logout.php";
 
@@ -32,6 +34,7 @@ require_once __DIR__ . "/controllers/login/post_login.php";
 
 require_once __DIR__ . "/controllers/library/get_library.php";
 require_once __DIR__ . "/controllers/playlist/get_playlist.php";
+require_once __DIR__ . "/controllers/playlist/post_playlist.php";
 require_once __DIR__ . "/controllers/library/get_library.php";
 require_once __DIR__ . "/controllers/signup/get_signup.php";
 require_once __DIR__ . "/controllers/signup/post_signup.php";
@@ -40,3 +43,4 @@ require_once __DIR__ . "/controllers/search/get_search.php";
 require_once __DIR__ . "/models/podcast.php";
 require_once __DIR__ . "/models/episode.php";
 require_once __DIR__ . "/models/user.php";
+require_once __DIR__ . "/models/playlist.php";

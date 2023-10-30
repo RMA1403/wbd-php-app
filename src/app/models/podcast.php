@@ -11,94 +11,85 @@ class PodcastModel
 
   public function getAllPodcast($keyword, $genre, $eps, $sort, $isAsc)
   {
-    $eps_new = "";
+    $epsMin = "";
+    $epsMax = "";
     switch ($eps) {
-      case "eps-cat-1":
-        $eps_new = "COUNT(e) < 20";
+      case "Less than 20 episodes":
+        $epsMin = "-1";
+        $epsMax = "20";
         break;
-      case "eps-cat-2":
-        $eps_new = "COUNT(e) BETWEEN 20 AND 50";
+      case "20-50 episodes":
+        $epsMin = "20";
+        $epsMax = "50";
         break;
-      case "eps-cat-3":
-        $eps_new = "COUNT(e) BETWEEN 50 AND 100";
+      case "50-100 episodes":
+        $epsMin = "50";
+        $epsMax = "100";
         break;
-      case "eps-cat-4":
-        $eps_new = "COUNT(e) > 100";
+      case "More than 100 episodes":
+        $epsMin = "100";
+        $epsMax = "999999999";
         break;
       default:
-        $eps_new = "COUNT(e) > -1";
+        $epsMin = "-1";
+        $epsMax = "999999999";
         break;
     };
-
-    $sort_new = "";
+      
     //sort
     switch ($sort) {
-      case "alphabet":
-        $sort_new = "p.title";
+      case "alphabetical":
+        $query =
+        "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
+        FROM podcast AS p
+        NATURAL JOIN user AS u
+        LEFT JOIN episode AS e ON p.id_podcast = e.id_podcast
+        WHERE (p.title LIKE :search_value
+        OR u.name LIKE :search_value)
+        AND p.category LIKE :genre
+        GROUP BY p.id_podcast
+        HAVING COUNT(e.id_episode) BETWEEN :epsMin AND :epsMax
+        ORDER BY p.title 
+        ";
         break;
-      case "sort":
-        $sort_new = "p.id";
+      case "date joined":
+        $query =
+        "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
+        FROM podcast AS p
+        NATURAL JOIN user AS u
+        LEFT JOIN episode AS e ON p.id_podcast = e.id_podcast
+        WHERE (p.title LIKE :search_value
+        OR u.name LIKE :search_value)
+        AND p.category LIKE :genre
+        GROUP BY p.id_podcast
+        HAVING COUNT(e.id_episode) BETWEEN :epsMin AND :epsMax
+        ORDER BY p.id_podcast 
+        ";
         break;
       default:
-        $sort_new = "p.description";
+        $query =
+        "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
+        FROM podcast AS p
+        NATURAL JOIN user AS u
+        LEFT JOIN episode e ON e.id_podcast=p.id_podcast 
+        WHERE (p.title LIKE :search_value
+        OR u.name LIKE :search_value)
+        AND p.category LIKE :genre
+        GROUP BY p.id_podcast
+        HAVING COUNT(e.id_episode) BETWEEN :epsMin AND :epsMax
+        ORDER BY p.description
+        ";
         break;
     };
+    
 
-    $isAsc_new = "";
-    //isAsc
-    switch ($isAsc) {
-      case "true":
-        $isAsc_new = "ASC";
-        break;
-      case "false":
-        $isAsc_new = "DESC";
-        break;
-      default:
-        $isAsc_new = "ASC";
-        break;
-    };
+    $this->db->query($query);
 
-    $query =
-      "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
-    FROM podcast AS p
-    NATURAL JOIN user AS u
-    INNER JOIN episode AS e ON p.id_podcast = e.id_podcast
-    WHERE (p.title LIKE :search_value
-    OR u.name LIKE :search_value)
-    GROUP BY p.title
-    HAVING :epsCount
-    ORDER BY :sort
-    ";
-
-    $queryByGenre =
-      "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
-    FROM podcast p
-    NATURAL JOIN user u
-    INNER JOIN episode e ON p.id_podcast = e.id_podcast
-    WHERE (p.title LIKE :search_value
-    OR u.name LIKE :search_value
-    AND p.category = :genre)
-    GROUP BY p.title
-    HAVING :epsCount
-    ORDER BY :sort
-    ";
-
-    if ($genre == "") {
-      $this->db->query($query);
-    } else {
-      $this->db->query($queryByGenre);
-    }
     $this->db->bind("search_value", '%' . $keyword . '%');
-    $this->db->bind("sort", $sort_new . $isAsc_new);
-    $this->db->bind("epsCount", $eps_new);
-    $this->db->bind("genre", $genre);
+    $this->db->bind("epsMin", $epsMin);
+    $this->db->bind("epsMax", $epsMax);
+    $this->db->bind("genre", $genre==""?'%':$genre);
     $podcasts = $this->db->fetchAll();
-
-    // var_dump($keyword);
-    // var_dump($genre);
-    // var_dump($eps);
-    // var_dump($sort);
-    // var_dump($isAsc);
     return $podcasts;
   }
 
@@ -148,18 +139,18 @@ class PodcastModel
     return $podcasts;
   }
 
-  public function getPodcast($id_podcast) {
-    $query = "
-      SELECT * FROM podcast
-      WHERE id_podcast = :id_podcast
-    ";
+  // public function getPodcast($id_podcast) {
+  //   $query = "
+  //     SELECT * FROM podcast
+  //     WHERE id_podcast = :id_podcast
+  //   ";
 
-    $this->db->query($query);
-    $this->db->bind("id_podcast", $id_podcast);
-    $podcast = $this->db->fetchAll();
+  //   $this->db->query($query);
+  //   $this->db->bind("id_podcast", $id_podcast);
+  //   $podcast = $this->db->fetchAll();
 
-    return $podcast;
-  }
+  //   return $podcast;
+  // }
 
   public function getById($idPodcast)
   {

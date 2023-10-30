@@ -313,7 +313,7 @@ h6 {
 .progress-bar::-webkit-slider-thumb {
   cursor: pointer;
   border-radius: 99px;
-  background-color: var(--PINK-1); /* Blue color with 100% opacity */
+  background-color: white; /* Blue color with 100% opacity */
   height: 14px;
   width: 14px;
 }

@@ -2,16 +2,27 @@
 
 // Get DOM elements
 const playButtonsEl = document.querySelectorAll(".play-button");
-const addLibraryButtonEl = document.getElementById("add-library-btn")
-const libraryChoicesEl = document.getElementById("library-choices")
-const overlayEl = document.getElementById("overlay-library")
+const addLibraryButtonEl = document.getElementById("add-library-btn");
+const libraryChoicesEl = document.getElementById("library-choices");
+const overlayEl = document.getElementById("overlay-library");
 
 // Handle play episode
 Array.from(playButtonsEl).forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
 
-    console.log(`play episode id: ${el.dataset.id}`);
+    const formData = new FormData();
+    formData.append("idEpisode", el.dataset.id);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "/public/episode/play");
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      }
+    };
+
+    xhr.send(formData);
   });
 });
 

@@ -28,6 +28,7 @@ class App
     $router->delete("public/dashboard/podcast", new DeletePodcastController());
 
     $router->get("public/podcast", new GetPodcastPageController());
+    $router->post("public/episode/play", new PostPlayEpisodeController());
 
     $router->post("public/logout", new LogoutController());
 

@@ -1,21 +1,23 @@
-version: '1.0'
+version: '3.9'
 services:
-  web:
+  php-app-web:
     build: .
     ports:
       - 8080:80
-    hostname: web-tubes-1
+    hostname: tubes-php-app
     env_file: .env
     volumes:
       - ./src:/var/www/html
     depends_on:
-      - db
-  db:
+      - php-app-db
+  php-app-db:
     image: mysql:latest
     restart: always
     ports: 
       - 3308:3307
-    hostname: db-tubes-1
+    expose:
+      - 3307
+    hostname: tubes-php-db
     env_file: .env
     volumes:
       - ./src/app/database/mysql:/docker-entrypoint-initdb.d/:ro

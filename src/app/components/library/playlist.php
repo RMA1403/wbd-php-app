@@ -15,6 +15,6 @@
     </div>
 <?php else : ?>
     <h5>
-        no results found.
+        you don't have any playlist.
     </h5>
 <?php endif;?>

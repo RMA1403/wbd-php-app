@@ -10,7 +10,8 @@ class GetLoginController
     
     if(isset($_SESSION['user_id'])){
       
-      header("Location: http://localhost:8080/public/home?user_id=" . $_SESSION['user_id']);
+      header("Location: " . BASE_URL . "/home?user_id=" . $_SESSION["user_id"]);
+      
     }else{
       $data = [];
       $view = new LoginView($data);

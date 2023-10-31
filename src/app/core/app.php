@@ -40,12 +40,21 @@ class App
     $router->delete("public/dashboard/podcast", new DeletePodcastController());
 
     $router->get("public/podcast", new GetPodcastPageController());
-    
+    $router->post("public/episode/play", new PostPlayEpisodeController());
+    $router->post("public/podcast", new PostPodcastPageController());
+
+
+    $router->post("public/logout", new LogoutController());
+
+    $router->get("public/home", new GetHomeController());
+    $router->get("public/search", new GetSearchController());
     $router->get("public/login", new GetLoginController());
     $router->post("public/login", new PostLoginController());
     $router->get("public/signup", new GetSignupController());
     $router->post("public/signup", new PostSignupController());
-    $router->post("public/logout", new LogoutController());
+    $router->get("public/library", new GetLibraryController());
+    $router->get("public/playlist", new GetPlaylistController());
+    $router->post("public/playlist", new PostPlaylistController());
 
     $router->directRequest($url);
   }

@@ -1,4 +1,12 @@
-.main-content {
+.comedy-content {
     display: flex;
+    flex-direction: column;
     padding: 100px 100px;
+}
+
+.podcast-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

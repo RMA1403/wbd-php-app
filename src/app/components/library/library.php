@@ -10,15 +10,10 @@
     <title>Library</title>
 </head>
 <body>
-    <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
-    <?php include(dirname(__DIR__) . "/common/profile.php")?>
-
-    
     <main>
         <div class="playlist-container">
             <?php include(dirname(__DIR__) . "/library/playlist.php")?>
         </div>
     </main>
-    <?php include(dirname(__DIR__) . "/common/player.php")?>
 </body>
 </html>

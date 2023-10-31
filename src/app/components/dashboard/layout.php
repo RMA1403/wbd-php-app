@@ -17,7 +17,6 @@
 </head>
 
 <body>
-  <?php include(dirname(__DIR__) . "/common/sidebar.php") ?>
   <?php include(dirname(__DIR__) . "/common/toast.php") ?>
 
   <div id="overlay-layout" class="overlay hidden"></div>
@@ -55,8 +54,6 @@
 
     <section id="dashboard-section"></section>
   </main>
-
-  <?php include(dirname(__DIR__) . "/common/player.php") ?>
 </body>
 
 </html>

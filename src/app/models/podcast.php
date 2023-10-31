@@ -95,7 +95,7 @@ class PodcastModel
 
   public function getPodcastByGenre($genre)
   {
-    $queryByGenre =
+    $query =
       "SELECT title, category, url_thumbnail, description, name 
     FROM podcast 
     NATURAL JOIN user
@@ -103,6 +103,7 @@ class PodcastModel
     LIMIT 7
     ";
 
+    $this->db->query($query);
     $this->db->bind("genre", $genre);
     $podcasts = $this->db->fetchAll();
 

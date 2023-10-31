@@ -7,8 +7,20 @@ class App
     $url = $this->parseURL();
     $router = new Router();
 
+    $router->get("public", new AppController());
+    $router->get("public/home", new AppController());
+    $router->get("public/search", new AppController());
+    $router->get("public/library", new AppController());
+    $router->get("public/playlist", new AppController());
+    $router->get("public/dashboard", new AppController());
+    
+    $router->get("public/components/home", new GetHomeController());
+    $router->get("public/components/search", new GetSearchController());
+    $router->get("public/components/library", new GetLibraryController());
+    $router->get("public/components/playlist", new GetPlaylistController());
+
     // Dashboard page routes
-    $router->get("public/dashboard", new GetDashboardLayoutController());
+    $router->get("public/components/dashboard", new GetDashboardLayoutController());
     $router->get("public/dashboard/main", new GetDashboardLayoutController());
     $router->get("public/dashboard/episode", new GetDashboardLayoutController());
     $router->get("public/dashboard/add-episode", new GetAddEpisodeController());
@@ -28,17 +40,12 @@ class App
     $router->delete("public/dashboard/podcast", new DeletePodcastController());
 
     $router->get("public/podcast", new GetPodcastPageController());
-
-    $router->post("public/logout", new LogoutController());
-
-    $router->get("public/home", new GetHomeController());
-    $router->get("public/search", new GetSearchController());
+    
     $router->get("public/login", new GetLoginController());
     $router->post("public/login", new PostLoginController());
     $router->get("public/signup", new GetSignupController());
     $router->post("public/signup", new PostSignupController());
-    $router->get("public/library", new GetLibraryController());
-    $router->get("public/playlist", new GetPlaylistController());
+    $router->post("public/logout", new LogoutController());
 
     $router->directRequest($url);
   }

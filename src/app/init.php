@@ -36,6 +36,8 @@ require_once __DIR__ . "/controllers/signup/get_signup.php";
 require_once __DIR__ . "/controllers/signup/post_signup.php";
 require_once __DIR__ . "/controllers/search/get_search.php";
 
+require_once __DIR__ . "/controllers/app/app_controller.php";
+
 require_once __DIR__ . "/models/podcast.php";
 require_once __DIR__ . "/models/episode.php";
 require_once __DIR__ . "/models/user.php";

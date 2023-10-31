@@ -15,11 +15,9 @@
     <title>Homepage</title>
 </head>
 <body>
-    <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
-    <?php include(dirname(__DIR__) . "/common/profile.php")?>
     <main>
-        <div class="main-content">
-            <h4>TECHONOLOGY</h4>
+        <div class="comedy-content">
+            <h4>COMEDY</h4>
             <div class="podcast-list">
             <?php if (isset($this->data["tech_podcasts"])): ?>
                 <div class="podcast-list">
@@ -41,6 +39,5 @@
             </div>
         </div>
     </main>
-    <?php include(dirname(__DIR__) . "/common/player.php")?>
 </body>
 </html>

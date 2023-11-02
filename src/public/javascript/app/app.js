@@ -15,8 +15,8 @@ getPage = (page) => {
     xhr.onreadystatechange = () => {
         if(xhr.readyState == 4 && xhr.status == 200) {
             mainSection.innerHTML = xhr.responseText;
-            handleSearch();
-            handleDashboard();
+            // handleSearch();
+            // handleDashboard();
         }
     }
 

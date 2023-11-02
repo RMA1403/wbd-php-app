@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Global CSS -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/search/search.css">
+
     <!-- Page CSS -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/Home.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/search/search.css">
     <!-- JavaScript Library -->
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/player.js" defer></script>
-    <script type="text/javascript" src="<?= BASE_URL ?>/javascript/dashboard/layout.js" defer></script>
+    <script type="module" src="<?= BASE_URL ?>/javascript/dashboard/layout.js" defer></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/util/debounce.js" defer></script>
-    <script type="text/javascript" src="<?= BASE_URL ?>/javascript/search/search.js" defer></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/app/app.js" defer></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,12 +22,16 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Spotify</title>
 </head>
+
 <body>
-    <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
-    <?php include(dirname(__DIR__) . "/common/profile.php")?>
+    <?php include(dirname(__DIR__) . "/common/toast.php") ?>
+
+    <?php include(dirname(__DIR__) . "/common/sidebar.php") ?>
+    <?php include(dirname(__DIR__) . "/common/profile.php") ?>
     <main id="main-section">
         <!-- Called by app.js -->
     </main>
-    <?php include(dirname(__DIR__) . "/common/player.php")?>
+    <?php include(dirname(__DIR__) . "/common/player.php") ?>
 </body>
+
 </html>

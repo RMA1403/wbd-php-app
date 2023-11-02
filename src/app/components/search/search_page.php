@@ -1,7 +1,7 @@
 <navbar>
     <!-- SEARCH BAR -->
     <div class="search-bar">
-            <img src="<?= BASE_URL ?>/images/assets/search_icon.svg" alt="home" width="24px" height="24px">
+        <img src="<?= BASE_URL ?>/images/assets/search_icon.svg" alt="home" width="24px" height="24px">
         <input id="search-input" type="text">
     </div>
 
@@ -32,15 +32,15 @@
                 <img src="<?= BASE_URL ?>/images/assets/arrow_down.svg" alt="home" width="12px" height="12px">
             </button>
             <div class="dropdown-content eps-content">
-                <div class="item eps-option" >All episodes</div>
-                <div class="item eps-option" >Less than 20 episodes</div>
-                <div class="item eps-option" >20-50 episodes</div>
-                <div class="item eps-option" >50-100 episodes</div>
-                <div class="item eps-option" >More than 100 episodes</div>
+                <div class="item eps-option">All episodes</div>
+                <div class="item eps-option">Less than 20 episodes</div>
+                <div class="item eps-option">20-50 episodes</div>
+                <div class="item eps-option">50-100 episodes</div>
+                <div class="item eps-option">More than 100 episodes</div>
             </div>
         </div>
     </div>
-    
+
     <!-- SORTING -->
     <div class="dropdown date" id="sort">
         <button class="dropbtn sort-button">
@@ -56,5 +56,6 @@
     </div>
 </navbar>
 <div class="result-container">
-    <?php include(dirname(__DIR__) . "/search/result.php")?>
+    <?php include(dirname(__DIR__) . "/search/result.php") ?>
 </div>
+<script type="text/javascript" src="<?= BASE_URL ?>/javascript/search/search.js" defer></script>

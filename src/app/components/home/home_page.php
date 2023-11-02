@@ -1,9 +1,9 @@
 <section>
     <div class="comedy-content">
         <h4>COMEDY</h4>
-        <div class="podcast-list">
+        <div class="home-podcast-list">
             <?php if (isset($this->data["tech_podcasts"])) : ?>
-                <div class="podcast-list">
+                <div class="home-podcast-list">
                     <?php foreach ($this->data["tech_podcasts"] as $podcast) : ?>
                         <div class="podcast">
                             <img class="thumbnail" src="<?= STORAGE_URL . $podcast->url_thumbnail ?>" alt="image">

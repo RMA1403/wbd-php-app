@@ -1,4 +1,4 @@
-const mainSection = document.querySelector('main');
+const mainSection = document.querySelector('#main-section');
 const sidebar = document.querySelector('.sidebar');
 
 const urls = window.location.href.split("?")[0].split("/");

@@ -7,16 +7,14 @@ class GetLoginController
     require_once __DIR__ . "/../../views/login/login.php";
     require_once __DIR__ . "/../../views/home/home_view.php";
     session_start();
-    
-    if(isset($_SESSION['user_id'])){
-      
+
+    if (isset($_SESSION['user_id']) && $_SESSION["expire"] >= time()) {
+
       header("Location: " . BASE_URL . "/home?user_id=" . $_SESSION["user_id"]);
-      
-    }else{
+    } else {
       $data = [];
       $view = new LoginView($data);
       $view->render();
     }
-
   }
 }

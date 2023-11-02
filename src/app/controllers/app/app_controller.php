@@ -6,11 +6,26 @@ class AppController
     {
         // Session validation
         session_start();
+
+        if (isset($_SESSION["is_premium"]) && $_SESSION["is_premium"]) {
+          http_response_code(403);
+          header("Location: http://localhost:5173");
+          return;
+        }
+        
         if (!isset($_SESSION["user_id"])) {
             http_response_code(403);
             header("Location: " . BASE_URL . "/login");
             return;
         }
+
+        if ($_SESSION["expire"] < time()) {
+          session_destroy();
+          http_response_code(403);
+          header('Location: ' . BASE_URL . "/login");
+          return;
+        }
+
 
         // Get id_episode from session
         $epsId = "";

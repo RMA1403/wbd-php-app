@@ -46,8 +46,8 @@ class App
 
     $router->post("public/logout", new LogoutController());
 
-    $router->get("public/home", new GetHomeController());
-    $router->get("public/search", new GetSearchController());
+    // $router->get("public/home", new GetHomeController());
+    // $router->get("public/search", new GetSearchController());
     $router->get("public/login", new GetLoginController());
     $router->post("public/login", new PostLoginController());
     $router->get("public/signup", new GetSignupController());

@@ -6,6 +6,8 @@
     <!-- Global CSS -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/search/search.css">
+    <!-- Page CSS -->
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/Home.css">
     <!-- JavaScript Library -->
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/player.js" defer></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/dashboard/layout.js" defer></script>
@@ -22,7 +24,7 @@
 <body>
     <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
     <?php include(dirname(__DIR__) . "/common/profile.php")?>
-    <main>
+    <main id="main-section">
         <!-- Called by app.js -->
     </main>
     <?php include(dirname(__DIR__) . "/common/player.php")?>

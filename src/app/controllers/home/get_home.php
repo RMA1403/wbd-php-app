@@ -5,7 +5,7 @@ class GetHomeController
   public function call()
   {
     session_start();
-    
+
     $data = [];
     
     // podcast Info

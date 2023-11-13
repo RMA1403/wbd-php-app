@@ -19,7 +19,7 @@
   <?php include(dirname(__DIR__) . "/../common/toast.php") ?>
 
   <main>
-    <a class="back-link" href="<?= BASE_URL ?>/dashboard/main?id_podcast=<?= $this->data["id_podcast"] ?? "" ?>">
+    <a class="back-link" href="<?= BASE_URL ?>/dashboard-main?id_podcast=<?= $this->data["id_podcast"] ?? "" ?>">
       <img src="<?= BASE_URL ?>/images/dashboard/right_arrow.svg" alt="">
       <p class="sh4">Kembali Ke Dashboard</p>
     </a>

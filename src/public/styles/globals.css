@@ -198,7 +198,7 @@ aside .sidebar-item {
   padding-top: 4px;
   padding-bottom: 4px;
   border-radius: 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* Bottom Bar and Audio Player */
@@ -331,6 +331,7 @@ aside .sidebar-item {
   padding: 10px 24px 12px;
   transform: translateX(-50%);
   z-index: 110;
+  /* height: 50px; */
 }
 #toast > button > img {
   margin-top: 6px;

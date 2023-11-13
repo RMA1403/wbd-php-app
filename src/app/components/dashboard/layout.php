@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,7 +16,7 @@
   <title>Main Dashboard</title>
 </head>
 
-<body>
+<body> -->
   <?php include(dirname(__DIR__) . "/common/toast.php") ?>
 
   <div id="overlay-layout" class="overlay hidden"></div>
@@ -36,7 +36,7 @@
         <ul id="podcast-choices" class="hidden">
           <?php foreach ($this->data["podcasts"] as $podcast) : ?>
             <li>
-              <a href="/public/dashboard/main?id_podcast=<?= $podcast->id_podcast ?>">
+              <a href="/public/dashboard-main?id_podcast=<?= $podcast->id_podcast ?>">
                 <p class="b3"><?= $podcast->title ?></p>
               </a>
             </li>
@@ -54,6 +54,6 @@
 
     <section id="dashboard-section"></section>
   </main>
-</body>
+<!-- </body>
 
-</html>
+</html> -->

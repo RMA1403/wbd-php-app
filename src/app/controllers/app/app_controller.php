@@ -7,11 +7,11 @@ class AppController
     // Session validation
     session_start();
 
-    if (isset($_SESSION["is_premium"]) && $_SESSION["is_premium"]) {
-      http_response_code(403);
-      header("Location: http://localhost:5173");
-      return;
-    }
+    // if (isset($_SESSION["is_premium"]) && $_SESSION["is_premium"]) {
+    //   http_response_code(403);
+    //   header("Location: http://localhost:5173");
+    //   return;
+    // }
 
     if (!isset($_SESSION["user_id"])) {
       session_destroy();

@@ -7,6 +7,8 @@ class App
     $url = $this->parseURL();
     $router = new Router();
 
+    $router->get("public/profile", new getProfileController());
+
     $router->get("public", new AppController());
     $router->get("public/home", new AppController());
     $router->get("public/search", new AppController());

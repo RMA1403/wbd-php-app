@@ -67,4 +67,25 @@ class UserModel
 
     return $rowAffected;
   }
+
+  public function updateProfile($id_user, $name, $username, $password) {
+    $query = "UPDATE user( name, username, password)
+              SET user=:name, username=:username, password=:password
+              WHERE id_user=:id_user";
+
+    $this->db->query($query);
+    $this->db->bind('name', $name);
+    $this->db->bind('username', $username);
+    $this->db->bind('password', $password);
+    $this->db->bind('id_user', $id_user);
+
+    $status = 200;
+    try {
+      $user = $this->db->execute();
+    } catch (PDOException $e) {
+      $status = 500;
+    }
+
+    return $status;
+  }
 }

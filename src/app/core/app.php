@@ -8,6 +8,7 @@ class App
     $router = new Router();
 
     $router->get("public/profile", new getProfileController());
+    $router->post("public/profile", new UpdateProfileController());
 
     $router->get("public", new AppController());
     $router->get("public/home", new AppController());

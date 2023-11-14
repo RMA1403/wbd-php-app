@@ -5,11 +5,13 @@ class getProfileController
   public function call()
   {
     session_start();
-
-    if (!isset($_SESSION["user_id"])) {
-      session_destroy();
-      http_response_code(403);
-      return;
+    
+    if (isset($_SERVER["HTTP_API_KEY"])) {
+      if ($_SERVER["HTTP_API_KEY"] != $_ENV["API_KEY"]) {
+        http_response_code(403);
+        session_destroy();
+        return;
+      }
     }
 
     $user_id = "";
@@ -24,7 +26,7 @@ class getProfileController
       "name" => $profile->name,
       "username" => $profile->username,
       "url_profpic" => $profile->url_profpic,
-      "is_admin" => $profile->is_admin,
+      "password" => $profile->password,
     ];
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");

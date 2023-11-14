@@ -4,16 +4,15 @@ class UpdateProfileController
 {
     public function call()
     {
-        session_start();
-
-        if (!isset($_SESSION["user_id"])) {
-          session_destroy();
-          http_response_code(403);
-          return;
+        
+        if (isset($_SERVER["HTTP_API_KEY"])) {
+            if ($_SERVER["HTTP_API_KEY"] != $_ENV["API_KEY"]) {
+              http_response_code(403);
+              return;
+            }
         }
 
-        if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['password'])) {
-
+        if (isset($_SERVER["QUERY_STRING"])) {
             $name = $_POST['name'];
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -21,6 +20,7 @@ class UpdateProfileController
             try {
                 if (!isset($_SERVER["user_id"])) {
                     http_response_code(401);
+                    echo json_encode(["message" => "Disni"]);
                     exit;
                 } else {
                     $model = new UserModel();

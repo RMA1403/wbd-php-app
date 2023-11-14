@@ -23,7 +23,7 @@ class PostLoginController
                 } else {
                     if (password_verify($password, $user['password'])) {
                         $_SESSION["start"] = time();
-                        $_SESSION["expire"] = time() + 60 * 1000;
+                        $_SESSION["expire"] = time() + 60 * 10;
                         $_SESSION["user_id"] = $user['id_user'];
 
                         if ($username == "premium") {

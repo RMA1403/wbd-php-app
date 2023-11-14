@@ -1,4 +1,4 @@
-// const handleSearch = () => {
+export const handleSearch = () => {
   const searchInput = document.getElementById("search-input");
   const resultContainer = document.querySelector(".result-container");
 
@@ -171,4 +171,4 @@
       sortContent.style.display = "none";
     }
   });
-// };
+};

@@ -16,7 +16,9 @@ class App
     $router->get("public/library", new AppController());
     $router->get("public/playlist", new AppController());
     $router->get("public/dashboard", new AppController());
-    
+    $router->get("public/dashboard-main", new AppController());
+    $router->get("public/dashboard-episode", new AppController());
+  
     $router->get("public/components/home", new GetHomeController());
     $router->get("public/components/search", new GetSearchController());
     $router->get("public/components/library", new GetLibraryController());
@@ -24,16 +26,17 @@ class App
 
     // Dashboard page routes
     $router->get("public/components/dashboard", new GetDashboardLayoutController());
-    $router->get("public/dashboard/main", new GetDashboardLayoutController());
-    $router->get("public/dashboard/episode", new GetDashboardLayoutController());
+    $router->get("public/components/dashboard-main", new GetDashboardLayoutController());
+    $router->get("public/components/dashboard-episode", new GetDashboardLayoutController());
+
     $router->get("public/dashboard/add-episode", new GetAddEpisodeController());
     $router->get("public/dashboard/add-podcast", new GetAddPodcastController());
     $router->get("public/dashboard/edit-episode", new GetEditEpisodeController());
     $router->get("public/dashboard/edit-podcast", new GetEditPodcastController());
 
     // Dashboard data-fetching routes
-    $router->get("public/dashboard/internal/main", new GetDashboardMainController());
-    $router->get("public/dashboard/internal/episode", new GetDashboardEpisodeController());
+    $router->get("public/dashboard/internal/dashboard-main", new GetDashboardMainController());
+    $router->get("public/dashboard/internal/dashboard-episode", new GetDashboardEpisodeController());
     $router->post("public/dashboard/add-episode", new PostAddEpisodeController());
     $router->post("public/dashboard/edit-episode", new PostEditEpisodeController());
     $router->get("public/dashboard/user-podcast", new GetUserPodcastController());

@@ -227,7 +227,7 @@ saveButtonEl.addEventListener("click", (e) => {
           showSuccessToast("Episode added successfully!");
           setTimeout(() => {
             window.location.replace(
-              `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}`
+              `http://localhost:8080/public/dashboard-episode?id_podcast=${idPodcast}`
             );
           }, 1000);
         }
@@ -262,7 +262,7 @@ saveButtonEl.addEventListener("click", (e) => {
           showSuccessToast("Episode updated successfully!");
           setTimeout(() => {
             window.location.replace(
-              `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}`
+              `http://localhost:8080/public/dashboard-episode?id_podcast=${idPodcast}`
             );
           }, 1000);
         }
@@ -341,7 +341,7 @@ saveButtonEl.addEventListener("click", (e) => {
           showSuccessToast("Podcast updated successfully!");
           setTimeout(() => {
             window.location.replace(
-              `http://localhost:8080/public/dashboard/main?id_podcast=${idPodcast}`
+              `http://localhost:8080/public/dashboard-main?id_podcast=${idPodcast}`
             );
           }, 1000);
         }

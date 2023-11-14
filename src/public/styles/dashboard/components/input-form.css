@@ -207,6 +207,23 @@ option {
   background-color: var(--ORANGE);
 }
 
+#is-premium-btn {
+  text-align: center;
+  border-radius: 16px;
+  border: 2px var(--PINK-1) solid;
+  padding: 12px 24px 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 32px;
+}
+
+.premium-selected {
+  background-color: #398044;
+  border: none !important;
+  padding: 12px 28px 10px !important;
+}
+
 @media (max-width: 768px) {
   #input-form {
     width: 100%;

@@ -37,10 +37,9 @@ class GetAddEpisodeController
     $data = [
       "INPUT_FORM_TITLE" => "Create New Episode",
       "INPUT_FORM_SHOW_AUDIO_INPUT" => true,
-      // "INPUT_FORM_SHOW_CATEGORY_INPUT" => true,
       "INPUT_FORM_COVER_TEXT" => "Episode Cover",
       "INPUT_FORM_SUBMIT_TEXT" => "Save Episode",
-      // "INPUT_FORM_DELETE_TEXT" => "Hapus Podcast",
+      "INPUT_FORM_IS_PREMIUM" => $_GET["premium"],
       "INPUT_FORM_TITLE_TEXT" => "Episode title",
       "INPUT_FORM_DESCRIPTION_TEXT" => "Episode description",
       "INPUT_FORM_TYPE" => "add-episode",

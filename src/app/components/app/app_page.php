@@ -10,11 +10,17 @@
     <!-- Page CSS -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/Home.css">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/search/search.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css"> -->
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/layout.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/pages/main.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/pages/episode.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/components/button.css">
     <!-- JavaScript Library -->
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/player.js" defer></script>
-    <script type="module" src="<?= BASE_URL ?>/javascript/dashboard/layout.js" defer></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/util/debounce.js" defer></script>
-    <script type="text/javascript" src="<?= BASE_URL ?>/javascript/app/app.js" defer></script>
+    <script type="module" src="<?= BASE_URL ?>/javascript/dashboard/layout.mjs" defer></script>
+    <script type="module" src="<?= BASE_URL ?>/javascript/app/app.js" defer></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

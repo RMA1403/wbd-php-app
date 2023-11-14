@@ -1,8 +1,7 @@
+"use strict";
+
 import { showSuccessToast } from "../toast.mjs";
-const handleDashboard = () => {
-  "use strict";
-
-
+export function handleDashboard() {
   // Get DOM elements
   const dashboardLink = document.getElementById("dashboard-link");
   const episodeLink = document.getElementById("episode-link");
@@ -40,10 +39,10 @@ const handleDashboard = () => {
       }
 
       if (lastURL === "dashboard") {
-        lastURL = "main";
+        lastURL = "dashboard-main";
       }
 
-      if (lastURL === "main") {
+      if (lastURL === "dashboard-main") {
         dashboardLink.classList.add("nav-active");
       } else {
         episodeLink.classList.add("nav-active");
@@ -54,7 +53,7 @@ const handleDashboard = () => {
       xhr2.open(
         "GET",
         `/public/dashboard/internal/${lastURL}?id_podcast=${idPodcast}${
-          lastURL === "episode" ? `&page=${page || 1}` : ""
+          lastURL === "dashboard-episode" ? `&page=${page || 1}` : ""
         }`
       );
       xhr2.send(null);
@@ -83,8 +82,8 @@ const handleDashboard = () => {
       history.pushState(
         {},
         "",
-        `/public/dashboard/${lastURL}?id_podcast=${idPodcast}${
-          lastURL === "episode" ? `&page=${page || 1}` : ""
+        `/public/${lastURL}?id_podcast=${idPodcast}${
+          lastURL === "dashboard-episode" ? `&page=${page || 1}` : ""
         }`
       );
     }
@@ -112,7 +111,7 @@ const handleDashboard = () => {
     history.pushState(
       {},
       "",
-      `http://localhost:8080/public/dashboard/episode?id_podcast=${idPodcast}&page=1`
+      `http://localhost:8080/public/dashboard-episode?id_podcast=${idPodcast}&page=1`
     );
 
     dashboardLink.classList.toggle("nav-active");
@@ -121,7 +120,7 @@ const handleDashboard = () => {
     const xhr = new XMLHttpRequest();
     xhr.open(
       "GET",
-      `/public/dashboard/internal/episode?id_podcast=${idPodcast}&page=1`
+      `/public/dashboard/internal/dashboard-episode?id_podcast=${idPodcast}&page=1`
     );
     xhr.send(null);
 
@@ -148,14 +147,14 @@ const handleDashboard = () => {
     history.pushState(
       {},
       "",
-      `http://localhost:8080/public/dashboard/main?id_podcast=${idPodcast}`
+      `http://localhost:8080/public/dashboard-main?id_podcast=${idPodcast}`
     );
 
     dashboardLink.classList.toggle("nav-active");
     episodeLink.classList.toggle("nav-active");
 
     const xhr1 = new XMLHttpRequest();
-    xhr1.open("GET", `/public/dashboard/internal/main?id_podcast=${idPodcast}`);
+    xhr1.open("GET", `/public/dashboard/internal/dashboard-main?id_podcast=${idPodcast}`);
     xhr1.send(null);
 
     xhr1.onreadystatechange = function () {
@@ -186,7 +185,7 @@ const handleDashboard = () => {
         const xhr2 = new XMLHttpRequest();
         xhr2.open(
           "GET",
-          `/public/dashboard/internal/episode?id_podcast=${idPodcast}&page=1`
+          `/public/dashboard/internal/dashboard-episode?id_podcast=${idPodcast}&page=1`
         );
         xhr2.send(null);
 

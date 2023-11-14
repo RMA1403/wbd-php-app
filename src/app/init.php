@@ -34,6 +34,7 @@ require_once __DIR__ . "/controllers/login/post_login.php";
 
 require_once __DIR__ . "/controllers/library/get_library.php";
 require_once __DIR__ . "/controllers/playlist/get_playlist.php";
+require_once __DIR__ . "/controllers/playlist/post_playlist.php";
 require_once __DIR__ . "/controllers/playlist/delete_playlist.php";
 require_once __DIR__ . "/controllers/library/get_library.php";
 require_once __DIR__ . "/controllers/library/post_library.php";

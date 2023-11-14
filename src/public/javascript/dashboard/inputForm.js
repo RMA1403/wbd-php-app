@@ -16,12 +16,14 @@ const changeCoverButtonEl = document.getElementById("change-cover-btn");
 const saveButtonEl = document.getElementById("save-btn");
 const categoryButtonEl = document.getElementById("category-input-btn");
 const deleteButtonEl = document.getElementById("delete-btn");
+const isPremiumButtonEl = document.getElementById("is-premium-btn");
 
 const audioInputEl = document.getElementById("audio-input");
 const judulInputEl = document.getElementById("judul-input");
 const descriptionInputEl = document.getElementById("description-input");
 const imageInputEl = document.getElementById("image-input");
 const categoryInputEl = document.getElementById("category-input");
+const isPremiumInputEl = document.getElementById("is-premium-input");
 
 const fileNameEl = document.getElementById("file-name");
 const fileNameContainerEl = document.querySelector(".file-name-container");
@@ -154,7 +156,10 @@ deleteButtonEl &&
     }
 
     const xhr1 = new XMLHttpRequest();
-    xhr1.open("DELETE", `/public/dashboard/podcast?id_podcast=${idPodcast}`);
+    xhr1.open(
+      "DELETE",
+      `/public/dashboard/podcast?id_podcast=${idPodcast}&premium=${isPremiumInputEl.value}`
+    );
     xhr1.send(null);
 
     xhr1.onreadystatechange = function () {
@@ -165,6 +170,18 @@ deleteButtonEl &&
         }, 1000);
       }
     };
+  });
+
+isPremiumButtonEl &&
+  isPremiumButtonEl.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    isPremiumInputEl.value =
+      isPremiumInputEl.value === "false" ? "true" : "false";
+    isPremiumButtonEl.innerText =
+      isPremiumInputEl.value === "false" ? "Not Premium" : "Premium";
+
+    isPremiumButtonEl.classList.toggle("premium-selected");
   });
 
 // Handle submit form
@@ -179,6 +196,7 @@ saveButtonEl.addEventListener("click", (e) => {
   const title = judulInputEl.value;
   const description = descriptionInputEl.value;
   const category = categoryInputEl?.value;
+  const isPremium = isPremiumInputEl.value;
 
   // Limit file size to only 10 MB
   if (audioFile?.size > 10 * 1024 * 1024) {
@@ -238,6 +256,7 @@ saveButtonEl.addEventListener("click", (e) => {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("idPodcast", idPodcast);
+      formData.append("isPremium", isPremium);
 
       xhr.send(formData);
       break;
@@ -279,6 +298,7 @@ saveButtonEl.addEventListener("click", (e) => {
         "description",
         description || descriptionInputEl.placeholder
       );
+      formData.append("isPremium", isPremium);
 
       xhr.send(formData);
       break;
@@ -318,6 +338,7 @@ saveButtonEl.addEventListener("click", (e) => {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("category", category);
+      formData.append("isPremium", isPremium);
 
       xhr.send(formData);
       break;
@@ -358,6 +379,7 @@ saveButtonEl.addEventListener("click", (e) => {
         "description",
         description || descriptionInputEl.placeholder
       );
+      formData.append("isPremium", isPremium);
 
       xhr.send(formData);
       break;

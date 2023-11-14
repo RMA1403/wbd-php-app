@@ -68,6 +68,52 @@ class PostAddEpisodeController
     $imageFileName = "/images/" . md5(uniqid(mt_rand(), true)) . IMAGE_MAP[$imageMimeType];
     move_uploaded_file($_FILES["imageFile"]["tmp_name"], __DIR__ . "/../../storage" . $imageFileName);
 
+    // Check is premium
+    if ($_POST["isPremium"] == "true") {
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, "http://tubes-rest-service:3000/episode");
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+      curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "apikey: " . $_ENV["REST_PHP_KEY"],
+      ]);
+      curl_setopt(
+        $ch,
+        CURLOPT_POSTFIELDS,
+        [
+          "title" => $_POST["title"],
+          "description" => $_POST["description"],
+          "idPodcast" => $_POST["idPodcast"],
+          "imageFile" => curl_file_create(__DIR__ . "/../../storage" . $imageFileName),
+          "audioFile" => curl_file_create(__DIR__ . "/../../storage" . $audioFileName),
+        ]
+      );
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+      $output = curl_exec($ch);
+      curl_close($ch);
+
+      unlink(__DIR__ . "/../../storage" . $imageFileName);
+      unlink(__DIR__ . "/../../storage" . $audioFileName);
+
+      $resMessage = json_decode($output, TRUE)["message"];
+
+      if ($resMessage != "success") {
+        http_response_code(400);
+        header("Content-Type: application/json");
+        echo json_encode(["message" => "bad request"]);
+
+        return;
+      }
+
+      http_response_code(201);
+      header("Content-Type: application/json");
+      echo json_encode(["message" => "success"]);
+
+      return;
+    }
+
     $episodeModel = new EpisodeModel();
     $episodeModel->saveEpisode($_POST["idPodcast"], $_POST["title"], $_POST["description"], $imageFileName, $audioFileName);
 

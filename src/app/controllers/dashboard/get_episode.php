@@ -24,6 +24,27 @@ class GetDashboardEpisodeController
     if (!isset($_GET["id_podcast"])) {
       (new NotFoundController())->call();
       return;
+    } else if ($_GET["premium"] == "true") {
+      $idPodcast = $_GET["id_podcast"];
+
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, "http://tubes-rest-service:3000/podcast/" . $idPodcast);
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+      curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "apikey: " . $_ENV["REST_PHP_KEY"],
+      ]);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+      $output = curl_exec($ch);
+      curl_close($ch);
+
+      $resMessage = json_decode($output, TRUE)["podcast"];
+      if (!$resMessage["id_podcast"] || $resMessage["id_user"] != $_SESSION["user_id"]) {
+        (new NotFoundController())->call();
+        return;
+      }
     } else {
       $idPodcast = $_GET["id_podcast"];
 
@@ -56,12 +77,13 @@ class GetDashboardEpisodeController
     }
 
     $data = [
+      "premium_episodes" => $resMessage["PremiumEpisodes"] ?? [],
       "episodes" => $episodes,
       "page_count" => $pageCount,
       "url_thumbnail" => $episodes[0]->url_thumbnail ?? "",
       "id_user" => $userId,
       "id_podcast" => $idPodcast,
-      "page" => $page
+      "page" => $page,
     ];
 
     $view = new DashboardEpisodeView($data);

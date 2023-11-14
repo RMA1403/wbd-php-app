@@ -3,22 +3,23 @@
     <!-- Podcast Cards -->
     <div class="podcast-card">
       <div class="card-header-container">
-        <img width="200" height="200" class="podcast-thumbnail-img" src="<?= STORAGE_URL . ($this->data["podcast"]->url_thumbnail ?? "") ?>" alt="">
+        <!-- <?= print_r($this->data["podcast"]) ?> -->
+        <img width="200" height="200" class="podcast-thumbnail-img" src="<?= (isset($_GET["premium"]) && $_GET["premium"] == "true" ? "http://localhost:3000/images/" : STORAGE_URL) . ($this->data["podcast"]->url_thumbnail ?? $this->data["podcast"]["url_thumbnail"]) ?>" alt="">
 
         <div class="podcast-description">
           <div class="podcast-category">
-            <p><?= $this->data["podcast"]->category ?? "" ?></p>
+            <p><?= $this->data["podcast"]->category ?? $this->data["podcast"]["category"] ?></p>
           </div>
 
-          <h3><?= $this->data["podcast"]->title ?? "" ?></h3>
-          <p class="b5"><?= $this->data["podcast"]->description ?? "" ?></p>
+          <h3><?= $this->data["podcast"]->title ?? $this->data["podcast"]["title"] ?></h3>
+          <p class="b5"><?= $this->data["podcast"]->description ?? $this->data["podcast"]["description"] ?></p>
         </div>
       </div>
 
       <div class="button-container">
         <?php include(dirname(__DIR__) . "/components/tambah_episode_button.php") ?>
 
-        <a href="/public/dashboard/edit-podcast?id_podcast=<?= $this->data["id_podcast"] ?? "" ?>">
+        <a href="/public/dashboard/edit-podcast?id_podcast=<?= $this->data["id_podcast"] ?? $this->data["podcast"]["id_podcast"] ?>&premium=<?= $_GET["premium"] ?? "false" ?>">
           <button class="edit-button">
             <img src="<?= BASE_URL ?>/images/dashboard/edit_icon.svg" alt="" />
 

@@ -24,11 +24,28 @@ class GetDashboardLayoutController
 
     require_once __DIR__ . "/../../views/dashboard/layout.php";
 
+    // Get all premium podcasts
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "http://tubes-rest-service:3000/podcast/by-user/" . $_SESSION["user_id"]);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+      "apikey: " . $_ENV["REST_PHP_KEY"],
+    ]);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $output = curl_exec($ch);
+    curl_close($ch);
+
+    $resMessage = json_decode($output, TRUE)["podcasts"];
+
     $podcastModel = new PodcastModel();
     $podcasts = $podcastModel->getUserPodcasts($_SESSION["user_id"]) ?? [];
 
     $data = [
-      "podcasts" => $podcasts
+      "podcasts" => $podcasts,
+      "premium_podcasts" => $resMessage
     ];
 
     $view = new DashboardLayoutView($data);

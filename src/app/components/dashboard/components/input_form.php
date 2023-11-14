@@ -47,10 +47,18 @@
 
     <p class="sh3"><?= $this->data["INPUT_FORM_COVER_TEXT"] ?? "" ?></p>
     <div>
-      <img id="cover-image" width="200" height="200" src="<?= STORAGE_URL . ($this->data["url_thumbnail"] ?? "/images/placeholder.jpeg") ?> " alt="cover image">
+      <img id="cover-image" width="200" height="200" src="<?= isset($this->data["url_thumbnail"]) ? (
+                                                            (isset($_GET["premium"]) && $_GET["premium"] == "true") ? "http://localhost:3000/images/" . $this->data["url_thumbnail"] : STORAGE_URL . $this->data["url_thumbnail"]
+                                                          ) : (STORAGE_URL . "/images/placeholder.jpeg") ?>" alt="cover image">
       <button id="change-cover-btn">Change Cover</button>
       <input name="image-input" type="file" id="image-input" accept="image/*" class="hidden">
     </div>
+
+    <?php if ($this->data["INPUT_FORM_SHOW_PREMIUM_BUTTON"] ?? false) : ?>
+      <button id="is-premium-btn">Not Premium</button>
+    <?php endif; ?>
+
+    <input id="is-premium-input" type="text" class="hidden" disabled value="<?= $this->data["INPUT_FORM_IS_PREMIUM"] ?? "false" ?>" />
   </div>
 
   <div id="overlay-form" class="overlay hidden"></div>

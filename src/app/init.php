@@ -34,9 +34,10 @@ require_once __DIR__ . "/controllers/login/post_login.php";
 
 require_once __DIR__ . "/controllers/library/get_library.php";
 require_once __DIR__ . "/controllers/playlist/get_playlist.php";
-require_once __DIR__ . "/controllers/playlist/post_playlist.php";
+require_once __DIR__ . "/controllers/playlist/delete_playlist.php";
 require_once __DIR__ . "/controllers/library/get_library.php";
 require_once __DIR__ . "/controllers/library/post_library.php";
+require_once __DIR__ . "/controllers/library/delete_library.php";
 require_once __DIR__ . "/controllers/signup/get_signup.php";
 require_once __DIR__ . "/controllers/signup/post_signup.php";
 require_once __DIR__ . "/controllers/search/get_search.php";

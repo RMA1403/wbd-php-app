@@ -1,6 +1,6 @@
 <?php
 
-class PostPlaylistController
+class DeletePlaylistController
 {
   public function call()
   {
@@ -15,9 +15,9 @@ class PostPlaylistController
     $idPodcast = "";
     $idPlaylist = "";
 
-    if(isset($_POST["id_playlist"]) && isset($_POST["id_podcast"])){
-        $idPlaylist = $_POST["id_playlist"];
-        $idPodcast = $_POST["id_podcast"];
+    if(isset($_GET["playlist_id"]) && isset($_GET["podcast_id"])){
+        $idPlaylist = $_GET["playlist_id"];
+        $idPodcast = $_GET["podcast_id"];
     }
 
     $model = new PlaylistModel();

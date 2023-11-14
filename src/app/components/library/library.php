@@ -8,15 +8,13 @@
     <!-- Page-specific CSS -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/library/library.css">
 
-    <script type="text/javascript" src="<?= BASE_URL ?>/javascript/library/library2.js" defer></script>
-
     <title>Library</title>
 </head>
 <body>
-    <button class="new-playlist-btn" onclick="toggle()">New Playlist</button>
+    <button class="new-playlist-btn">New Playlist</button>
     
-    <main>
-        <div class="playlist-container" id="blur">
+    <main id="blur">
+        <div class="playlist-container">
             <?php include(dirname(__DIR__) . "/library/playlist.php")?>
         </div>
     </main>    
@@ -34,7 +32,4 @@
         </form>
     </div>
 </body>
-
-<script type="text/javascript">
-</script>
 </html>

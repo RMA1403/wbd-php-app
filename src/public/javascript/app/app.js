@@ -1,4 +1,6 @@
 import { handleDashboard } from "../dashboard/layout.mjs";
+import { handlePlaylist } from "../library/library.mjs";
+import { handleLibrary } from "../library/library2.mjs";
 
 const mainSection = document.querySelector("#main-section");
 const sidebar = document.querySelector(".sidebar");
@@ -29,6 +31,10 @@ const getPage = (page, queryParam) => {
       // handleSearch();
       if (window.location.href.includes("dashboard")) {
         handleDashboard();
+      } else if(window.location.href.includes("library")){
+        handleLibrary();
+      } else if(window.location.href.includes("playlist")){
+        handlePlaylist();
       }
     }
   };

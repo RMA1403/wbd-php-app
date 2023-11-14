@@ -58,8 +58,8 @@ class App
     $router->get("public/signup", new GetSignupController());
     $router->post("public/signup", new PostSignupController());
     $router->post("public/library", new PostLibraryController());
-    $router->get("public/playlist", new GetPlaylistController());
-    $router->post("public/playlist", new PostPlaylistController());
+    $router->delete("public/library", new DeleteLibraryController());
+    $router->delete("public/playlist", new DeletePlaylistController());
 
     $router->directRequest($url);
   }

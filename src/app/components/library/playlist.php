@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/library/library.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <?php if (!empty($this->data)): ?>
     <div class="user-playlist">
@@ -10,6 +11,7 @@
                 <div class="info">
                     <div class="sh5"><?=$playlist['title']?> </div>
                 </div>
+                <i class='bx bx-trash' data-id="<?=$playlist["id_playlist"]?>"></i>
             </div>
         <?php endforeach; ?>
     </div>

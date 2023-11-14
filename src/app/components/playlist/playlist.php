@@ -12,15 +12,10 @@
     <title>Playlist</title>
 </head>
 <body>
-    <?php include(dirname(__DIR__) . "/common/sidebar.php")?>
-    <?php include(dirname(__DIR__) . "/common/profile.php")?>
-
-    
     <main>
         <div class="playlist-container" data-id="<?=$_GET["playlist_id"]?>">
             <?php include(dirname(__DIR__) . "/playlist/playlist_content.php")?>
         </div>
     </main>
-    <?php include(dirname(__DIR__) . "/common/player.php")?>
 </body>
 </html>

@@ -16,7 +16,7 @@ services:
     ports: 
       - 3308:3307
     expose:
-      - 3307
+      - 3308
     hostname: tubes-php-db
     env_file: .env
     volumes:

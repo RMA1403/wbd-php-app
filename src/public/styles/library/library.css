@@ -58,6 +58,94 @@ navbar {
     text-overflow: ellipsis;
 }
 
+.wrapper {
+    visibility: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* z-index: 999; To ensure it covers the playlist section */
+    background: var(--GRAY-600);
+    color: var(--WHITE);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.wrapper h2{
+    font-size: 28px;
+    text-align: center;
+    text-transform: none;
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 40px 0;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: var(--GRAY-500);
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .4);
+    border-radius: 40px;
+    font-size: 16px;
+    color: var(--WHITE);
+    padding: 20px 45px 20px 20px;
+}
+
+
+.input-box input::placeholder{
+    color: var(--WHITE);
+}
+
+
+.new-playlist-btn{
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 200px;
+    height: 45px;
+    background: rgba(206, 4, 161, 0.79);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--WHITE);
+    font-weight: 600;
+    text-align: center;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: rgba(206, 4, 161, 0.79);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--WHITE);
+    font-weight: 600;
+    text-align: center;
+}
+
+.bx-trash{
+    display: flex;
+    align-self: center;
+    color:  red;
+    font-size: 20px;
+    margin-top: -15px;
+    cursor: pointer;
+    border: 0.5px solid red;
+    padding: 2px;
+    border-radius: 5px;
+}
 
 @media (min-width: 768px) {
     .user-playlist {
@@ -94,4 +182,13 @@ navbar {
     }
 }
 
+#popup.active{
+    visibility: visible;
+    transition: 0.5s;
+}
 
+#blur.active{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}

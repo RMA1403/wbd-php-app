@@ -37,17 +37,16 @@ class PlaylistModel
     return $playlistPodcast;
   }
 
-  public function addPlaylist($id_user, $title, $id_playlist)
+  public function addPlaylist($id_user, $title)
   {
     $query = "
-    INSERT INTO playlist (id_playlist, title, id_user) 
-    VALUES(:id_playlist, :title, :id_user)
+    INSERT INTO playlist (title, id_user) 
+    VALUES(:title, :id_user)
     ";
 
     $this->db->query($query);
     $this->db->bind("id_user", $id_user);
     $this->db->bind("title", $title);
-    $this->db->bind("id_playlist", $id_playlist);
 
     $this->db->execute();
   }

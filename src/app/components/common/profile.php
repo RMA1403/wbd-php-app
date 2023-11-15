@@ -23,12 +23,12 @@
                         <input type="text"value="<?=$this->data["username"]?>" id="username-form">
                     </div>
                 </div>
-                <button class="sh4" id="submit-profile">Submit</button>
+                <button class="sh3" id="submit-profile">Save</button>
+                <p id="save-profile-alert"></p>
             </div>
         </div>
     <?php endif; ?>
 </section>
-<script type="text/javascript" src="<?= BASE_URL ?>/javascript/profile/profile.js" defer></script>
 <script>
     const logoutBtn = document.getElementById("logout");
     logoutBtn.addEventListener("click", (e) => {

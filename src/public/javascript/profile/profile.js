@@ -1,7 +1,6 @@
-import { showErrorToast, showSuccessToast } from "../toast.mjs";
-
 const profile = document.querySelector(".profile");
 const profileMenu = document.querySelector(".profile-menu");
+const SaveProfileAlert = document.getElementById("save-profile-alert");
 console.log("masuk");
 profile &&
   profile.addEventListener("click", (e) => {
@@ -27,13 +26,14 @@ menuProfile &&
 window.addEventListener("click", function (e) {
   if (!editSection.contains(e.target) && !menuProfile.contains(e.target)) {
     editProfile.style.display = "none";
+    SaveProfileAlert.innerHTML = "";
   }
 });
 
 
 // Handle submit
 const nameForm = document.getElementById("name-form");
-const usernameForm = document.getElementById("name-form");
+const usernameForm = document.getElementById("username-form");
 const submitProfileButton = document.getElementById("submit-profile");
 
 submitProfileButton.addEventListener("click", (e) => {
@@ -53,9 +53,11 @@ submitProfileButton.addEventListener("click", (e) => {
       if (xhr.status === 200) {
         nameForm.value = JSON.parse(xhr.responseText).name;
         usernameForm.value = JSON.parse(xhr.responseText).username;
-        showSuccessToast(JSON.parse(xhr.responseText).message);      
+        SaveProfileAlert.color = "green";
+        SaveProfileAlert.innerHTML = JSON.parse(xhr.responseText).message;      
       } else {
-        showErrorToast(JSON.parse(xhr.responseText).message);
+        SaveProfileAlert.color = "red";
+        SaveProfileAlert.innerHTML = JSON.parse(xhr.responseText).message;
       }
     }
   };

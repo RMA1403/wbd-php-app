@@ -1,3 +1,5 @@
+import { handlePodcast } from "../podcast/script";
+
 export const handleResultSearch = () => {
     const podcastCardResult = document.querySelectorAll('.podcast-card-result');
     const mainSection = document.querySelector('#main-section');
@@ -12,6 +14,7 @@ export const handleResultSearch = () => {
                 xhr.onreadystatechange = () => {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                     mainSection.innerHTML = xhr.responseText;
+                    handlePodcast();
                     }
                 };
                 

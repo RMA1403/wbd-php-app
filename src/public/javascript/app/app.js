@@ -5,6 +5,7 @@ import { handleSearch } from "../search/search.js";
 import { handleResultSearch } from "../search/resultSearch.js";
 import { handlePodcast } from "../podcast/script.js";
 import { handleHome } from "../home/home.js";
+import { mountPlayer } from "../player/player.js";
 
 const mainSection = document.querySelector("#main-section");
 const sidebar = document.querySelector(".sidebar");
@@ -46,6 +47,7 @@ const getPage = (page, queryParam) => {
       } else if (window.location.href.includes("home")) {
         handleHome();
       }
+      mountPlayer();
     }
   };
 

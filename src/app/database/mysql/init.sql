@@ -417,3 +417,218 @@ VALUES (
     "sports",
     3
   );
+
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  1
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  1
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  1
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  1
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  1
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  1
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  1
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  1
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 1",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  2
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 2",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  2
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 2",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  2
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 2",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  2
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 2",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  2
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 2",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  2
+);
+INSERT INTO episode (
+  title,
+  description,
+  url_thumbnail,
+  url_audio,
+  id_podcast
+)
+VALUES (
+  "Ini tuh episode 2",
+  "Ini adalah contoh teks deskripsi dummy yang dibuat oleh ChatGPT. Teks ini mengilustrasikan kemampuan model dalam menghasilkan teks deskripsi dengan panjang yang lebih besar. ChatGPT adalah AI canggih yang dirancang untuk memberikan informasi, menyelesaikan masalah, dan memberikan panduan dalam berbagai topik.",
+  "/images/episode.jpeg",
+  "episodes/audiotester.mp3",
+  2
+);
+
+
+
+

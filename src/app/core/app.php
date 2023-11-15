@@ -36,14 +36,16 @@ class App
     $router->get("public/components/playlist", new GetPlaylistController());
     $router->get("public/components/dashboard", new GetDashboardLayoutController());
     $router->get("public/components/podcast", new GetPodcastPageController());
-
+    
     $router->get("public/components/dashboard-main", new GetDashboardLayoutController());
     $router->get("public/components/dashboard-episode", new GetDashboardLayoutController());
     $router->get("public/dashboard/internal/dashboard-main", new GetDashboardMainController());
     $router->get("public/dashboard/internal/dashboard-episode", new GetDashboardEpisodeController());
-
+    
     // GET routes
     $router->get("public/dashboard/user-podcast", new GetUserPodcastController());
+    $router->get("public/components/player", new MountPlayerController());
+    $router->get("public/player/episode", new GetEpisodePlayed());
 
     // POST routes
     $router->post("public/logout", new LogoutController());

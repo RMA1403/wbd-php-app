@@ -38,7 +38,7 @@ class EpisodeModel
     $this->db->bind("podcast_id", $podcast_id);
     $this->db->bind("offset", ($page - 1) * 4);
     $episodes = $this->db->fetchAll();
-
+    
     return $episodes;
   }
 
@@ -126,7 +126,7 @@ class EpisodeModel
 
     $this->db->query($query);
     $this->db->bind("idPodcast", $idPodcast);
-
-    return $this->db->fetchAll();
+    $episode = $this->db->fetchAll();
+    return $episode;
   }
 }

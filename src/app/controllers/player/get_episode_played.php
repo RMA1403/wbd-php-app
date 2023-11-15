@@ -1,6 +1,6 @@
 <?php
 
-class PostPlayEpisodeController
+class GetEpisodePlayed
 {
   public function call()
   {
@@ -13,20 +13,16 @@ class PostPlayEpisodeController
       return;
     }
 
-    // Check for podcast id
-    if (!isset($_POST["idEpisode"])) {
+    // Check for current eps id
+    if (!isset($_SESSION["eps_id"])) {
       http_response_code(400);
       header("Content-Type: application/json");
       echo json_encode(["message" => "missing episode id"]);
-
       return;
     }
 
-    $_SESSION["eps_id"] = $_POST["idEpisode"];
-    
-
     http_response_code(200);
     header("Content-Type: application/json");
-    echo json_encode(["message" => "success"]);
+    echo json_encode(["message" => "success", "eps_id" => $_SESSION["eps_id"]]);
   }
 }

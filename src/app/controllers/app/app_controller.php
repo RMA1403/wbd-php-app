@@ -28,11 +28,7 @@ class AppController
     }
 
 
-    // Get id_episode from session
-    $epsId = "";
-    if (isset($_SESSION["eps_id"])) {
-      $epsId = $_SESSION["eps_id"];
-    }
+
 
     // Get id_user from session
     $userId = "";
@@ -41,16 +37,6 @@ class AppController
     }
 
     $data = [];
-
-    // Data Player
-    $podcastModel = new PodcastModel();
-    $podcastInfo = $podcastModel->getPodcastInfo($epsId);
-    if ($podcastInfo) {
-      $data["title"] = $podcastInfo->title;
-      $data["url_thumbnail"] = $podcastInfo->url_thumbnail;
-      $data["podcast"] = $podcastInfo->name;
-      $data["url_audio"] = $podcastInfo->url_audio;
-    }
 
     // Data Profile
     $userModel = new UserModel();

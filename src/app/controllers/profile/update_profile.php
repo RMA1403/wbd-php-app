@@ -66,6 +66,5 @@ class UpdateProfileController
                 exit;
             }
         }
-        session_destroy();
     }
 }

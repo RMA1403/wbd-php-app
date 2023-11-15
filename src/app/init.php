@@ -43,6 +43,7 @@ require_once __DIR__ . "/controllers/signup/get_signup.php";
 require_once __DIR__ . "/controllers/signup/post_signup.php";
 require_once __DIR__ . "/controllers/search/get_search.php";
 require_once __DIR__ . "/controllers/profile/get_profile.php";
+require_once __DIR__ . "/controllers/profile/update_profile.php";
 
 require_once __DIR__ . "/controllers/app/app_controller.php";
 

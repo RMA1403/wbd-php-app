@@ -1,5 +1,6 @@
 const profile = document.querySelector(".profile");
 const profileMenu = document.querySelector(".profile-menu");
+const SaveProfileAlert = document.getElementById("save-profile-alert");
 console.log("masuk");
 profile &&
   profile.addEventListener("click", (e) => {
@@ -25,5 +26,46 @@ menuProfile &&
 window.addEventListener("click", function (e) {
   if (!editSection.contains(e.target) && !menuProfile.contains(e.target)) {
     editProfile.style.display = "none";
+    SaveProfileAlert.innerHTML = "";
   }
 });
+
+
+// Handle submit
+const nameForm = document.getElementById("name-form");
+const usernameForm = document.getElementById("username-form");
+const submitProfileButton = document.getElementById("submit-profile");
+
+submitProfileButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const name = nameForm.value;
+  const username = usernameForm.value;
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("username", username);
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "/public/profile", true);
+
+  xhr.onload = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        nameForm.value = JSON.parse(xhr.responseText).name;
+        usernameForm.value = JSON.parse(xhr.responseText).username;
+        SaveProfileAlert.color = "green";
+        SaveProfileAlert.innerHTML = JSON.parse(xhr.responseText).message;      
+      } else {
+        SaveProfileAlert.color = "red";
+        SaveProfileAlert.innerHTML = JSON.parse(xhr.responseText).message;
+      }
+    }
+  };
+
+  xhr.send(formData);
+});
+
+
+
+
+

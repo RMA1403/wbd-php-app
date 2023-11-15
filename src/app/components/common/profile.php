@@ -18,19 +18,17 @@
                     <img class="profpic-edit" src="<?= STORAGE_URL . $this->data["url_profpic"] ?>" alt="image">
                     <div class="edit-info">
                         <div class="sh5">Nama</div>
-                        <input type="text">
+                        <input type="text" value="<?=$this->data["name"] ?>" id="name-form">
                         <div class="sh5">Username</div>
-                        <input type="text">
-                        <div class="sh5">Password</div>
-                        <input type="text">
+                        <input type="text"value="<?=$this->data["username"]?>" id="username-form">
                     </div>
                 </div>
-                <button class="sh4">Submit</button>
+                <button class="sh3" id="submit-profile">Save</button>
+                <p id="save-profile-alert"></p>
             </div>
         </div>
     <?php endif; ?>
 </section>
-<script type="text/javascript" src="<?= BASE_URL ?>/javascript/profile/profile.js" defer></script>
 <script>
     const logoutBtn = document.getElementById("logout");
     logoutBtn.addEventListener("click", (e) => {

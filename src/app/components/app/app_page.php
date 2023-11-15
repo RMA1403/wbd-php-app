@@ -17,8 +17,10 @@
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/pages/episode.css">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/dashboard/components/button.css">
     <!-- JavaScript Library -->
+    <script type="module" src="<?= BASE_URL ?>/javascript/toast.mjs" defer></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/player.js" defer></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/javascript/util/debounce.js" defer></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>/javascript/profile/profile.js" defer></script>
     <script type="module" src="<?= BASE_URL ?>/javascript/dashboard/layout.mjs" defer></script>
     <script type="module" src="<?= BASE_URL ?>/javascript/app/app.js" defer></script>
     <!-- Google Fonts -->

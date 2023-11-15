@@ -4,31 +4,43 @@ class UpdateProfileController
 {
     public function call()
     {
-        
         if (isset($_SERVER["HTTP_API_KEY"])) {
-            if ($_SERVER["HTTP_API_KEY"] != $_ENV["API_KEY"]) {
-              http_response_code(403);
-              return;
+            if ($_SERVER["HTTP_API_KEY"] != $_ENV["REST_PHP_KEY"]) {
+                http_response_code(403);
+                echo json_encode(["message" => "Invalid API key"]);
+                return;
             }
         }
 
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Max-Age: 86400");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
         if (isset($_SERVER["QUERY_STRING"])) {
+            if (!isset($_POST['name']) || !isset($_POST['username'])) {
+                http_response_code(403);
+                echo json_encode(["message" => "invalid username or name"]);
+                exit;
+            }
             $name = $_POST['name'];
             $username = $_POST['username'];
-            $password = $_POST['password'];
 
             try {
-                if (!isset($_SERVER["user_id"])) {
-                    http_response_code(401);
-                    echo json_encode(["message" => "Disni"]);
+                if (!isset($_GET["user_id"])) {
+                    http_response_code(400);
+                    echo json_encode(["message" => "Invalid user id"]);
                     exit;
                 } else {
-                    $model = new UserModel();
-                    $status = $model->updateProfile($_SESSION["user_id"], $name, $username, $password); 
+                    $userModel = new UserModel();
+                    $status = $userModel->updateProfile($_GET["user_id"], $name, $username); 
 
                     if ($status == 200) {
-                        http_response_code(200);
-                        echo json_encode(["message" => "Profile updated successfully"]);
+                        if ($name== "woy") {
+                            http_response_code(500);
+                        } else {
+                        }
+                        http_response_code(500);
+                        echo json_encode(["message" => "Profile updated successfully!", "name" => $name, "username" => $username]);
                         exit;
                     } else {
                         http_response_code(500);

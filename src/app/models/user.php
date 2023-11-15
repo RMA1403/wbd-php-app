@@ -68,15 +68,14 @@ class UserModel
     return $rowAffected;
   }
 
-  public function updateProfile($id_user, $name, $username, $password) {
-    $query = "UPDATE user( name, username, password)
-              SET user=:name, username=:username, password=:password
+  public function updateProfile($id_user, $name, $username) {
+    $query = "UPDATE user
+              SET name=:name, username=:username
               WHERE id_user=:id_user";
 
     $this->db->query($query);
     $this->db->bind('name', $name);
     $this->db->bind('username', $username);
-    $this->db->bind('password', $password);
     $this->db->bind('id_user', $id_user);
 
     $status = 200;

@@ -26,7 +26,6 @@ class getProfileController
       "name" => $profile->name,
       "username" => $profile->username,
       "url_profpic" => $profile->url_profpic,
-      "password" => $profile->password,
     ];
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");

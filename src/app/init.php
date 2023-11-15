@@ -49,6 +49,7 @@ require_once __DIR__ . "/controllers/player/mount_player.php";
 require_once __DIR__ . "/controllers/player/get_episode_played.php";
 
 require_once __DIR__ . "/controllers/app/app_controller.php";
+require_once __DIR__ . "/controllers/seed/post_seed.php";
 
 require_once __DIR__ . "/models/podcast.php";
 require_once __DIR__ . "/models/episode.php";

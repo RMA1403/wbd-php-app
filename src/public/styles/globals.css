@@ -38,16 +38,14 @@ body {
   padding: 0;
   margin: 0;
   font-family: "DM Sans", sans-serif;
-  height: 100vh;
-  overflow-y: hidden;
 }
 
 main {
   min-width: 0;
-  width: fit-content;
   background-color: var(--BLACK);
+  height: 100vh;
+  overflow-y: hidden;
   width: 100%;
-  overflow-y: auto;
 }
 
 button {

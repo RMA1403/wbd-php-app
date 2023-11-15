@@ -1,3 +1,5 @@
+import { handleResultSearch} from "./resultSearch.js";
+
 export const handleSearch = () => {
   const searchInput = document.getElementById("search-input");
   const resultContainer = document.querySelector(".result-container");
@@ -38,7 +40,7 @@ export const handleSearch = () => {
         ajax.onreadystatechange = () => {
           if (ajax.readyState == 4 && ajax.status == 200) {
             resultContainer.innerHTML = ajax.responseText;
-            console.log("ajax amsterdam");
+            handleResultSearch();
           }
         };
 
@@ -74,6 +76,7 @@ export const handleSearch = () => {
       ajax.onreadystatechange = () => {
         if (ajax.readyState == 4 && ajax.status == 200) {
           resultContainer.innerHTML = ajax.responseText;
+          handleResultSearch();
         }
       };
 
@@ -107,6 +110,7 @@ export const handleSearch = () => {
       ajax.onreadystatechange = () => {
         if (ajax.readyState == 4 && ajax.status == 200) {
           resultContainer.innerHTML = ajax.responseText;
+          handleResultSearch();
         }
       };
 
@@ -141,6 +145,7 @@ export const handleSearch = () => {
       ajax.onreadystatechange = () => {
         if (ajax.readyState == 4 && ajax.status == 200) {
           resultContainer.innerHTML = ajax.responseText;
+          handleResultSearch();
         }
       };
 

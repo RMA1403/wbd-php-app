@@ -18,7 +18,7 @@
             <div class="dropdown-content genre-content">
                 <div class="item genre-option" data-value="">All genre</div>
                 <div class="item genre-option" data-value="comedy">Comedy</div>
-                <div class="item genre-option" data-value="sports">Sports</div>
+                <div class="item genre-option" data-value="horror">Horror</div>
                 <div class="item genre-option" data-value="technology">Technology</div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-class getProfileController
+class GetProfileController
 {
   public function call()
   {

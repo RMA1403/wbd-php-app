@@ -13,7 +13,6 @@
 </head>
 
 <body>
-  <?php include(dirname(__DIR__) . "/common/sidebar.php") ?>
   <?php include(dirname(__DIR__) . "/common/toast.php") ?>
 
   <main>
@@ -71,8 +70,6 @@
       <?php endforeach; ?>
     </ul>
   </main>
-
-  <?php include(dirname(__DIR__) . "/common/player.php") ?>
 </body>
 
 </html>

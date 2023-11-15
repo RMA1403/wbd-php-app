@@ -7,12 +7,18 @@ class GetHomeController
     session_start();
 
     $data = [];
-    
+    $categories = ["comedy", "technology", "horror" ];
+
     // podcast Info
     $podcastModel = new PodcastModel();
-    $podcastTech = $podcastModel->getPodcastByGenre("comedy");
+    $podcastTech = $podcastModel->getPodcastByGenre("technology");
+    $podcastComedy = $podcastModel->getPodcastByGenre("comedy");
+    $podcastHorror = $podcastModel->getPodcastByGenre("horror");
     if ($podcastTech){
-      $data["tech_podcasts"] = $podcastTech;
+      $data["categories"] = $categories;
+      $data["tech"] = $podcastTech;
+      $data["comedy"] = $podcastComedy;
+      $data["horror"] = $podcastHorror;
     }
     
     // Home View

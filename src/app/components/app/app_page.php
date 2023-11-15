@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css">
 
     <!-- Page CSS -->
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/Home.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/home/homeStyle.css">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/search/search.css">
 
     <!-- <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/styles/globals.css"> -->

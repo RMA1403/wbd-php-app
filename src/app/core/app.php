@@ -10,18 +10,17 @@ class App
     // Pages routes
     $router->get("public/login", new GetLoginController());
     $router->get("public/signup", new GetSignupController());
-    $router->get("public/profile", new getProfileController());
-    $router->post("public/profile", new UpdateProfileController());
-
+    $router->get("public/profile", new GetProfileController());
+    
     $router->get("public", new AppController());
     $router->get("public/home", new AppController());
     $router->get("public/search", new AppController());
     $router->get("public/library", new AppController());
     $router->get("public/playlist", new AppController());
     $router->get("public/profile", new getProfileController());
-    $router->get("public/podcast", new GetPodcastPageController());
+    $router->get("public/podcast", new AppController());
     $router->get("public/playlist", new GetPlaylistController());
-
+    
     $router->get("public/dashboard", new AppController());
     $router->get("public/dashboard-main", new AppController());
     $router->get("public/dashboard-episode", new AppController());
@@ -36,6 +35,7 @@ class App
     $router->get("public/components/library", new GetLibraryController());
     $router->get("public/components/playlist", new GetPlaylistController());
     $router->get("public/components/dashboard", new GetDashboardLayoutController());
+    $router->get("public/components/podcast", new GetPodcastPageController());
 
     $router->get("public/components/dashboard-main", new GetDashboardLayoutController());
     $router->get("public/components/dashboard-episode", new GetDashboardLayoutController());
@@ -49,10 +49,11 @@ class App
     $router->post("public/logout", new LogoutController());
     $router->post("public/login", new PostLoginController());
     $router->post("public/signup", new PostSignupController());
-
+    
     $router->post("public/episode/play", new PostPlayEpisodeController());
     $router->post("public/podcast", new PostPodcastPageController());
     $router->post("public/playlist", new PostPlaylistController());
+    $router->post("public/profile", new UpdateProfileController());
 
     $router->post("public/dashboard/add-episode", new PostAddEpisodeController());
     $router->post("public/dashboard/edit-episode", new PostEditEpisodeController());
@@ -62,7 +63,7 @@ class App
     // DELETE routes
     $router->delete("public/dashboard/episode", new DeleteEpisodeController());
     $router->delete("public/dashboard/podcast", new DeletePodcastController());
-
+    
     // $router->get("public/library", new GetLibraryController());
 
     $router->directRequest($url);

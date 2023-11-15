@@ -40,7 +40,7 @@ class PodcastModel
     switch ($sort) {
       case "alphabetical":
         $query =
-        "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
+        "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
         FROM podcast AS p
         NATURAL JOIN user AS u
         LEFT JOIN episode AS e ON p.id_podcast = e.id_podcast
@@ -54,7 +54,7 @@ class PodcastModel
         break;
       case "date joined":
         $query =
-        "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
+        "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
         FROM podcast AS p
         NATURAL JOIN user AS u
         LEFT JOIN episode AS e ON p.id_podcast = e.id_podcast
@@ -68,7 +68,7 @@ class PodcastModel
         break;
       default:
         $query =
-        "SELECT p.title, p.category, p.url_thumbnail, p.description, u.name
+        "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
         FROM podcast AS p
         NATURAL JOIN user AS u
         LEFT JOIN episode e ON e.id_podcast=p.id_podcast 
@@ -96,7 +96,7 @@ class PodcastModel
   public function getPodcastByGenre($genre)
   {
     $query =
-      "SELECT title, category, url_thumbnail, description, name 
+      "SELECT id_podcast, title, category, url_thumbnail, description, name 
     FROM podcast 
     NATURAL JOIN user
     WHERE category = :genre

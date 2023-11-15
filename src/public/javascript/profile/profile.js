@@ -1,7 +1,7 @@
 const profile = document.querySelector(".profile");
 const profileMenu = document.querySelector(".profile-menu");
 const SaveProfileAlert = document.getElementById("save-profile-alert");
-console.log("masuk");
+
 profile &&
   profile.addEventListener("click", (e) => {
     profileMenu.style.display = "flex";
@@ -19,7 +19,6 @@ const editSection = document.querySelector(".edit-profile-container");
 
 menuProfile &&
   menuProfile.addEventListener("click", (e) => {
-    console.log("keklik cok");
     editProfile.style.display = "flex";
   });
 
@@ -53,10 +52,10 @@ submitProfileButton.addEventListener("click", (e) => {
       if (xhr.status === 200) {
         nameForm.value = JSON.parse(xhr.responseText).name;
         usernameForm.value = JSON.parse(xhr.responseText).username;
-        SaveProfileAlert.color = "green";
+        SaveProfileAlert.style.color = "green";
         SaveProfileAlert.innerHTML = JSON.parse(xhr.responseText).message;      
       } else {
-        SaveProfileAlert.color = "red";
+        SaveProfileAlert.style.color = "red";
         SaveProfileAlert.innerHTML = JSON.parse(xhr.responseText).message;
       }
     }

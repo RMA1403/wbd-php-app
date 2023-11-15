@@ -1,6 +1,10 @@
 import { handleDashboard } from "../dashboard/layout.mjs";
 import { handlePlaylist } from "../library/library.mjs";
 import { handleLibrary } from "../library/library2.mjs";
+import { handleSearch } from "../search/search.js";
+import { handleResultSearch } from "../search/resultSearch.js";
+import { handlePodcast } from "../podcast/script.js";
+import { handleHome } from "../home/home.js";
 
 const mainSection = document.querySelector("#main-section");
 const sidebar = document.querySelector(".sidebar");
@@ -28,13 +32,19 @@ const getPage = (page, queryParam) => {
   xhr.onreadystatechange = () => {
     if (xhr.readyState == 4 && xhr.status == 200) {
       mainSection.innerHTML = xhr.responseText;
-      // handleSearch();
       if (window.location.href.includes("dashboard")) {
         handleDashboard();
       } else if(window.location.href.includes("library")){
         handleLibrary();
       } else if(window.location.href.includes("playlist")){
         handlePlaylist();
+      } else if (window.location.href.includes("search")) {
+        handleSearch();
+        handleResultSearch();
+      } else if (window.location.href.includes("podcast")) {
+        handlePodcast();
+      } else if (window.location.href.includes("home")) {
+        handleHome();
       }
     }
   };

@@ -4,6 +4,7 @@ class UpdateProfileController
 {
     public function call()
     {
+        session_start();
         if (isset($_SERVER["HTTP_API_KEY"])) {
             if ($_SERVER["HTTP_API_KEY"] != $_ENV["REST_PHP_KEY"]) {
                 http_response_code(403);
@@ -65,5 +66,6 @@ class UpdateProfileController
                 exit;
             }
         }
+        session_destroy();
     }
 }

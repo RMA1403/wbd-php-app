@@ -47,6 +47,10 @@ class App
     $router->get("public/components/player", new MountPlayerController());
     $router->get("public/player/episode", new GetEpisodePlayed());
 
+    $router->get("public/podcast-by-id", new GetPodcastController());
+    $router->get("public/episode-by-id", new GetEpisodeController());
+    $router->get("public/random-podcast", new GetRandomPodcastController());
+
     // POST routes
     $router->post("public/logout", new LogoutController());
     $router->post("public/login", new PostLoginController());

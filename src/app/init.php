@@ -52,6 +52,10 @@ require_once __DIR__ . "/controllers/player/get_episode_played.php";
 require_once __DIR__ . "/controllers/app/app_controller.php";
 require_once __DIR__ . "/controllers/seed/post_seed.php";
 
+require_once __DIR__ . "/controllers/podcast/get_podcast.php";
+require_once __DIR__ . "/controllers/episode/get_episode.php";
+require_once __DIR__ . "/controllers/podcast/get_random_podcast.php";
+
 require_once __DIR__ . "/models/podcast.php";
 require_once __DIR__ . "/models/episode.php";
 require_once __DIR__ . "/models/user.php";

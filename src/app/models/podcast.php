@@ -35,12 +35,12 @@ class PodcastModel
         $epsMax = "999999999";
         break;
     };
-      
+
     //sort
     switch ($sort) {
       case "alphabetical":
         $query =
-        "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
+          "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
         FROM podcast AS p
         NATURAL JOIN user AS u
         LEFT JOIN episode AS e ON p.id_podcast = e.id_podcast
@@ -54,7 +54,7 @@ class PodcastModel
         break;
       case "date joined":
         $query =
-        "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
+          "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
         FROM podcast AS p
         NATURAL JOIN user AS u
         LEFT JOIN episode AS e ON p.id_podcast = e.id_podcast
@@ -68,7 +68,7 @@ class PodcastModel
         break;
       default:
         $query =
-        "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
+          "SELECT p.id_podcast, p.title, p.category, p.url_thumbnail, p.description, u.name
         FROM podcast AS p
         NATURAL JOIN user AS u
         LEFT JOIN episode e ON e.id_podcast=p.id_podcast 
@@ -81,14 +81,14 @@ class PodcastModel
         ";
         break;
     };
-    
+
 
     $this->db->query($query);
 
     $this->db->bind("search_value", '%' . $keyword . '%');
     $this->db->bind("epsMin", $epsMin);
     $this->db->bind("epsMax", $epsMax);
-    $this->db->bind("genre", $genre==""?'%':$genre);
+    $this->db->bind("genre", $genre == "" ? '%' : $genre);
     $podcasts = $this->db->fetchAll();
     return $podcasts;
   }
@@ -212,5 +212,40 @@ class PodcastModel
     $this->db->bind("idPodcast", $idPodcast);
 
     $this->db->execute();
+  }
+
+  public function getRandom($category)
+  {
+    $query = "";
+    switch ($category) {
+      case "technology":
+        $query = "
+          SELECT id_podcast AS idpodcast, title, description, url_thumbnail AS imageurl FROM podcast
+          WHERE category = 'technology'
+          ORDER BY RAND()
+          LIMIT 2;
+        ";
+        break;
+      case "horror":
+        $query = "
+            SELECT id_podcast AS idpodcast, title, description, url_thumbnail AS imageurl FROM podcast
+            WHERE category = 'horror'
+            ORDER BY RAND()
+            LIMIT 2;
+          ";
+        break;
+      case "comedy":
+        $query = "
+              SELECT id_podcast AS idpodcast, title, description, url_thumbnail AS imageurl FROM podcast
+              WHERE category = 'comedy'
+              ORDER BY RAND()
+              LIMIT 2;
+            ";
+        break;
+    }
+
+    $this->db->query($query);
+    $podcast = $this->db->fetchAll();
+    return $podcast;
   }
 }

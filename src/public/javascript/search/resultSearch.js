@@ -1,4 +1,4 @@
-import { handlePodcast } from "../podcast/script";
+import { handlePodcast } from "../podcast/script.js";
 
 export const handleResultSearch = () => {
     const podcastCardResult = document.querySelectorAll('.podcast-card-result');

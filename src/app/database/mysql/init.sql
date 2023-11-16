@@ -37,17 +37,3 @@ CREATE TABLE podcast_x_playlist (
   FOREIGN KEY (id_playlist) REFERENCES playlist(id_playlist) ON DELETE CASCADE,
   FOREIGN KEY (id_podcast) REFERENCES podcast(id_podcast) ON DELETE CASCADE
 );
-INSERT INTO user (
-    name,
-    username,
-    password,
-    url_profpic,
-    is_admin
-  )
-VALUES (
-    "Penggendong Handal",
-    "test_user",
-    "ini_password",
-    "/images/default-profpic.jpeg",
-    0
-  );

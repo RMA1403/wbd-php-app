@@ -26,7 +26,47 @@ class PostLoginController
                         $_SESSION["expire"] = time() + 60 * 600;
                         $_SESSION["user_id"] = $user['id_user'];
 
-                        if ($username == "premium") {
+                        $SOAP_PHP_KEY = "ularmelingkardiataspagar";
+
+                        // Check user subscription
+                        $xml = '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://services.soapserver/">
+                                    <soap:Header>
+                                        <tns:apikey>' . $SOAP_PHP_KEY . '</tns:apikey>
+                                    </soap:Header>
+                                    <soap:Body>
+                                        <tns:checkSubscription>
+                                            <idUser>' . $user["id_user"] . '</idUser>
+                                        </tns:checkSubscription>
+                                    </soap:Body>                                      
+                                </soap:Envelope>';
+
+                        $ch1 = curl_init();
+                        curl_setopt($ch1, CURLOPT_URL, "http://tubes-soap-service:8000/subscription");
+                        curl_setopt($ch1, CURLOPT_POST, 1);
+                        curl_setopt($ch1, CURLOPT_HTTPHEADER, [
+                            "Content-type: text/xml;charset=\"utf-8\"",
+                            "Accept: text/xml",
+                            "Cache-Control: no-cache",
+                            "Pragma: no-cache",
+                            "Content-length: " . strlen($xml),
+                        ]);
+                        curl_setopt(
+                            $ch1,
+                            CURLOPT_POSTFIELDS,
+                            $xml
+                        );
+                        curl_setopt($ch1, CURLOPT_RETURNTRANSFER, 1);
+                        curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
+                        curl_setopt($ch1, CURLOPT_SSL_VERIFYHOST, false);
+
+                        $response = curl_exec($ch1);
+                        curl_close($ch1);
+
+                        $response1 = str_replace(":", "", $response);
+                        $parser = simplexml_load_string($response1);
+                        $status = (string) $parser->SBody->ns2checkSubscriptionResponse->return;
+
+                        if ($status == "subscribed") {
                             $ch = curl_init();
                             curl_setopt($ch, CURLOPT_URL, "http://tubes-rest-service:3000/token/create");
                             curl_setopt($ch, CURLOPT_POST, 1);

@@ -61,6 +61,7 @@ class App
     $router->post("public/dashboard/edit-episode", new PostEditEpisodeController());
     $router->post("public/dashboard/add-podcast", new PostAddPodcastController());
     $router->post("public/dashboard/edit-podcast", new PostEditPodcastController());
+    $router->post("public/subscribe", new PostSubscribeController());
 
     // DELETE routes
     $router->delete("public/dashboard/episode", new DeleteEpisodeController());

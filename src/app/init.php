@@ -44,6 +44,7 @@ require_once __DIR__ . "/controllers/signup/post_signup.php";
 require_once __DIR__ . "/controllers/search/get_search.php";
 require_once __DIR__ . "/controllers/profile/get_profile.php";
 require_once __DIR__ . "/controllers/profile/update_profile.php";
+require_once __DIR__ . "/controllers/subscription/post_subscription.php";
 
 require_once __DIR__ . "/controllers/player/mount_player.php";
 require_once __DIR__ . "/controllers/player/get_episode_played.php";

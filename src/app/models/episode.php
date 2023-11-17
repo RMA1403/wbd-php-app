@@ -129,4 +129,23 @@ class EpisodeModel
     $episode = $this->db->fetchAll();
     return $episode;
   }
+
+  public function getSearchRest($keyword, $genre)
+  {
+    $query = "
+      SELECT e.id_episode, e.title, e.description, e.url_thumbnail, p.title AS podcast_title
+      FROM episode e
+      NATURAL JOIN podcast p
+      WHERE e.title LIKE :keyword
+      AND p.category LIKE :genre
+    ";
+
+    $this->db->query($query);
+
+    $this->db->bind("keyword", '%' . $keyword . '%');
+    $this->db->bind("genre", $genre == "" ? '%' : $genre);
+    $podcasts = $this->db->fetchAll();
+    return $podcasts;
+  }
+  
 }

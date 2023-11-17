@@ -51,6 +51,9 @@ class App
     $router->get("public/episode-by-id", new GetEpisodeController());
     $router->get("public/random-podcast", new GetRandomPodcastController());
 
+    $router->get("public/rest/search/podcast", new GetSearchPodcastRestController());
+    $router->get("public/rest/search/episode", new GetSearchEpisodeRestController());
+
     // POST routes
     $router->post("public/logout", new LogoutController());
     $router->post("public/login", new PostLoginController());

@@ -1,6 +1,7 @@
 "use strict";
 
 import { mountPlayer } from "../player/player.js";
+import { handlePlayerPage } from "../player/player_page.js";
 import { showSuccessToast, showErrorToast, showInformationToast } from "../toast.mjs";
 export function handlePodcast() {
   // Get DOM elements
@@ -24,6 +25,7 @@ export function handlePodcast() {
       xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
           mountPlayer();
+          handlePlayerPage();
         }
       };
 

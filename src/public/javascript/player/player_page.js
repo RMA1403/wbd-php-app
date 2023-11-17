@@ -1,7 +1,8 @@
 export function handlePlayerPage() {
+    console.log("player page");
     const audioPlayer = document.querySelector('audio');
-    const playButton = document.querySelector('.play-button');
-    const pauseButton = document.querySelector('.pause-button');
+    const playButton = document.querySelector('.play-button-player');
+    const pauseButton = document.querySelector('.pause-button-player');
     const duration = document .querySelector('.duration');
     const currentTime = document.querySelector('.current-time');
     const progressBar = document.querySelector('.progress-bar');
@@ -16,12 +17,13 @@ export function handlePlayerPage() {
 
     if (audioPlayer) {
         // Play button
+        console.log(playButton);
         playButton.addEventListener("click", () => {
             playButton.style.display = "none";
             pauseButton.style.display = "block";
             audioPlayer.play();
         });
-
+        
         // Pause button
         pauseButton.addEventListener("click", () => {
             pauseButton.style.display = "none";

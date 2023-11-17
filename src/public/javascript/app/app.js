@@ -47,7 +47,9 @@ const getPage = (page, queryParam) => {
       } else if (window.location.href.includes("home")) {
         handleHome();
       }
-      mountPlayer();
+      if (!document.querySelector(".hide-player")) {
+        mountPlayer();
+      }
     }
   };
 

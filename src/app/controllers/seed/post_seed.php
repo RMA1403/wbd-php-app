@@ -63,7 +63,7 @@ class PostSeedController
         $eps_title = "Episode " . $j . " of Podcast Non-Premium " . $i;
         $eps_description = "Description for Episode " . $j . " of Podcast Non-Premium " . $i . " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla erat lacus, cursus vel arcu ut, blandit euismod ex. Pellentesque eu magna vehicula odio laoreet maximus eget eu neque. Nullam nec euismod arcu, id tincidunt magna.";
         $eps_url_thumbnail = $j % 2 == 0 ? "/images/escape.jpg" : "/images/hello.jpg";
-        $eps_url_audio = $j % 2 == 0 ? "/audio/audiotester.mp3" : "/audio/sample.mp3";
+        $eps_url_audio = $j % 2 == 0 ? "/episodes/audiotester.mp3" : "/episodes/sample.mp3";
 
         $episode_query .= "('" . $eps_title . "', '" . $eps_url_thumbnail . "', '" . $eps_description . "', '" . $eps_url_audio . "', " . $i . ")";
 

@@ -8,19 +8,13 @@
     </div>
     <div class="audio-player">
         <div class="audio-controller">
-            <div class="prevButton">
-                <img src="<?= BASE_URL ?>/images/assets/prev_icon.svg" alt="prev">
-            </div>
             <div class="button-player">
-                <div class="play-button">
+                <div class="play-button-player">
                     <img src="<?= BASE_URL ?>/images/assets/play_icon.svg" alt="pause">
                 </div>
-                <div class="pause-button">
+                <div class="pause-button-player">
                     <img src="<?= BASE_URL ?>/images/assets/pause_icon.svg" alt="pause">
                 </div>
-            </div>
-            <div class="nextButton">
-                <img src="<?= BASE_URL ?>/images/assets/next_icon.svg" alt="next">
             </div>
         </div>
         <div class="progress-control">

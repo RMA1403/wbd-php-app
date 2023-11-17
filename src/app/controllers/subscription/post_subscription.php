@@ -3,13 +3,22 @@
 class PostSubscribeController
 {
   public function call() {
+
+    session_start();
+
+    if (isset($_SESSION["user_id"])){
+      $user_id = $_SESSION["user_id"];
+    }else{
+      return;
+    }
+
     $xml = '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://services.soapserver/">
               <soap:Header>
                 <tns:apiKey>ularmelingkardiataspagar</tns:apiKey>
               </soap:Header>
               <soap:Body>
                 <tns:addSubscription>
-                  <idUser>8</idUser>
+                  <idUser>'.$user_id.'</idUser>
                 </tns:addSubscription>
               </soap:Body>
             </soap:Envelope>';

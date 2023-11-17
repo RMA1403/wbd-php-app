@@ -10,6 +10,7 @@
         </div>
         <div class="profile-menu">
             <div class="item b3" id="menu-profile">Profile</div>
+            <button class="item b3" id="subscribe">Subscribe</button>
             <button class="item b3" id="logout">Log out</button>
         </div>
         <div class="edit-profile-back">
@@ -35,11 +36,26 @@
         e.preventDefault();
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "/public/logout");
-        xhr.send()
+        xhr.send();
         xhr.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
-                window.location.replace("/public/login")
+                window.location.replace("/public/login");
             }
         }
     })
+
+    const subscribeBtn = document.getElementById("subscribe");
+    subscribeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/public/subscribe", true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 201) {
+                alert("Berhasil Subscribe!, logout dan login kembali untuk masuk ke halaman premium.")
+                window.location.replace("http://localhost:5173");
+            }
+        }
+    })
+
 </script>

@@ -248,4 +248,25 @@ class PodcastModel
     $podcast = $this->db->fetchAll();
     return $podcast;
   }
+
+  public function getSearchPodcast($keyword, $genre)
+  {
+
+    $query =
+      "SELECT p.id_podcast, p.title, p.description, p.url_thumbnail
+    FROM podcast AS p
+    LEFT JOIN episode AS e ON p.id_podcast = e.id_podcast
+    WHERE (p.title LIKE :search_value
+    OR p.description LIKE :search_value)
+    AND p.category LIKE :genre
+    ";
+
+
+    $this->db->query($query);
+
+    $this->db->bind("search_value", '%' . $keyword . '%');
+    $this->db->bind("genre", $genre == "" ? '%' : $genre);
+    $podcasts = $this->db->fetchAll();
+    return $podcasts;
+  }
 }

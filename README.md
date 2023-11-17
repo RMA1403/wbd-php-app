@@ -57,3 +57,13 @@ Podcast Website (tanpa nama) ini adalah website yang dapat digunakan untuk mende
 | Pemutar Podcast           | 13521119 |
 | Library                   | 13521079 |
 | User Profile              | 13521119 |
+
+## Daftar Perubahan
+- CRUD podcast premium
+- CRUD episode premium
+- Fix player gabisa dijalanin
+- Check subscription saat login
+- Add session expiration time
+- Subscription button
+- Fix add podcast to playlist
+- Add beberapa endpoint untuk kebutuhan data REST service

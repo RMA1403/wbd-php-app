@@ -20,7 +20,7 @@ class GetProfileController
     } 
 
     $userModel = new UserModel();
-    $profile = $userModel->getUserInfo(4);
+    $profile = $userModel->getUserInfo($user_id);
 
     $data = [
       "name" => $profile->name,
